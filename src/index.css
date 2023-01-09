@@ -26,6 +26,9 @@ body {
 }
 
 /* Text stroke */
+/* .text-stroke {
+  -webkit-text-stroke: 1px white;
+} */
 .text-stroke {
   -webkit-text-stroke: 1px white;
 }

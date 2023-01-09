@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div className="font-oswald cursor-default">
-      <marquee
+      {/* <marquee
         width="100%"
         direction="right"
         className="font-caladea  text-[#fb7e4a] text-lg font-semibold bg-yellow-200 mb-[-5px] sticky top-0 left-0 right-0  "
@@ -55,7 +55,7 @@ function App() {
           <p>This website is under construction.</p>
           <p>This website is under construction.</p>
         </div>
-      </marquee>
+      </marquee> */}
       <div
         className={` ${currentPath?.pathname === "/login" ? "hidden" : " "} `}
       >

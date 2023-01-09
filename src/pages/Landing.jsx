@@ -10,39 +10,181 @@ import { useRecoilState } from "recoil";
 import LandingPageDataAtom from "../recoil/pages/landingPage/LandingPageDataAtom";
 
 // components
-
 import Footer from "../components/globalComponents/Footer";
 import EventSection from "../components/landingPage/EventSection";
 import Section from "../components/landingPage/Section";
 import { VITE_BASE_LINK } from "../base_link/BaseLink";
+import Section_2 from "../components/landingPage/Section_2";
+
+// assets
+import header_image from "../assets/img/header/header-img.png";
+import header_garland from "../assets/img/header/flowerMala.png";
+import Sidebar_right from "../components/landingPage/Sidebar_right";
 
 const Landing = () => {
   // Global variables
-  const [landingPageData, setLandingPageData] =
-    useRecoilState(LandingPageDataAtom);
+  // const [landingPageData, setLandingPageData] =
+  //   useRecoilState(LandingPageDataAtom);
 
-  useEffect(() => {
-    axios
-      .get(VITE_BASE_LINK + "landingPage")
-      .then(function (response) {
-        setLandingPageData(response?.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(VITE_BASE_LINK + "landingPage")
+  //     .then(function (response) {
+  //       console.log(response?.data);
+  //       setLandingPageData(response?.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .get(VITE_BASE_LINK + "landing_page")
+  //     .then(function (response) {
+  //       console.log(response?.data);
+  //       setLandingPageData(response?.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }, []);
+
+  const landingPageData = {
+    data: [
+      {
+        id: 1,
+        layout: "hero",
+        h1: "SRI VANAMAMALAI (THOTHADRI) MUTT",
+        h2: "SRI VANACHALA MAHAMUNI PARAMPARA",
+        img: "media/img/vm_temple_banner.png",
+      },
+      {
+        id: 2,
+        layout: "youtube_events",
+        h1: "Events",
+        caraousel_data: [
+          {
+            yt_link: "https://youtu.be/YPYghdZw8gM",
+            yt_title:
+              "Thiruppavai Pasuram 21 🤩 திருப்பாவை - ஏற்ற கலங்கள் | Tamil | 31st Vanamamalai Jeeyar Upanyasam",
+          },
+          {
+            yt_link: "https://youtu.be/YPYghdZw8gM",
+            yt_title:
+              "Thiruppavai Pasuram 21 🤩 திருப்பாவை - ஏற்ற கலங்கள் | Tamil | 31st Vanamamalai Jeeyar Upanyasam",
+          },
+          {
+            yt_link: "https://youtu.be/YPYghdZw8gM",
+            yt_title:
+              "Thiruppavai Pasuram 21 🤩 திருப்பாவை - ஏற்ற கலங்கள் | Tamil | 31st Vanamamalai Jeeyar Upanyasam",
+          },
+          {
+            yt_link: "https://youtu.be/YPYghdZw8gM",
+            yt_title:
+              "Thiruppavai Pasuram 21 🤩 திருப்பாவை - ஏற்ற கலங்கள் | Tamil | 31st Vanamamalai Jeeyar Upanyasam",
+          },
+        ],
+      },
+      {
+        id: 3,
+        layout: "banner",
+        banner_data: [
+          { id: 30, type: "image", image: "/src/helloImage" },
+          {
+            id: 31,
+            type: "text",
+            h1: "21st paasuram",
+            p: "Vanamamalai mutt is an ancient srivaishnava mutt which was established by ponnadikkal jiyar under the orders of manavala mamunigal. Ponnadikkal jiyar was the first and foremost disciple and this mutt is one of the most important mutts of srivaishnava sath sampradhayam.",
+          },
+          { id: 32, type: "image", image: "/src/helloImage" },
+          { id: 33, type: "image", image: "/src/helloImage" },
+        ],
+      },
+      {
+        id: 4,
+        layout: "facebook",
+        fb_page_link: "https://www.facebook.com/srivanamamalaimuttofficial/",
+      },
+      {
+        id: 5,
+        layout: "small_banner",
+        image: "/src/helloImage",
+        h1: "Lorem Ipsum",
+        h2: "lorem ipsum dolor sit amet",
+      },
+      {
+        id: 6,
+        layout: "cards",
+        card_data: [
+          {
+            h1: "SVNB Sabha AGM - 2011",
+            p: "The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President. ",
+          },
+          {
+            h1: "About Kshetram",
+            p: "The word kshetram itself is a wonderful sanskrit word. In his divine bhagavat geetha, geethacharyan says 'edam sareeram kowthEyA kshetram ethyabhidheeyathE'",
+          },
+          {
+            h1: "SVNB SabhaAGM - 2011",
+            p: "The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President.",
+          },
+          {
+            h1: "SVNB SabhaAGM - 2011",
+            p: "The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President.",
+          },
+        ],
+      },
+    ],
+  };
 
   return (
-    <div className="">
-      {landingPageData?.data?.map((sectionData, sectionIndex) => {
+    <div>
+      <div
+        style={{
+          backgroundImage: "url(../src/assets/img/header/flowerMala.png)",
+        }}
+        className="h-[23px] sticky top-0 z-[20000]"
+      ></div>
+      {/* {landingPageData?.data?.map((sectionData, sectionIndex) => {
         return (
           <div key={sectionIndex} className="">
             <Section apiData={sectionData} />
           </div>
         );
-      })}
+      })} */}
 
-      <Footer />
+      <div className="xl:pl-[300px] md:pr-[400px]">
+        <header className="bg-white py-5 flex justify-center items-center">
+          <div>
+            <img src={header_image} alt="vanamamalai" />
+          </div>
+        </header>
+
+        <div className="flex ">
+          <div className="flex-1 mx-5">
+            {landingPageData?.data?.map((sectionData, sectionIndex) => {
+              return (
+                <div key={sectionIndex} className="">
+                  <Section_2 apiData={sectionData} />
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="hidden md:block  w-full max-w-[400px] h-[100vh] scrollbar-hide overflow-y-scroll fixed bottom-0 top-0 right-0">
+            {landingPageData?.data?.map((sectionData, sectionIndex) => {
+              return (
+                <div key={sectionIndex} className="w-full ">
+                  <Sidebar_right apiData={sectionData} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* <Footer /> */}
     </div>
   );
 };

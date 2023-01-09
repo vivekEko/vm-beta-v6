@@ -52,6 +52,16 @@ const Sidebar = () => {
   }, [sidebarStatus]);
 
   return (
+    // <div
+    //   id="sidebar"
+    //   className={` ${
+    //     sidebarStatus
+    //       ? "w-[100%] ease-in"
+    //       : !currentPath?.pathname?.includes("/home")
+    //       ? "w-[0%] ease-out   min-w-[0px] md:w-[0.1%] md:min-w-[60px]"
+    //       : "w-[0%] ease-out  min-w-[0px]"
+    //   } h-screen bg-[#FC8D0B] fixed top-0 bottom-0  max-w-[300px] transition-all duration-300  shadow-2xl z-[9999] overflow-y-scroll scrollbar-hide  pb-[100px]  `}
+    // >
     <div
       id="sidebar"
       className={` ${
@@ -59,7 +69,7 @@ const Sidebar = () => {
           ? "w-[100%] ease-in"
           : !currentPath?.pathname?.includes("/home")
           ? "w-[0%] ease-out   min-w-[0px] md:w-[0.1%] md:min-w-[60px]"
-          : "w-[0%] ease-out  min-w-[0px]"
+          : "w-[0%] ease-out  min-w-[0px] xl:w-[100%]"
       } h-screen bg-[#FC8D0B] fixed top-0 bottom-0  max-w-[300px] transition-all duration-300  shadow-2xl z-[9999] overflow-y-scroll scrollbar-hide  pb-[100px]  `}
     >
       <div className=" overflow-x-hidden ">
