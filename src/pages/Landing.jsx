@@ -164,15 +164,15 @@ const Landing = () => {
         );
       })} */}
 
-      <div className="xl:pl-[300px] md:pr-[400px]">
+      <div className="xl:pl-[300px] lg:pr-[400px]">
         <header className="bg-white py-5 flex justify-center items-center">
           <div>
-            <img src={header_image} alt="vanamamalai" />
+            <img src={header_image} alt="vanamamalai" className="h-[50px]" />
           </div>
         </header>
 
-        <div className="flex ">
-          <div className="flex-1 mx-5 bg-[#FDE9E3]">
+        <div className=" w-full">
+          <div className=" md:mx-5 bg-[#FDE9E3]">
             {landingPageData?.data?.map((sectionData, sectionIndex) => {
               return (
                 <div key={sectionIndex} className="">
@@ -182,7 +182,7 @@ const Landing = () => {
             })}
           </div>
 
-          <div className="hidden md:block  w-full max-w-[400px] h-[100vh] scrollbar-hide overflow-y-scroll fixed bottom-0 top-0 right-0">
+          <div className="hidden lg:block w-full max-w-[400px] h-[100vh] scrollbar-hide overflow-y-scroll fixed bottom-0 top-0 right-0">
             {landingPageData?.data?.map((sectionData, sectionIndex) => {
               return (
                 <div key={sectionIndex} className="w-full ">

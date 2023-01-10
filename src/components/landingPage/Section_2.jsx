@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { VITE_BASE_LINK } from "../../base_link/BaseLink";
 
 // assets
@@ -8,28 +8,65 @@ import square_image2 from "../../assets/img/landingPage/28_EN.jpg";
 import Slider from "react-slick";
 
 const Section_2 = (props) => {
+  const responsive = [
+    {
+      breakpoint: 1800,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 1604,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 500,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ];
+
   return (
     <div>
       {props?.apiData?.layout === "hero" && (
         <section
-          className="h-[50vh] bg-cover bg-no-repeat flex justify-center  "
+          className="h-[50vh] bg-cover bg-no-repeat  bg-center"
           style={{
             backgroundImage:
               "url(" + VITE_BASE_LINK + props?.apiData?.img + ")",
           }}
         >
-          <div className="font-oswald text-center space-y-5 pt-20 ">
-            <h1 className="text-stroke font-bold text-6xl text-[#292929]">
+          <div className="font-oswald text-center h-full space-y-5 pt-20 bg-black bg-opacity-30 ">
+            <h1
+              className="text-stroke font-bold text-[calc(0.1vw+2.5rem)] 
+            md:text-[calc(0.1vw+3rem)] text-[#292929]"
+            >
               {props?.apiData?.h1}
             </h1>
-            <h2 className="text-white text-5xl font-medium">
+            <h2 className="text-white text-[calc(0.1vw+1.7rem)] md:text-[calc(0.1vw+2rem)]  font-medium">
               {props?.apiData?.h2}
             </h2>
           </div>
         </section>
       )}
       {props?.apiData?.layout === "banner" && (
-        <section className="grid grid-cols-2 gap-10  p-5 place-items-center">
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-5  p-5 place-items-center">
           {props?.apiData?.banner_data?.map((data, index) => {
             if (data?.type === "image") {
               return (
@@ -41,11 +78,13 @@ const Section_2 = (props) => {
 
             if (data?.type === "text") {
               return (
-                <div key={index} className="p-5">
-                  <h1 className="text-2xl font-semibold mb-5 font-oswald">
+                <div key={index} className="p-5 ">
+                  <h1 className="text-[calc(0.4vw+1.5rem)] font-semibold mb-5 font-oswald">
                     {data?.h1}
                   </h1>
-                  <h1 className="font-caladea">{data?.p}</h1>
+                  <h1 className="font-caladea text-[calc(0.3vw+1rem)] max-h-[250px] overflow-y-scroll scrollbar-hide ">
+                    {data?.p}
+                  </h1>
                 </div>
               );
             }
@@ -54,12 +93,12 @@ const Section_2 = (props) => {
       )}
 
       {props?.apiData?.layout === "small_banner" && (
-        <section className="flex  gap-5 py-10 px-5 border-y border-y-[#FF6E43] border-opacity-30 bg-[#FEF2EE]">
+        <section className="flex flex-col sm:flex-row  gap-5 py-10 px-5 border-y border-y-[#FF6E43] border-opacity-30 bg-[#FEF2EE]">
           <div className="flex-[0.3] w-full">
             <img src={props?.apiData?.image} alt="" className="w-full" />
           </div>
 
-          <div className="flex-[0.7]">
+          <div className="flex-[0.7] text-center sm:text-left">
             <h1 className="text-[#830300] font-bold uppercase text-3xl">
               {props?.apiData?.h1}
             </h1>
@@ -69,13 +108,7 @@ const Section_2 = (props) => {
       )}
 
       {props?.apiData?.layout === "cards" && (
-        <section
-          // style={{
-          //   backgroundImage:
-          //     "url(../../src/assets/img/landingPage/border-svg.svg)",
-          // }}
-          className="py-20   "
-        >
+        <section className="py-20   ">
           <div className=" w-full">
             <Slider
               dots={true}
@@ -84,8 +117,9 @@ const Section_2 = (props) => {
               arrows={false}
               //   prevArrow={<PreviousBtn />}
               //   nextArrow={<NextBtn />}
-              className="w-full  md:w-[90%] mx-auto max-w-[1100px]"
+              className="w-full  md:w-[90%] mx-auto "
               // dotsClass="slick-dots custom-dots"
+              responsive={responsive}
             >
               {props?.apiData?.card_data?.map((data, index) => {
                 return (
