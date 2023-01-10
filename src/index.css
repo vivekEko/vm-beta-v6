@@ -72,3 +72,9 @@ input[type="color"]::-webkit-color-swatch {
   border: none;
   border-radius: 10px;
 }
+
+.custom-border {
+  border: 30px solid;
+  border-image: url("../../src/assets/img/landingPage/border-svg.svg");
+  border-image-slice: 30;
+}

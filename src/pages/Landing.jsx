@@ -21,6 +21,11 @@ import header_image from "../assets/img/header/header-img.png";
 import header_garland from "../assets/img/header/flowerMala.png";
 import Sidebar_right from "../components/landingPage/Sidebar_right";
 
+import square_image from "../assets/img/landingPage/26_EN.jpg";
+import square_image1 from "../assets/img/landingPage/27_EN.jpg";
+import square_image2 from "../assets/img/landingPage/28_EN.jpg";
+import rect_img from "../assets/img/landingPage/rect_image.png";
+
 const Landing = () => {
   // Global variables
   // const [landingPageData, setLandingPageData] =
@@ -90,15 +95,15 @@ const Landing = () => {
         id: 3,
         layout: "banner",
         banner_data: [
-          { id: 30, type: "image", image: "/src/helloImage" },
+          { id: 30, type: "image", image: square_image },
           {
             id: 31,
             type: "text",
             h1: "21st paasuram",
             p: "Vanamamalai mutt is an ancient srivaishnava mutt which was established by ponnadikkal jiyar under the orders of manavala mamunigal. Ponnadikkal jiyar was the first and foremost disciple and this mutt is one of the most important mutts of srivaishnava sath sampradhayam.",
           },
-          { id: 32, type: "image", image: "/src/helloImage" },
-          { id: 33, type: "image", image: "/src/helloImage" },
+          { id: 32, type: "image", image: square_image1 },
+          { id: 33, type: "image", image: square_image2 },
         ],
       },
       {
@@ -109,9 +114,9 @@ const Landing = () => {
       {
         id: 5,
         layout: "small_banner",
-        image: "/src/helloImage",
-        h1: "Lorem Ipsum",
-        h2: "lorem ipsum dolor sit amet",
+        image: rect_img,
+        h1: "Welcome To Vanamamalai Mutt",
+        p: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer ",
       },
       {
         id: 6,
@@ -119,7 +124,7 @@ const Landing = () => {
         card_data: [
           {
             h1: "SVNB Sabha AGM - 2011",
-            p: "The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President. ",
+            p: "The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President. The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President",
           },
           {
             h1: "About Kshetram",
@@ -129,6 +134,11 @@ const Landing = () => {
             h1: "SVNB SabhaAGM - 2011",
             p: "The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President.",
           },
+          {
+            h1: "SVNB SabhaAGM - 2011",
+            p: "The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President.",
+          },
+
           {
             h1: "SVNB SabhaAGM - 2011",
             p: "The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President.",
@@ -162,7 +172,7 @@ const Landing = () => {
         </header>
 
         <div className="flex ">
-          <div className="flex-1 mx-5">
+          <div className="flex-1 mx-5 bg-[#FDE9E3]">
             {landingPageData?.data?.map((sectionData, sectionIndex) => {
               return (
                 <div key={sectionIndex} className="">
