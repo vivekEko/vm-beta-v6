@@ -14,7 +14,7 @@ const Sidebar_right = (props) => {
   };
 
   return (
-    <div className=" bg-[#F1400B] bg-opacity-20 pt-5 ">
+    <div className="  ">
       {props?.apiData?.layout === "youtube_events" && (
         <section>
           <div className="mx-5">

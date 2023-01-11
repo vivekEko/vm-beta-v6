@@ -182,7 +182,20 @@ const Landing = () => {
             })}
           </div>
 
-          <div className="hidden lg:block w-full max-w-[400px] h-[100vh] scrollbar-hide overflow-y-scroll fixed bottom-0 top-0 right-0">
+          <div
+            className="hidden lg:block w-full max-w-[400px] h-[100vh] scrollbar-hide overflow-y-scroll fixed bottom-0 top-0 right-0
+          
+          bg-[#F1400B] bg-opacity-20 pt-5"
+          >
+            <div className="w-full p-5 ">
+              <button
+                className="w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-xl bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100 hover:rounded-tr-full hover:rounded-bl-full hover:rounded-tl-none hover:rounded-br-none text-center
+              rounded-tl-full rounded-br-full  
+              "
+              >
+                Subscribe
+              </button>
+            </div>
             {landingPageData?.data?.map((sectionData, sectionIndex) => {
               return (
                 <div key={sectionIndex} className="w-full ">
