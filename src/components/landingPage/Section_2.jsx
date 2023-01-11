@@ -6,6 +6,7 @@ import square_image from "../../assets/img/landingPage/26_EN.jpg";
 import square_image1 from "../../assets/img/landingPage/27_EN.jpg";
 import square_image2 from "../../assets/img/landingPage/28_EN.jpg";
 import Slider from "react-slick";
+import YouTube from "react-youtube";
 
 const Section_2 = (props) => {
   const responsive = [
@@ -41,6 +42,11 @@ const Section_2 = (props) => {
       },
     },
   ];
+
+  const opts = {
+    height: "200",
+    width: "100%",
+  };
 
   return (
     <div>
@@ -92,6 +98,39 @@ const Section_2 = (props) => {
         </section>
       )}
 
+      {props?.apiData?.layout === "youtube_events" && (
+        <section className="py-5">
+          <div className="mx-5 mt-5">
+            <h1 className="pb-5 text-2xl font-semibold">
+              {props?.apiData?.h1}
+            </h1>
+
+            <div className=" flex overflow-y-scroll scrollbar-hide ">
+              {props?.apiData?.caraousel_data?.map((data, index) => {
+                return (
+                  <div key={index} className=" mr-5 min-w-[300px]">
+                    <YouTube
+                      videoId={
+                        data?.yt_link
+                          .split("/")
+                          .reverse()[0]
+                          .includes("watch?v=")
+                          ? data?.yt_link.split("watch?v=").reverse()[0]
+                          : data?.yt_link.split("/").reverse()[0]
+                      }
+                      opts={opts}
+                      className="w-full"
+                    />
+                    {/* <h1 className=" py-2">{data?.yt_title}</h1> */}
+                    <h1 className="py-2">{data?.yt_title}</h1>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
       {props?.apiData?.layout === "small_banner" && (
         <section className="flex flex-col sm:flex-row  gap-5 py-10 px-5 border-y border-y-[#FF6E43] border-opacity-30 bg-[#FEF2EE]">
           <div className="flex-[0.3] w-full">
@@ -136,6 +175,26 @@ const Section_2 = (props) => {
                 );
               })}
             </Slider>
+          </div>
+        </section>
+      )}
+
+      {props?.apiData?.layout === "facebook" && (
+        <section>
+          <h1 className="pb-5 text-2xl mt-10 m-5 font-semibold">
+            Facebook Feed
+          </h1>
+          <div className=" w-fit mx-auto  ">
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsrivanamamalaimuttofficial%2F&tabs=timeline&width=500px&height=900&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+              height="900"
+              //   style={{ border: "none", overflow: "hidden" }}
+              scrolling="no"
+              frameBorder="0"
+              allowFullScreen={true}
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              className="w-full min-w-[500px] max-w-[500px] mx-auto"
+            ></iframe>
           </div>
         </section>
       )}

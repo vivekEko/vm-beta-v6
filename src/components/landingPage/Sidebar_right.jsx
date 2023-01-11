@@ -8,11 +8,6 @@ const Sidebar_right = (props) => {
     width: "100%",
   };
 
-  const opts2 = {
-    height: "100",
-    width: "100%",
-  };
-
   return (
     <div className="  ">
       {props?.apiData?.layout === "youtube_events" && (
@@ -22,39 +17,7 @@ const Sidebar_right = (props) => {
               {props?.apiData?.h1}
             </h1>
 
-            {/* <div>
-              <YouTube
-                // videoId={data?.video_id}
-                videoId={
-                  props?.apiData?.caraousel_data[0]?.yt_link
-                    .split("/")
-                    .reverse()[0]
-                    .includes("watch?v=")
-                    ? props?.apiData?.caraousel_data[0]?.yt_link
-                        .split("watch?v=")
-                        .reverse()[0]
-                    : props?.apiData?.caraousel_data[0]?.yt_link
-                        .split("/")
-                        .reverse()[0]
-                }
-                opts={opts}
-                className="   mx-auto "
-              />
-              <h1 className="py-2">
-                {props?.apiData?.caraousel_data[0]?.yt_title}
-              </h1>
-            </div> */}
-
             <div className="max-h-[600px] overflow-y-scroll scrollbar-hide">
-              {/* <Slider
-                dots={true}
-                slidesToShow={2}
-                infinite
-                //   prevArrow={<PreviousBtn />}
-                //   nextArrow={<NextBtn />}
-                className="w-full  md:w-[90%] mx-auto"
-                // dotsClass="slick-dots custom-dots"
-              > */}
               {props?.apiData?.caraousel_data?.map((data, index) => {
                 return (
                   <div key={index} className=" p-5">
@@ -76,7 +39,6 @@ const Sidebar_right = (props) => {
                   </div>
                 );
               })}
-              {/* </Slider> */}
             </div>
           </div>
         </section>
