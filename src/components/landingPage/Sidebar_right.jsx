@@ -53,12 +53,12 @@ const Sidebar_right = (props) => {
             <iframe
               src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsrivanamamalaimuttofficial%2F&tabs=timeline&width=350px&height=900&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
               height="900"
-              //   style={{ border: "none", overflow: "hidden" }}
+              // style={{ border: "1px solid red", overflow: "hidden" }}
               scrolling="no"
               frameBorder="0"
               allowFullScreen={true}
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              className="w-full min-w-[350px] max-w-[400px] mx-auto"
+              className="w-full min-w-[350px] max-w-[400px] mx-auto "
             ></iframe>
           </div>
         </section>

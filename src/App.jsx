@@ -29,6 +29,7 @@ import AdminJeeyaMainPage from "./admin_pages/AdminJeeyaMainPage";
 import AdminGalleryMainPage from "./admin_pages/AdminGalleryMainPage";
 import AdminSubAlbumPage from "./admin_pages/AdminSubAlbumPage";
 import AdminAlbumPage from "./admin_pages/AdminAlbumPage";
+import AdminHomePageV2 from "./admin_pages/AdminHomePageV2";
 
 function App() {
   const [currentPath, setCurrentPath] = useRecoilState(currentPathAtom);
@@ -97,6 +98,7 @@ function App() {
               element={<Navigate to="/admin/dashboard" replace={true} />}
             />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            {/* <Route path="/admin/home_edit/" element={<AdminHomePageV2 />} /> */}
             <Route path="/admin/home_edit/" element={<AdminHomePage />} />
             <Route
               path="/admin/sub_admin_page/:sub_admin_page_name"

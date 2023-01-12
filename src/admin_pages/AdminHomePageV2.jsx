@@ -15,201 +15,33 @@ import eye_close_active from "../assets/img/admin/home_edit/eye_close_active.svg
 import { VITE_BASE_LINK } from "../base_link/BaseLink";
 import axios from "axios";
 
-const AdminHomePage = () => {
+const AdminHomePageV2 = () => {
   const [activeSection, setActiveSection] = useState(null);
-  // const [bannerOptionDropdown, setBannerOptionDropdown] = useState(false);
-
+  const [bannerOptionDropdown, setBannerOptionDropdown] = useState(false);
   const [pageData, setPageData] = useState(null);
-
-  // const [activeInput, setActiveInput] = useState(null);
-  // const [imageArray, setImageArray] = useState([]);
-  // const [fileArray, setFileArray] = useState([]);
+  const [activeInput, setActiveInput] = useState(null);
+  const [imageArray, setImageArray] = useState([]);
+  const [fileArray, setFileArray] = useState([]);
   const [newSectionActiveLayout, setNewSectionActiveLayout] = useState({
     backend_name: "left_image",
-    frontend_name: "Article View",
+    frontend_name: "Left Aligned",
   });
   const [layoutFilterStatus, setLayoutFilterStatus] = useState(false);
 
   const layouts = [
     {
       backend_name: "left_image",
-      frontend_name: "Grid View",
+      frontend_name: "Left Aligned",
     },
     {
       backend_name: "right_image",
-      frontend_name: "Article View",
+      frontend_name: "Right Alingned",
     },
     {
       backend_name: "two_images",
-      frontend_name: "Cards View",
+      frontend_name: "Center Aligned",
     },
   ];
-
-  // const pageData = {
-  //   pageName: "Home",
-  //   all_sections: [
-  //     {
-  //       section_name: "Section 1",
-  //       layout: "hero",
-  //       status: true,
-  //       section_id: 1,
-  //       bg_image: "image link here",
-  //       section_data: [
-  //         {
-  //           id: 1,
-  //           title: "Heading",
-  //           content: "Lorem Ipsum",
-  //           type: "text",
-  //           section_data_status: true,
-  //         },
-  //         {
-  //           id: 2,
-  //           title: "Sub Heading",
-  //           content: "Lorem Ipsum",
-  //           type: "text",
-  //           section_data_status: true,
-  //         },
-  //       ],
-  //     },
-
-  //     {
-  //       section_name: "Section 2",
-  //       layout: "banner",
-  //       status: true,
-  //       section_id: 2,
-  //       section_data: [
-  //         {
-  //           id: 1,
-  //           type: "image",
-  //           content: "paaji yaha image ka link hoga",
-  //         },
-  //         {
-  //           id: 2,
-  //           type: "text",
-  //           content_data: [
-  //             {
-  //               id: 1,
-  //               title: "Heading",
-  //               content: "21st Paasuram",
-  //             },
-  //             {
-  //               id: 1,
-  //               title: "Brief Info",
-  //               content:
-  //                 "Vanamamalai mutt is an ancient srivaishnava mutt which was established by ponnadikkal jiyar under the orders of manavala mamunigal. Ponnadikkal jiyar was the first and foremost disciple and this mutt is one of the most important mutts of srivaishnava sath sampradhayam.",
-  //             },
-  //           ],
-  //         },
-
-  //         {
-  //           id: 3,
-  //           type: "image",
-  //           content: "paaji yaha image ka link hoga",
-  //         },
-
-  //         {
-  //           id: 4,
-  //           type: "image",
-  //           content: "paaji yaha image ka link hoga",
-  //         },
-  //       ],
-  //     },
-
-  //     {
-  //       section_name: "Section 3",
-  //       layout: "facebook",
-  //       status: true,
-  //       section_id: 3,
-  //       section_data: [
-  //         {
-  //           id: 1,
-  //           title: "Facebook Page Link",
-  //           content: "https://www.facebook.com/srivanamamalaimuttofficial/",
-  //           type: "text",
-  //           section_data_status: true,
-  //         },
-  //       ],
-  //     },
-
-  //     {
-  //       section_name: "Section 4",
-  //       layout: "small_banner",
-  //       status: true,
-  //       section_id: 3,
-  //       section_data: [
-  //         {
-  //           id: 1,
-  //           title: "Heading",
-  //           content: "Lorem Ipsum",
-  //           type: "text",
-  //           section_data_status: true,
-  //         },
-  //         {
-  //           id: 2,
-  //           title: "Brief Info",
-  //           content: "Lorem Ipsum",
-  //           type: "text",
-  //           section_data_status: true,
-  //         },
-  //         {
-  //           id: 3,
-  //           title: "Cover Image",
-  //           content: "Paaji, Image ka link hoga yaha",
-  //           type: "image",
-  //           section_data_status: true,
-  //         },
-  //       ],
-  //     },
-
-  //     {
-  //       section_name: "Section 5",
-  //       layout: "card",
-  //       status: true,
-  //       section_id: 3,
-  //       section_data: [
-  //         {
-  //           card_id: 5,
-  //           card_data: [
-  //             {
-  //               id: 1,
-  //               title: "Heading",
-  //               content: "Lorem Ipsum",
-  //               type: "text",
-  //               section_data_status: true,
-  //             },
-  //             {
-  //               id: 2,
-  //               title: "Brief Info",
-  //               content: "Lorem Ipsum",
-  //               type: "text",
-  //               section_data_status: true,
-  //             },
-  //           ],
-  //         },
-
-  //         {
-  //           card_id: 6,
-  //           card_data: [
-  //             {
-  //               id: 1,
-  //               title: "Heading",
-  //               content: "Lorem Ipsum",
-  //               type: "text",
-  //               section_data_status: true,
-  //             },
-  //             {
-  //               id: 2,
-  //               title: "Brief Info",
-  //               content: "Lorem Ipsum",
-  //               type: "text",
-  //               section_data_status: true,
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // };
 
   useEffect(() => {
     axios.get(VITE_BASE_LINK + "home_page").then((response) => {
@@ -219,33 +51,61 @@ const AdminHomePage = () => {
     });
   }, []);
 
+  useEffect(() => {
+    setImageArray(
+      pageData?.all_sections
+        ?.filter((filteredData) => {
+          if (activeSection?.includes(filteredData?.section_name)) {
+            return filteredData;
+          }
+        })
+        ?.map((data, index) => {
+          return data?.section_data[3]?.content;
+        })
+    );
+
+    setFileArray(
+      pageData?.all_sections
+        ?.filter((filteredData) => {
+          if (activeSection?.includes(filteredData?.section_name)) {
+            return filteredData;
+          }
+        })
+        ?.map((data, index) => {
+          return data?.section_data[6]?.content;
+        })
+    );
+  }, [activeSection, pageData]);
+
+  const hiddenFileInput = React.useRef(null);
+
   return (
     <div className="bg-[#FFF6EB] min-h-screen font-inter pb-52">
       <Admin_header />
       <div className="px-16">
-        <div className="flex justify-between items-center py-10 sticky  top-24 bg-[#FFF6EB]">
-          <div className="flex-1"></div>
-          <div className="flex-1 text-center">
+        <div className="flex justify-between items-center py-10  sticky  top-24 bg-[#FFF6EB]">
+          <div></div>
+          <div>
             <h1 className="text-3xl uppercase font-bold">
               {pageData?.pageName}
             </h1>
           </div>
 
-          <div className="flex-1  flex justify-end">
+          <div>
             <button
-              // onClick={() => {
-              //   let cnfText = confirm("Do you want to pulished the data now?");
+              onClick={() => {
+                let cnfText = confirm("Do you want to pulished the data now?");
 
-              //   if (cnfText) {
-              //     axios
-              //       .put(VITE_BASE_LINK + "home_page", pageData)
-              //       .then((response) => {
-              //         console.log(response?.data);
-              //         alert("Your data is published!");
-              //       });
-              //   }
-              // }}
-              className=" p-3 px-5 bg-[#FF440D] text-white rounded-lg transition-all active:scale-95 "
+                if (cnfText) {
+                  axios
+                    .put(VITE_BASE_LINK + "home_page", pageData)
+                    .then((response) => {
+                      console.log(response?.data);
+                      alert("Your data is published!");
+                    });
+                }
+              }}
+              className="p-3 px-5 bg-[#FF440D] text-white rounded-lg transition-all active:scale-95 "
             >
               Publish Content
             </button>
@@ -267,7 +127,7 @@ const AdminHomePage = () => {
                     {data?.section_data?.map((sectionData, sectionIndex) => {
                       if (
                         sectionData?.type === "text" &&
-                        sectionData?.section_data_status == true
+                        sectionData?.link_status == true
                       ) {
                         return (
                           <div
@@ -335,12 +195,15 @@ const AdminHomePage = () => {
                       if (sectionData?.type === "image") {
                         return (
                           <>
-                            {sectionData?.status == true && (
+                            {sectionData?.link_status == true &&
+                            sectionData?.content?.length > 1 ? (
                               <div key={sectionIndex}>
                                 {/* left image */}
                                 <div className="my-10 ">
                                   <div className="flex items-center gap-5">
-                                    <h1 className="font-semibold">Image</h1>
+                                    <h1 className="font-semibold">
+                                      Left Image
+                                    </h1>
 
                                     <div className=" items-center gap-5 border-x border-x-[#E0E2E7] px-5 hidden ">
                                       <button className="font-bold">B</button>
@@ -375,7 +238,8 @@ const AdminHomePage = () => {
 
                                       <img
                                         src={
-                                          VITE_BASE_LINK + sectionData?.content
+                                          VITE_BASE_LINK +
+                                          sectionData?.content[0]
                                         }
                                         alt=""
                                         className=""
@@ -388,64 +252,64 @@ const AdminHomePage = () => {
                                         onClick={() =>
                                           setActiveInput(sectionData?.id)
                                         }
-                                        // onChange={(e) => {
-                                        //   let formdata = new FormData();
-                                        //   formdata.append(
-                                        //     "file",
-                                        //     e?.target?.files[0]
-                                        //   );
-                                        //   formdata.append("index", 0);
-                                        //   formdata.append(
-                                        //     "image_array",
-                                        //     imageArray
-                                        //   );
+                                        onChange={(e) => {
+                                          let formdata = new FormData();
+                                          formdata.append(
+                                            "file",
+                                            e?.target?.files[0]
+                                          );
+                                          formdata.append("index", 0);
+                                          formdata.append(
+                                            "image_array",
+                                            imageArray
+                                          );
 
-                                        //   axios
-                                        //     .post(
-                                        //       VITE_BASE_LINK + "newImageUpload",
-                                        //       formdata
-                                        //     )
-                                        //     .then((response) => {
-                                        //       const newState =
-                                        //         data?.section_data?.map(
-                                        //           (obj) => {
-                                        //             if (
-                                        //               obj.id === activeInput
-                                        //             ) {
-                                        //               return {
-                                        //                 ...obj,
-                                        //                 content:
-                                        //                   response?.data
-                                        //                     ?.image_array,
-                                        //               };
-                                        //             }
+                                          axios
+                                            .post(
+                                              VITE_BASE_LINK + "newImageUpload",
+                                              formdata
+                                            )
+                                            .then((response) => {
+                                              const newState =
+                                                data?.section_data?.map(
+                                                  (obj) => {
+                                                    if (
+                                                      obj.id === activeInput
+                                                    ) {
+                                                      return {
+                                                        ...obj,
+                                                        content:
+                                                          response?.data
+                                                            ?.image_array,
+                                                      };
+                                                    }
 
-                                        //             return obj;
-                                        //           }
-                                        //         );
+                                                    return obj;
+                                                  }
+                                                );
 
-                                        //       setPageData({
-                                        //         ...pageData,
-                                        //         all_sections:
-                                        //           pageData?.all_sections?.map(
-                                        //             (data) => {
-                                        //               if (
-                                        //                 data?.section_name ===
-                                        //                 activeSection
-                                        //               ) {
-                                        //                 return {
-                                        //                   ...data,
-                                        //                   section_data:
-                                        //                     newState,
-                                        //                 };
-                                        //               }
+                                              setPageData({
+                                                ...pageData,
+                                                all_sections:
+                                                  pageData?.all_sections?.map(
+                                                    (data) => {
+                                                      if (
+                                                        data?.section_name ===
+                                                        activeSection
+                                                      ) {
+                                                        return {
+                                                          ...data,
+                                                          section_data:
+                                                            newState,
+                                                        };
+                                                      }
 
-                                        //               return data;
-                                        //             }
-                                        //           ),
-                                        //       });
-                                        //     });
-                                        // }}
+                                                      return data;
+                                                    }
+                                                  ),
+                                              });
+                                            });
+                                        }}
                                       />
                                     </label>
                                   </div>
@@ -461,6 +325,243 @@ const AdminHomePage = () => {
                                     }}
                                   /> */}
                                 </div>
+
+                                {/* Right image */}
+                                <div className="my-10 ">
+                                  <div className="flex items-center gap-5">
+                                    <h1 className="font-semibold">
+                                      Right Image
+                                    </h1>
+
+                                    <div className=" items-center gap-5 border-x border-x-[#E0E2E7] px-5 hidden ">
+                                      <button className="font-bold">B</button>
+                                      <button className="italic">I</button>
+                                      <button className="underline underline-offset-4">
+                                        U
+                                      </button>
+                                    </div>
+                                  </div>
+
+                                  <div className="mt-2 bg-white  border border-dashed rounded-lg h-full min-h-[200px] border-[#E0E2E7] relative ">
+                                    <label
+                                      // onClick={handleClick}
+                                      htmlFor="upload-image2"
+                                      className="flex flex-col  justify-center items-center h-full min-h-[200px] border cursor-pointer group transition-all relative "
+                                    >
+                                      <div className=" flex-col justify-center items-center absolute bg-black bg-opacity-95 inset-0 hidden group-hover:flex transition-all duration-[1000] ">
+                                        <img
+                                          src={image_icon}
+                                          alt="upload image"
+                                          className="w-[50px] block "
+                                        />
+                                        <h1 className="font-semibold block">
+                                          <span className="text-[#FF440D] ">
+                                            Upload an image
+                                          </span>
+                                        </h1>
+                                        <h2 className=" block text-white">
+                                          PNG, JPG, GIF up to 5MB
+                                        </h2>
+                                      </div>
+
+                                      <img
+                                        src={
+                                          VITE_BASE_LINK +
+                                          sectionData?.content[1]
+                                        }
+                                        alt=""
+                                        className=""
+                                      />
+                                      <input
+                                        // ref={hiddenFileInput}
+                                        className="opacity-0 cursor-pointer inset-0 "
+                                        id="upload-image2"
+                                        type="file"
+                                        onClick={() =>
+                                          setActiveInput(sectionData?.id)
+                                        }
+                                        onChange={(e) => {
+                                          let formdata = new FormData();
+
+                                          formdata.append(
+                                            "file",
+                                            e?.target?.files[0]
+                                          );
+                                          formdata.append("index", 1);
+                                          formdata.append(
+                                            "image_array",
+                                            imageArray
+                                          );
+
+                                          axios
+                                            .post(
+                                              VITE_BASE_LINK + "newImageUpload",
+                                              formdata
+                                            )
+                                            .then((response) => {
+                                              const newState =
+                                                data?.section_data?.map(
+                                                  (obj) => {
+                                                    if (
+                                                      obj.id === activeInput
+                                                    ) {
+                                                      return {
+                                                        ...obj,
+                                                        content:
+                                                          response?.data
+                                                            ?.image_array,
+                                                      };
+                                                    }
+
+                                                    return obj;
+                                                  }
+                                                );
+
+                                              setPageData({
+                                                ...pageData,
+                                                all_sections:
+                                                  pageData?.all_sections?.map(
+                                                    (data) => {
+                                                      if (
+                                                        data?.section_name ===
+                                                        activeSection
+                                                      ) {
+                                                        return {
+                                                          ...data,
+                                                          section_data:
+                                                            newState,
+                                                        };
+                                                      }
+
+                                                      return data;
+                                                    }
+                                                  ),
+                                              });
+                                            });
+                                        }}
+                                      />
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            ) : (
+                              <div key={sectionIndex} className="my-10 ">
+                                <div className="flex items-center gap-5">
+                                  <h1 className="font-semibold">
+                                    {sectionData?.title}
+                                  </h1>
+
+                                  <div className=" items-center gap-5 border-x border-x-[#E0E2E7] px-5 hidden ">
+                                    <button className="font-bold">B</button>
+                                    <button className="italic">I</button>
+                                    <button className="underline underline-offset-4">
+                                      U
+                                    </button>
+                                  </div>
+                                </div>
+
+                                <div className="mt-2 bg-white  border border-dashed rounded-lg h-full min-h-[200px] border-[#E0E2E7] relative ">
+                                  <label
+                                    // onClick={handleClick}
+                                    htmlFor="upload-image"
+                                    className="flex flex-col  justify-center items-center h-full min-h-[200px] border group transition-all relative "
+                                  >
+                                    <div className=" flex-col justify-center items-center absolute bg-black bg-opacity-95 inset-0 hidden group-hover:flex transition-all duration-[1000] ">
+                                      <img
+                                        src={image_icon}
+                                        alt="upload image"
+                                        className="w-[50px] block "
+                                      />
+                                      <h1 className="font-semibold block">
+                                        <span className="text-[#FF440D] ">
+                                          Upload an image
+                                        </span>
+                                      </h1>
+                                      <h2 className=" block text-white">
+                                        PNG, JPG, GIF up to 5MB
+                                      </h2>
+                                    </div>
+
+                                    <img
+                                      src={
+                                        VITE_BASE_LINK + sectionData?.content[0]
+                                      }
+                                      alt=""
+                                      className=""
+                                    />
+                                    <input
+                                      ref={hiddenFileInput}
+                                      className="opacity-0 absolute cursor-pointer inset-0 "
+                                      id="upload-image"
+                                      type="file"
+                                      onClick={() =>
+                                        setActiveInput(sectionData?.id)
+                                      }
+                                      onChange={(e) => {
+                                        let formdata = new FormData();
+                                        formdata.append(
+                                          "file",
+                                          e?.target?.files[0]
+                                        );
+                                        formdata.append("index", 0);
+                                        formdata.append(
+                                          "image_array",
+                                          imageArray
+                                        );
+
+                                        axios
+                                          .post(
+                                            VITE_BASE_LINK + "newImageUpload",
+                                            formdata
+                                          )
+                                          .then((response) => {
+                                            const newState =
+                                              data?.section_data?.map((obj) => {
+                                                if (obj.id === activeInput) {
+                                                  return {
+                                                    ...obj,
+                                                    content:
+                                                      response?.data
+                                                        ?.image_array,
+                                                  };
+                                                }
+
+                                                return obj;
+                                              });
+
+                                            setPageData({
+                                              ...pageData,
+                                              all_sections:
+                                                pageData?.all_sections?.map(
+                                                  (data) => {
+                                                    if (
+                                                      data?.section_name ===
+                                                      activeSection
+                                                    ) {
+                                                      return {
+                                                        ...data,
+                                                        section_data: newState,
+                                                      };
+                                                    }
+
+                                                    return data;
+                                                  }
+                                                ),
+                                            });
+                                          });
+                                      }}
+                                    />
+                                  </label>
+                                </div>
+                                {/* <input
+                                        ref={hiddenFileInput}
+                                        className="opacity-100 inset-0 border-red-500 border"
+                                        id="upload-image"
+                                        type="file"
+                                        onChange={(e) => {
+                                          setImageArray([e?.target?.files[0]]);
+                                        }}
+                                      /> */}
                               </div>
                             )}
                           </>
@@ -1029,4 +1130,4 @@ const AdminHomePage = () => {
   );
 };
 
-export default AdminHomePage;
+export default AdminHomePageV2;

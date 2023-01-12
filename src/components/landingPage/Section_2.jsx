@@ -9,6 +9,8 @@ import Slider from "react-slick";
 import YouTube from "react-youtube";
 
 const Section_2 = (props) => {
+  // const pageName = "laughingcolours";
+  const pageName = "srivanamamalaimuttofficial";
   const responsive = [
     {
       breakpoint: 1800,
@@ -77,7 +79,7 @@ const Section_2 = (props) => {
             if (data?.type === "image") {
               return (
                 <div key={index} className="">
-                  <img src={data?.image} alt="square_image" />
+                  <img src={VITE_BASE_LINK + data?.image} alt="square_image" />
                 </div>
               );
             }
@@ -99,7 +101,7 @@ const Section_2 = (props) => {
       )}
 
       {props?.apiData?.layout === "youtube_events" && (
-        <section className="py-5">
+        <section className="py-5 lg:hidden">
           <div className="mx-5 mt-5">
             <h1 className="pb-5 text-2xl font-semibold">
               {props?.apiData?.h1}
@@ -134,7 +136,11 @@ const Section_2 = (props) => {
       {props?.apiData?.layout === "small_banner" && (
         <section className="flex flex-col sm:flex-row  gap-5 py-10 px-5 border-y border-y-[#FF6E43] border-opacity-30 bg-[#FEF2EE]">
           <div className="flex-[0.3] w-full">
-            <img src={props?.apiData?.image} alt="" className="w-full" />
+            <img
+              src={VITE_BASE_LINK + props?.apiData?.image}
+              alt=""
+              className="w-full rounded-xl h-full"
+            />
           </div>
 
           <div className="flex-[0.7] text-center sm:text-left">
@@ -180,20 +186,20 @@ const Section_2 = (props) => {
       )}
 
       {props?.apiData?.layout === "facebook" && (
-        <section>
+        <section className="mb-10 lg:hidden">
           <h1 className="pb-5 text-2xl mt-10 m-5 font-semibold">
             Facebook Feed
           </h1>
-          <div className=" w-fit mx-auto  ">
+          <div className=" w-fit  mx-auto  ">
             <iframe
-              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsrivanamamalaimuttofficial%2F&tabs=timeline&width=500px&height=900&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-              height="900"
+              src={`https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F${pageName}%2F&tabs=timeline&width=300px&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId`}
+              height="500"
               //   style={{ border: "none", overflow: "hidden" }}
               scrolling="no"
               frameBorder="0"
               allowFullScreen={true}
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              className="w-full min-w-[500px] max-w-[500px] mx-auto"
+              className="w-full  max-w-[500px] mx-auto "
             ></iframe>
           </div>
         </section>
