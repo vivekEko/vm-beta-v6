@@ -336,9 +336,9 @@ const AdminHomePage = () => {
                         return (
                           <>
                             {sectionData?.status == true && (
-                              <div key={sectionIndex}>
+                              <div key={sectionIndex} className="max-h-[250px]">
                                 {/* left image */}
-                                <div className="my-10 ">
+                                <div className="my-10">
                                   <div className="flex items-center gap-5">
                                     <h1 className="font-semibold">Image</h1>
 
@@ -378,7 +378,7 @@ const AdminHomePage = () => {
                                           VITE_BASE_LINK + sectionData?.content
                                         }
                                         alt=""
-                                        className=""
+                                        className="max-h-[250px]"
                                       />
                                       <input
                                         // ref={hiddenFileInput}
