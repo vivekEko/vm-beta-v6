@@ -7,6 +7,7 @@ import square_image1 from "../../assets/img/landingPage/27_EN.jpg";
 import square_image2 from "../../assets/img/landingPage/28_EN.jpg";
 import Slider from "react-slick";
 import YouTube from "react-youtube";
+import { Link } from "react-router-dom";
 
 const Section_2 = (props) => {
   // const pageName = "laughingcolours";
@@ -53,23 +54,34 @@ const Section_2 = (props) => {
   return (
     <div>
       {props?.apiData?.layout === "hero" && (
-        <section
-          className="h-[50vh] bg-cover bg-no-repeat  bg-center"
-          style={{
-            backgroundImage:
-              "url(" + VITE_BASE_LINK + props?.apiData?.img + ")",
-          }}
-        >
-          <div className="font-oswald text-center h-full space-y-5 pt-20 bg-black bg-opacity-30 ">
-            <h1
-              className="text-stroke font-bold text-[calc(0.1vw+2.5rem)] 
-            md:text-[calc(0.1vw+3rem)] text-[#292929]"
+        <section className="pb-10">
+          <div className=" w-full">
+            <Slider
+              dots={true}
+              slidesToShow={1}
+              infinite
+              arrows={false}
+              autoplay={true}
+              autoplaySpeed={5000}
+              pauseOnHover={true}
+              //   prevArrow={<PreviousBtn />}
+              //   nextArrow={<NextBtn />}
+              className="w-full   mx-auto "
+              // dotsClass="slick-dots custom-dots"
+              responsive={responsive}
             >
-              {props?.apiData?.h1}
-            </h1>
-            <h2 className="text-white text-[calc(0.1vw+1.7rem)] md:text-[calc(0.1vw+2rem)]  font-medium">
-              {props?.apiData?.h2}
-            </h2>
+              {props?.apiData?.hero_data?.map((data, index) => {
+                return (
+                  <div key={index} className="w-full">
+                    <img
+                      src={VITE_BASE_LINK + data?.img}
+                      alt=""
+                      className="w-full"
+                    />
+                  </div>
+                );
+              })}
+            </Slider>
           </div>
         </section>
       )}
@@ -186,7 +198,7 @@ const Section_2 = (props) => {
       )}
 
       {props?.apiData?.layout === "facebook" && (
-        <section className="mb-10 lg:hidden">
+        <section className="hidden">
           <h1 className="pb-5 text-2xl mt-10 m-5 font-semibold">
             Facebook Feed
           </h1>
@@ -201,6 +213,79 @@ const Section_2 = (props) => {
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               className="w-full  max-w-[500px] mx-auto "
             ></iframe>
+          </div>
+        </section>
+      )}
+
+      {props?.apiData?.layout === "jeeyars" && (
+        <section className="py-10">
+          <div className=" w-full">
+            <Slider
+              dots={true}
+              slidesToShow={3}
+              infinite
+              arrows={false}
+              autoplay={true}
+              autoplaySpeed={2000}
+              pauseOnHover={true}
+              //   prevArrow={<PreviousBtn />}
+              //   nextArrow={<NextBtn />}
+              className="w-full  md:w-[100%] mx-auto "
+              // dotsClass="slick-dots custom-dots"
+              responsive={responsive}
+            >
+              {props?.apiData?.jeeyars?.map((data, index) => {
+                return (
+                  <div key={index} className="px-5">
+                    <Link
+                      to={
+                        "/sub_page/" +
+                        props?.apiData?.call_link +
+                        "/" +
+                        data?.id
+                      }
+                      className="aspect-video object-contain "
+                    >
+                      <div className="bg-[#FFFAE7] p-5 text-[#9A4D0F] custom-border">
+                        <div className="bg-[#FFE8B1] aspect-[1/1] object-fill">
+                          {data?.image && (
+                            <img
+                              src={VITE_BASE_LINK + data?.image}
+                              alt={data?.name}
+                              className="mx-auto h-full w-full "
+                            />
+                          )}
+                        </div>
+                        <div>
+                          <h1 className="text-lg uppercase py-2 min-h-[90px]  ">
+                            {data?.name}
+                          </h1>
+                          <div className="flex justify-between items-end text-[#830300] ">
+                            <h2 className="text-2xl">
+                              {data?.prefix + " " + data?.start_date}
+
+                              {data?.end_date?.length > 0
+                                ? " to " + data?.end_date
+                                : ""}
+                            </h2>
+                            {data?.jeeyar_no ? (
+                              <h1 className="text-2xl">
+                                {data?.jeeyar_no}
+                                <span className="text-sm uppercase ml-1">
+                                  {data?.jeeyar_no_suffix}
+                                </span>
+                              </h1>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              })}
+            </Slider>
           </div>
         </section>
       )}

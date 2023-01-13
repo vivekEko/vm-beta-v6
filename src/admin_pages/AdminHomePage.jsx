@@ -254,7 +254,7 @@ const AdminHomePage = () => {
 
         <div className="flex items-start gap-16 text-[#232325]">
           {/* edit fields */}
-          <div className="w-full  pt-10 ">
+          <div className="w-full  pt-10">
             {pageData?.all_sections
               ?.filter((filteredData) => {
                 if (activeSection === filteredData?.section_name) {
@@ -332,12 +332,94 @@ const AdminHomePage = () => {
                           </div>
                         );
                       }
+
+                      if (
+                        sectionData?.type === "text" &&
+                        sectionData?.status == true &&
+                        sectionData?.content_data
+                      ) {
+                        return (
+                          <div key={sectionIndex} className=" rounded-lg">
+                            <div className="mb-5">
+                              <h1 className="font-semibold">Text</h1>
+                            </div>
+                            <div className="p-5 bg-white  rounded-lg  border-[#E0E2E7] border">
+                              {sectionData?.content_data?.map(
+                                (text_content, text_index) => {
+                                  return (
+                                    <div key={text_index} className="">
+                                      <div className="mb-5">
+                                        <div className="flex items-center gap-5  border-b-[#E0E2E7] border-b pb-5">
+                                          <h1 className="font-semibold">
+                                            {text_content?.title}
+                                          </h1>
+                                        </div>
+
+                                        <div className="mt-5">
+                                          <textarea
+                                            type="text"
+                                            rows={5}
+                                            value={text_content?.content}
+                                            onClick={() =>
+                                              setActiveInput(text_content?.id)
+                                            }
+                                            onChange={(e) => {
+                                              const newState =
+                                                data?.section_data?.map(
+                                                  (obj) => {
+                                                    if (
+                                                      obj.id === activeInput
+                                                    ) {
+                                                      return {
+                                                        ...obj,
+                                                        content:
+                                                          e?.target?.value,
+                                                      };
+                                                    }
+
+                                                    return obj;
+                                                  }
+                                                );
+
+                                              setPageData({
+                                                ...pageData,
+                                                all_sections:
+                                                  pageData?.all_sections?.map(
+                                                    (data) => {
+                                                      if (
+                                                        data?.section_name ===
+                                                        activeSection
+                                                      ) {
+                                                        return {
+                                                          ...data,
+                                                          section_data:
+                                                            newState,
+                                                        };
+                                                      }
+
+                                                      return data;
+                                                    }
+                                                  ),
+                                              });
+                                            }}
+                                            className="w-full outline-none border-0"
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  );
+                                }
+                              )}
+                            </div>
+                          </div>
+                        );
+                      }
+
                       if (sectionData?.type === "image") {
                         return (
                           <>
                             {sectionData?.status == true && (
-                              <div key={sectionIndex} className="max-h-[250px]">
-                                {/* left image */}
+                              <div key={sectionIndex} className="">
                                 <div className="my-10">
                                   <div className="flex items-center gap-5">
                                     <h1 className="font-semibold">Image</h1>
@@ -351,13 +433,13 @@ const AdminHomePage = () => {
                                     </div>
                                   </div>
 
-                                  <div className="mt-2 bg-white  border border-dashed rounded-lg h-full min-h-[200px] border-[#E0E2E7] relative ">
+                                  <div className="mt-2 bg-white  border border-dashed rounded-lg h-full  border-[#E0E2E7] relative ">
                                     <label
                                       // onClick={handleClick}
                                       htmlFor="upload-image"
-                                      className="flex flex-col  justify-center items-center h-full min-h-[200px] border cursor-pointer group transition-all relative "
+                                      className="flex flex-col  justify-center items-center h-full  border cursor-pointer group transition-all relative "
                                     >
-                                      <div className=" flex-col justify-center items-center absolute bg-black bg-opacity-95 inset-0 hidden group-hover:flex transition-all duration-[1000] ">
+                                      <div className=" flex-col justify-center items-center absolute  bg-black bg-opacity-95 inset-0 hidden group-hover:flex transition-all duration-[1000] ">
                                         <img
                                           src={image_icon}
                                           alt="upload image"
@@ -378,7 +460,7 @@ const AdminHomePage = () => {
                                           VITE_BASE_LINK + sectionData?.content
                                         }
                                         alt=""
-                                        className="max-h-[250px]"
+                                        className="max-w-[300px]"
                                       />
                                       <input
                                         // ref={hiddenFileInput}
