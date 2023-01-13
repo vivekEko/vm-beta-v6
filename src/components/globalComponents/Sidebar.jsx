@@ -27,6 +27,7 @@ const Sidebar = () => {
       .get(VITE_BASE_LINK + "sideBar")
       .then(function (response) {
         setSidebarData(response?.data);
+        console.log(response?.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -180,9 +181,15 @@ const Sidebar = () => {
                       onClick={() => setSidebarStatus(false)}
                       className="flex  flex-[0.9] gap-5 py-5 items-center text-white op"
                     >
-                      <div className="bg-white w-[40px] aspect-square rounded-full ">
-                        {" "}
-                        {/* icon here */}{" "}
+                      <div
+                        title={data?.main_link?.link_name}
+                        className=" w-[40px] aspect-square rounded-full "
+                      >
+                        <img
+                          src={VITE_BASE_LINK + data?.main_link?.icon}
+                          alt=""
+                          className="w-full"
+                        />
                       </div>
                       <div>
                         <h1 className="text-xl uppercase">

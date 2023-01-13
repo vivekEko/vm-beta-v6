@@ -64,9 +64,10 @@ const Section_2 = (props) => {
               autoplay={true}
               autoplaySpeed={5000}
               pauseOnHover={true}
+              fade={true}
               //   prevArrow={<PreviousBtn />}
               //   nextArrow={<NextBtn />}
-              className="w-full   mx-auto "
+              className="w-full mx-auto"
               // dotsClass="slick-dots custom-dots"
               responsive={responsive}
             >
@@ -226,7 +227,7 @@ const Section_2 = (props) => {
               infinite
               arrows={false}
               autoplay={true}
-              autoplaySpeed={2000}
+              autoplaySpeed={1500}
               pauseOnHover={true}
               //   prevArrow={<PreviousBtn />}
               //   nextArrow={<NextBtn />}
