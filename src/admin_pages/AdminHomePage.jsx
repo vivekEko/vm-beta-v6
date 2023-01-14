@@ -11,6 +11,7 @@ import eye_open_inactive from "../assets/img/admin/home_edit/eye_open_inactive.s
 import eye_open_active from "../assets/img/admin/home_edit/eye_open.svg";
 import eye_close_inactive from "../assets/img/admin/home_edit/eye_close.svg";
 import eye_close_active from "../assets/img/admin/home_edit/eye_close_active.svg";
+import add_icon from "../assets/img/admin/home_edit/add_icon.svg";
 
 import { VITE_BASE_LINK } from "../base_link/BaseLink";
 import axios from "axios";
@@ -21,7 +22,7 @@ const AdminHomePage = () => {
 
   const [pageData, setPageData] = useState(null);
 
-  // const [activeInput, setActiveInput] = useState(null);
+  const [activeInput, setActiveInput] = useState(null);
   // const [imageArray, setImageArray] = useState([]);
   // const [fileArray, setFileArray] = useState([]);
   const [newSectionActiveLayout, setNewSectionActiveLayout] = useState({
@@ -215,7 +216,6 @@ const AdminHomePage = () => {
     axios.get(VITE_BASE_LINK + "home_page").then((response) => {
       setActiveSection(response?.data?.all_sections[0]?.section_name);
       setPageData(response?.data);
-      console.log(response?.data);
     });
   }, []);
 
@@ -264,6 +264,47 @@ const AdminHomePage = () => {
               ?.map((data, index) => {
                 return (
                   <div key={index}>
+                    {data?.layout === "hero_section" && (
+                      <div>
+                        <label
+                          // onClick={handleClick}
+                          htmlFor="upload-cover-image"
+                          className="flex   justify-start gap-2 font-semibold text-lg items-center h-full   cursor-pointer  group transition-all relative "
+                        >
+                          <h1>Add Cover </h1>
+                          <img src={add_icon} alt="add cover" />
+
+                          <input
+                            // ref={hiddenFileInput}
+                            className="opacity-0 cursor-pointer inset-0 "
+                            id="upload-cover-image"
+                            type="file"
+                            // onClick={() => setActiveInput(sectionData?.id)}
+                            onChange={async (e) => {
+                              let formdata = new FormData();
+                              formdata.append("file", e?.target?.files[0]);
+
+                              const coverUpload = await axios
+                                .post(
+                                  VITE_BASE_LINK + "hero_section_admin",
+                                  formdata
+                                )
+                                .then((response) => {});
+
+                              const homePageCall = await axios
+                                .get(VITE_BASE_LINK + "home_page")
+                                .then((response) => {
+                                  setActiveSection(
+                                    response?.data?.all_sections[0]
+                                      ?.section_name
+                                  );
+                                  setPageData(response?.data);
+                                });
+                            }}
+                          />
+                        </label>
+                      </div>
+                    )}
                     {data?.section_data?.map((sectionData, sectionIndex) => {
                       if (
                         sectionData?.type === "text" &&
@@ -418,25 +459,56 @@ const AdminHomePage = () => {
                       if (sectionData?.type === "image") {
                         return (
                           <>
-                            {sectionData?.status == true && (
+                            {(sectionData?.status == true ||
+                              sectionData?.section_data_status == true) && (
                               <div key={sectionIndex} className="">
                                 <div className="my-10">
-                                  <div className="flex items-center gap-5">
+                                  <div className="flex items-center gap-5 justify-between">
                                     <h1 className="font-semibold">Image</h1>
 
-                                    <div className=" items-center gap-5 border-x border-x-[#E0E2E7] px-5 hidden ">
-                                      <button className="font-bold">B</button>
-                                      <button className="italic">I</button>
-                                      <button className="underline underline-offset-4">
-                                        U
-                                      </button>
+                                    <div className="">
+                                      <img
+                                        src={delete_icon}
+                                        alt="delete"
+                                        className={`  cursor-pointer min-w-[20px] transition-all active:scale-95 w-[20px] mb-3`}
+                                        onClick={async () => {
+                                          let cnfText = confirm(
+                                            "Do you want to delete this image?"
+                                          );
+
+                                          if (cnfText) {
+                                            const deleteAlbum = await axios
+                                              .delete(
+                                                VITE_BASE_LINK +
+                                                  "hero_section_admin",
+                                                {
+                                                  data: {
+                                                    id: sectionData?.id,
+                                                  },
+                                                }
+                                              )
+                                              .then((response) => {});
+
+                                            const homePageCall = await axios
+                                              .get(VITE_BASE_LINK + "home_page")
+                                              .then((response) => {
+                                                setActiveSection(
+                                                  response?.data
+                                                    ?.all_sections[0]
+                                                    ?.section_name
+                                                );
+                                                setPageData(response?.data);
+                                              });
+                                          }
+                                        }}
+                                      />
                                     </div>
                                   </div>
 
                                   <div className="mt-2 bg-white  border border-dashed rounded-lg h-full  border-[#E0E2E7] relative ">
                                     <label
                                       // onClick={handleClick}
-                                      htmlFor="upload-image"
+                                      htmlFor={`upload-image ${sectionData?.id}`}
                                       className="flex flex-col  justify-center items-center h-full  border cursor-pointer group transition-all relative "
                                     >
                                       <div className=" flex-col justify-center items-center absolute  bg-black bg-opacity-95 inset-0 hidden group-hover:flex transition-all duration-[1000] ">
@@ -465,83 +537,72 @@ const AdminHomePage = () => {
                                       <input
                                         // ref={hiddenFileInput}
                                         className="opacity-0 cursor-pointer inset-0 "
-                                        id="upload-image"
+                                        id={`upload-image ${sectionData?.id}`}
                                         type="file"
                                         onClick={() =>
                                           setActiveInput(sectionData?.id)
                                         }
-                                        // onChange={(e) => {
-                                        //   let formdata = new FormData();
-                                        //   formdata.append(
-                                        //     "file",
-                                        //     e?.target?.files[0]
-                                        //   );
-                                        //   formdata.append("index", 0);
-                                        //   formdata.append(
-                                        //     "image_array",
-                                        //     imageArray
-                                        //   );
+                                        onChange={(e) => {
+                                          let formdata = new FormData();
+                                          formdata.append(
+                                            "file",
+                                            e?.target?.files[0]
+                                          );
+                                          formdata.append("index", 0);
+                                          formdata.append(
+                                            "image_array",
+                                            "image"
+                                          );
 
-                                        //   axios
-                                        //     .post(
-                                        //       VITE_BASE_LINK + "newImageUpload",
-                                        //       formdata
-                                        //     )
-                                        //     .then((response) => {
-                                        //       const newState =
-                                        //         data?.section_data?.map(
-                                        //           (obj) => {
-                                        //             if (
-                                        //               obj.id === activeInput
-                                        //             ) {
-                                        //               return {
-                                        //                 ...obj,
-                                        //                 content:
-                                        //                   response?.data
-                                        //                     ?.image_array,
-                                        //               };
-                                        //             }
+                                          axios
+                                            .post(
+                                              VITE_BASE_LINK + "newImageUpload",
+                                              formdata
+                                            )
+                                            .then((response) => {
+                                              const newState =
+                                                data?.section_data?.map(
+                                                  (obj) => {
+                                                    if (
+                                                      obj.id === activeInput
+                                                    ) {
+                                                      return {
+                                                        ...obj,
+                                                        content:
+                                                          response?.data
+                                                            ?.image_array[0],
+                                                      };
+                                                    }
 
-                                        //             return obj;
-                                        //           }
-                                        //         );
+                                                    return obj;
+                                                  }
+                                                );
 
-                                        //       setPageData({
-                                        //         ...pageData,
-                                        //         all_sections:
-                                        //           pageData?.all_sections?.map(
-                                        //             (data) => {
-                                        //               if (
-                                        //                 data?.section_name ===
-                                        //                 activeSection
-                                        //               ) {
-                                        //                 return {
-                                        //                   ...data,
-                                        //                   section_data:
-                                        //                     newState,
-                                        //                 };
-                                        //               }
+                                              setPageData({
+                                                ...pageData,
+                                                all_sections:
+                                                  pageData?.all_sections?.map(
+                                                    (data) => {
+                                                      if (
+                                                        data?.section_name ===
+                                                        activeSection
+                                                      ) {
+                                                        return {
+                                                          ...data,
+                                                          section_data:
+                                                            newState,
+                                                        };
+                                                      }
 
-                                        //               return data;
-                                        //             }
-                                        //           ),
-                                        //       });
-                                        //     });
-                                        // }}
+                                                      return data;
+                                                    }
+                                                  ),
+                                              });
+                                            });
+                                        }}
                                       />
                                     </label>
                                   </div>
-                                  {/* <input
-                                    ref={hiddenFileInput}
-                                    className="hidden"
-                                    id="upload-image"
-                                    type="file"
-                                    onChange={(e) => {
-                                      setImageArray(() =>
-                                        imageArray.push(e?.target?.files[0])
-                                      );
-                                    }}
-                                  /> */}
                                 </div>
                               </div>
                             )}
