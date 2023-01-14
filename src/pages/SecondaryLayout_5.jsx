@@ -42,9 +42,9 @@ const SecondaryLayout_5 = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-10 gap-y-20 w-[90%] mx-auto mt-32 pb-20">
         {pageData?.jeeyars?.map((data, index) => {
           return (
-            <Link
+            <div
               key={index}
-              to={"/sub_page/" + pageData?.call_link + "/" + data?.id}
+              // to={"/sub_page/" + pageData?.call_link + "/" + data?.id}
               className="aspect-video object-contain"
             >
               <div className="bg-[#FC8D0B] p-5 text-white">
@@ -82,7 +82,7 @@ const SecondaryLayout_5 = () => {
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>

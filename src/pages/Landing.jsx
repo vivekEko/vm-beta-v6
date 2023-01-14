@@ -36,6 +36,17 @@ const Landing = () => {
   // local variables
   const [subscribe, setSubscribe] = useState(false);
 
+  const [subscribeValues, setSubscribeValues] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_no: "",
+  });
+
+  useEffect(() => {
+    console.log("subscribeValues:", subscribeValues);
+  }, [subscribeValues]);
+
   useEffect(() => {
     axios
       .get(VITE_BASE_LINK + "landing_page")
@@ -158,9 +169,17 @@ const Landing = () => {
       })} */}
 
       <div className="xl:pl-[300px] lg:pr-[400px]">
-        <header className="bg-white py-5 flex justify-center items-center">
+        <header className="bg-white py-5 flex flex-col justify-center items-center px-5 text-center">
           <div>
             <img src={header_image} alt="vanamamalai" className="h-[50px]" />
+          </div>
+
+          <div className="flex flex-col justify-center gap-2 md:gap-10 md:flex-row items-center mt-5 sm:text-lg xl:text-xl ">
+            <h1 className="uppercase text-sm">Srimathe Ramanujaya Nama:</h1>
+            <h1 className="uppercase text-sm">Srimath Varavaramunaye Nama:</h1>
+            <h1 className="uppercase text-sm">
+              Sri vanachaLa Mahamunibyo Nama:
+            </h1>
           </div>
         </header>
 
@@ -226,6 +245,18 @@ const Landing = () => {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
+                axios
+                  ?.post(VITE_BASE_LINK + "suscribeStore", subscribeValues)
+                  .then((res) => {
+                    setSubscribe(false);
+                    alert("Subscribed sucessfully");
+                    setSubscribeValues({
+                      first_name: "",
+                      last_name: "",
+                      email: "",
+                      phone_no: "",
+                    });
+                  });
               }}
               className="space-y-5 mt-5"
             >
@@ -235,6 +266,13 @@ const Landing = () => {
                   <input
                     name="first_name"
                     type="text"
+                    value={subscribeValues?.first_name}
+                    onChange={(e) => {
+                      setSubscribeValues({
+                        ...subscribeValues,
+                        first_name: e?.target?.value,
+                      });
+                    }}
                     className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
                   />
                 </label>
@@ -243,6 +281,13 @@ const Landing = () => {
                   <input
                     name="last_name"
                     type="text"
+                    value={subscribeValues?.last_name}
+                    onChange={(e) => {
+                      setSubscribeValues({
+                        ...subscribeValues,
+                        last_name: e?.target?.value,
+                      });
+                    }}
                     className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
                   />
                 </label>
@@ -252,7 +297,14 @@ const Landing = () => {
                 <h1 className="mb-1">Mobile Number</h1>
                 <input
                   name="phone"
-                  type="text"
+                  type="number"
+                  value={subscribeValues?.phone_no}
+                  onChange={(e) => {
+                    setSubscribeValues({
+                      ...subscribeValues,
+                      phone_no: e?.target?.value,
+                    });
+                  }}
                   className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
                 />
               </label>
@@ -260,7 +312,14 @@ const Landing = () => {
                 <h1 className="mb-1">Email</h1>
                 <input
                   name="email"
-                  type="text"
+                  type="email"
+                  value={subscribeValues?.email}
+                  onChange={(e) => {
+                    setSubscribeValues({
+                      ...subscribeValues,
+                      email: e?.target?.value,
+                    });
+                  }}
                   className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border mb-4"
                 />
               </label>

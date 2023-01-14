@@ -8,6 +8,9 @@ import sidebarStatusAtom from "../../recoil/sidebar/sidebarStatusAtom";
 // assets
 import down_arrow from "../../assets/img/sidebar/down-arrow-icon.svg";
 import power_icon from "../../assets/img/sidebar/power-icon.svg";
+import fb from "../../assets/img/sidebar/fb.svg";
+import insta from "../../assets/img/sidebar/insta.svg";
+import yt from "../../assets/img/sidebar/yt.svg";
 
 import axios from "axios";
 import { VITE_BASE_LINK } from "../../base_link/BaseLink";
@@ -71,9 +74,9 @@ const Sidebar = () => {
           : !currentPath?.pathname?.includes("/home")
           ? "w-[0%] ease-out   min-w-[0px] md:w-[0.1%] md:min-w-[60px]"
           : "w-[0%] ease-out  min-w-[0px] xl:w-[100%]"
-      } h-screen bg-[#FC8D0B] fixed top-0 bottom-0  max-w-[300px] transition-all duration-300  shadow-2xl z-[9999] overflow-y-scroll scrollbar-hide  pb-[100px]  `}
+      } h-screen bg-[#FCDAD0] fixed top-0 bottom-0  max-w-[300px] transition-all duration-300  shadow-2xl z-[9999] overflow-y-scroll scrollbar-hide  pb-[100px]  `}
     >
-      <div className=" overflow-x-hidden ">
+      <div className=" overflow-x-hidden  ">
         {/* hamburger */}
         <div className="">
           <div
@@ -173,13 +176,13 @@ const Sidebar = () => {
                       currentPath?.pathname?.includes(
                         data?.main_link?.link_code
                       )
-                        ? "opacity-100"
-                        : "opacity-50"
+                        ? "opacity-100 "
+                        : "opacity-100"
                     } `}
                   >
                     <button
                       onClick={() => setSidebarStatus(false)}
-                      className="flex  flex-[0.9] gap-5 py-5 items-center text-white op"
+                      className="flex  flex-[0.9] gap-5 py-5 items-center text-[#FF3A00] "
                     >
                       <div
                         title={data?.main_link?.link_name}
@@ -259,6 +262,31 @@ const Sidebar = () => {
           })}
         </div>
       </div>
+      {sidebarStatus && (
+        <div className="absolute bottom-0 flex justify-between items-center right-0 left-0 p-5">
+          <a
+            href="https://www.facebook.com/srivanamamalaimuttofficial/"
+            target="_blank"
+            rel="noreferer"
+          >
+            <img src={fb} alt="" />
+          </a>
+          <a
+            href="https://www.instagram.com/srivanamamalaimutt.official/?hl=en"
+            target="_blank"
+            rel="noreferer"
+          >
+            <img src={insta} alt="" />
+          </a>
+          <a
+            href="https://www.youtube.com/@srivanamamalaithothadrimutt"
+            target="_blank"
+            rel="noreferer"
+          >
+            <img src={yt} alt="" />
+          </a>
+        </div>
+      )}
     </div>
   );
 };

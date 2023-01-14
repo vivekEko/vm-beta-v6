@@ -5,6 +5,7 @@ import { VITE_BASE_LINK } from "../../base_link/BaseLink";
 import square_image from "../../assets/img/landingPage/26_EN.jpg";
 import square_image1 from "../../assets/img/landingPage/27_EN.jpg";
 import square_image2 from "../../assets/img/landingPage/28_EN.jpg";
+import download_icon from "../../assets/img/landingPage/download.svg";
 import Slider from "react-slick";
 import YouTube from "react-youtube";
 import { Link } from "react-router-dom";
@@ -87,30 +88,66 @@ const Section_2 = (props) => {
         </section>
       )}
       {props?.apiData?.layout === "banner" && (
-        <section className="grid grid-cols-1 sm:grid-cols-2 gap-5  p-5 place-items-center">
-          {props?.apiData?.banner_data?.map((data, index) => {
-            if (data?.type === "image") {
-              return (
-                <div key={index} className="">
-                  <img src={VITE_BASE_LINK + data?.image} alt="square_image" />
-                </div>
-              );
-            }
+        <>
+          <section className="grid grid-cols-1 sm:grid-cols-2 gap-5  p-5 place-items-center">
+            {props?.apiData?.banner_data?.map((data, index) => {
+              if (data?.type === "image") {
+                return (
+                  <div key={index} className=" w-full">
+                    <img
+                      src={VITE_BASE_LINK + data?.image}
+                      alt="square_image"
+                      className="w-full"
+                    />
+                  </div>
+                );
+              }
 
-            if (data?.type === "text") {
-              return (
-                <div key={index} className="p-5 ">
-                  <h1 className="text-[calc(0.4vw+1.5rem)] font-semibold mb-5 font-oswald">
-                    {data?.h1}
-                  </h1>
-                  <h1 className="font-caladea text-[calc(0.3vw+1rem)] max-h-[250px] overflow-y-scroll scrollbar-hide ">
-                    {data?.p}
-                  </h1>
-                </div>
-              );
-            }
-          })}
-        </section>
+              if (data?.type === "text") {
+                return (
+                  <div key={index} className="p-5 ">
+                    <h1 className="text-[calc(0.4vw+1.5rem)] font-semibold mb-5 font-oswald">
+                      {data?.h1}
+                    </h1>
+                    <h1 className="font-caladea text-[calc(0.3vw+1rem)] max-h-[250px] overflow-y-scroll scrollbar-hide ">
+                      {data?.p}
+                    </h1>
+                  </div>
+                );
+              }
+            })}
+          </section>
+
+          <section className="font-caladea text-lg flex gap-5 justify-between mx-5 flex-wrap">
+            <a
+              href={VITE_BASE_LINK + "media/img/calender.pdf"}
+              target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15]  text-white p-5 flex justify-center gap-3 items-center flex-1"
+            >
+              <img src={download_icon} alt="download" />
+              <h1>Calendar</h1>
+            </a>
+            <a
+              href={VITE_BASE_LINK + "media/img/newsletter.pdf"}
+              target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15]  text-white p-5 flex justify-center gap-3 items-center flex-1"
+            >
+              <img src={download_icon} alt="download" />
+              <h1>Newsletter</h1>
+            </a>
+            <a
+              href={VITE_BASE_LINK + "media/img/thaniyan.pdf"}
+              target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] text-white p-5 flex justify-center gap-3 items-center flex-1"
+            >
+              <img src={download_icon} alt="download" />
+              <h1 className=""> Vanamamalaimutt Thaniyan </h1>
+            </a>
+          </section>
+        </>
       )}
 
       {props?.apiData?.layout === "youtube_events" && (
@@ -238,13 +275,13 @@ const Section_2 = (props) => {
               {props?.apiData?.jeeyars?.map((data, index) => {
                 return (
                   <div key={index} className="px-5">
-                    <Link
-                      to={
-                        "/sub_page/" +
-                        props?.apiData?.call_link +
-                        "/" +
-                        data?.id
-                      }
+                    <div
+                      // to={
+                      //   "/sub_page/" +
+                      //   props?.apiData?.call_link +
+                      //   "/" +
+                      //   data?.id
+                      // }
                       className="aspect-video object-contain "
                     >
                       <div className="bg-[#FFFAE7] p-5 text-[#9A4D0F] custom-border">
@@ -282,7 +319,7 @@ const Section_2 = (props) => {
                           </div>
                         </div>
                       </div>
-                    </Link>
+                    </div>
                   </div>
                 );
               })}

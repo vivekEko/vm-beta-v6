@@ -216,8 +216,14 @@ const AdminHomePage = () => {
     axios.get(VITE_BASE_LINK + "home_page").then((response) => {
       setActiveSection(response?.data?.all_sections[0]?.section_name);
       setPageData(response?.data);
+      console.log(response?.data);
     });
   }, []);
+
+  useEffect(() => {
+    console.log("pagedata", pageData);
+    console.log("activeSection", activeSection);
+  }, [pageData, activeSection]);
 
   return (
     <div className="bg-[#FFF6EB] min-h-screen font-inter pb-52">
@@ -233,18 +239,18 @@ const AdminHomePage = () => {
 
           <div className="flex-1  flex justify-end">
             <button
-              // onClick={() => {
-              //   let cnfText = confirm("Do you want to pulished the data now?");
+              onClick={() => {
+                let cnfText = confirm("Do you want to pulished the data now?");
 
-              //   if (cnfText) {
-              //     axios
-              //       .put(VITE_BASE_LINK + "home_page", pageData)
-              //       .then((response) => {
-              //         console.log(response?.data);
-              //         alert("Your data is published!");
-              //       });
-              //   }
-              // }}
+                if (cnfText) {
+                  axios
+                    .put(VITE_BASE_LINK + "home_page", pageData)
+                    .then((response) => {
+                      console.log(response?.data);
+                      alert("Your data is published!");
+                    });
+                }
+              }}
               className=" p-3 px-5 bg-[#FF440D] text-white rounded-lg transition-all active:scale-95 "
             >
               Publish Content
@@ -305,6 +311,7 @@ const AdminHomePage = () => {
                         </label>
                       </div>
                     )}
+
                     {data?.section_data?.map((sectionData, sectionIndex) => {
                       if (
                         sectionData?.type === "text" &&
@@ -319,14 +326,6 @@ const AdminHomePage = () => {
                               <h1 className="font-semibold">
                                 {sectionData?.title}
                               </h1>
-
-                              <div className=" items-center gap-5 border-x border-x-[#E0E2E7] px-5 hidden ">
-                                <button className="font-bold">B</button>
-                                <button className="italic">I</button>
-                                <button className="underline underline-offset-4">
-                                  U
-                                </button>
-                              </div>
                             </div>
 
                             <div className="mt-5">
@@ -380,9 +379,83 @@ const AdminHomePage = () => {
                         sectionData?.content_data
                       ) {
                         return (
-                          <div key={sectionIndex} className=" rounded-lg">
-                            <div className="mb-5">
+                          <div
+                            key={sectionIndex}
+                            className=" rounded-lg"
+                            onClick={() => setActiveInput(sectionData?.id)}
+                          >
+                            <div className="mb-5 flex justify-between">
                               <h1 className="font-semibold">Text</h1>
+
+                              <div className=" flex gap-5 items-center">
+                                <div>
+                                  {sectionData?.content_data && (
+                                    <button
+                                      className="border rounded-lg p-2 bg-orange-500 text-white px-3 font-semibold active:scale-95 transition-all"
+                                      onClick={async () => {
+                                        const formData = new FormData();
+                                        formData.append("id", sectionData?.id);
+                                        formData.append("type", "image");
+
+                                        const changeToImage = await axios
+                                          .post(
+                                            VITE_BASE_LINK + "bannerTypeChange",
+                                            formData
+                                          )
+                                          .then((response) => {});
+
+                                        const pageData = await axios
+                                          .get(VITE_BASE_LINK + "home_page")
+                                          .then((response) => {
+                                            setActiveSection(
+                                              response?.data?.all_sections[1]
+                                                ?.section_name
+                                            );
+                                            setPageData(response?.data);
+                                          });
+                                      }}
+                                    >
+                                      Change to Image
+                                    </button>
+                                  )}
+                                </div>
+                                {activeSection !== "Section 2" && (
+                                  <img
+                                    src={delete_icon}
+                                    alt="delete"
+                                    className={`  cursor-pointer min-w-[20px] transition-all active:scale-95 w-[20px] mb-3`}
+                                    onClick={async () => {
+                                      let cnfText = confirm(
+                                        "Do you want to delete this image?"
+                                      );
+
+                                      if (cnfText) {
+                                        const deleteAlbum = await axios
+                                          .delete(
+                                            VITE_BASE_LINK +
+                                              "hero_section_admin",
+                                            {
+                                              data: {
+                                                id: sectionData?.id,
+                                              },
+                                            }
+                                          )
+                                          .then((response) => {});
+
+                                        const homePageCall = await axios
+                                          .get(VITE_BASE_LINK + "home_page")
+                                          .then((response) => {
+                                            setActiveSection(
+                                              response?.data?.all_sections[0]
+                                                ?.section_name
+                                            );
+                                            setPageData(response?.data);
+                                          });
+                                      }
+                                    }}
+                                  />
+                                )}
+                              </div>
                             </div>
                             <div className="p-5 bg-white  rounded-lg  border-[#E0E2E7] border">
                               {sectionData?.content_data?.map(
@@ -466,52 +539,95 @@ const AdminHomePage = () => {
                                   <div className="flex items-center gap-5 justify-between">
                                     <h1 className="font-semibold">Image</h1>
 
-                                    <div className="">
-                                      <img
-                                        src={delete_icon}
-                                        alt="delete"
-                                        className={`  cursor-pointer min-w-[20px] transition-all active:scale-95 w-[20px] mb-3`}
-                                        onClick={async () => {
-                                          let cnfText = confirm(
-                                            "Do you want to delete this image?"
-                                          );
+                                    <div className=" flex gap-5 items-center">
+                                      <div>
+                                        {sectionData?.content_data && (
+                                          <button
+                                            onClick={async () => {
+                                              const formData = new FormData();
+                                              formData.append(
+                                                "id",
+                                                sectionData?.id
+                                              );
+                                              formData.append("type", "text");
 
-                                          if (cnfText) {
-                                            const deleteAlbum = await axios
-                                              .delete(
-                                                VITE_BASE_LINK +
-                                                  "hero_section_admin",
-                                                {
-                                                  data: {
-                                                    id: sectionData?.id,
-                                                  },
-                                                }
-                                              )
-                                              .then((response) => {});
+                                              const changeToImage = await axios
+                                                .post(
+                                                  VITE_BASE_LINK +
+                                                    "bannerTypeChange",
+                                                  formData
+                                                )
+                                                .then((response) => {});
 
-                                            const homePageCall = await axios
-                                              .get(VITE_BASE_LINK + "home_page")
-                                              .then((response) => {
-                                                setActiveSection(
-                                                  response?.data
-                                                    ?.all_sections[0]
-                                                    ?.section_name
-                                                );
-                                                setPageData(response?.data);
-                                              });
-                                          }
-                                        }}
-                                      />
+                                              const pageData = await axios
+                                                .get(
+                                                  VITE_BASE_LINK + "home_page"
+                                                )
+                                                .then((response) => {
+                                                  setActiveSection(
+                                                    response?.data
+                                                      ?.all_sections[1]
+                                                      ?.section_name
+                                                  );
+                                                  setPageData(response?.data);
+                                                });
+                                            }}
+                                            className="border rounded-lg p-2 bg-orange-500 text-white px-3 font-semibold "
+                                          >
+                                            Change to Text
+                                          </button>
+                                        )}
+                                      </div>
+
+                                      {activeSection !== "Section 2" && (
+                                        <img
+                                          src={delete_icon}
+                                          alt="delete"
+                                          className={`  cursor-pointer min-w-[20px] transition-all active:scale-95 w-[20px] mb-3`}
+                                          onClick={async () => {
+                                            let cnfText = confirm(
+                                              "Do you want to delete this image?"
+                                            );
+
+                                            if (cnfText) {
+                                              const deleteAlbum = await axios
+                                                .delete(
+                                                  VITE_BASE_LINK +
+                                                    "hero_section_admin",
+                                                  {
+                                                    data: {
+                                                      id: sectionData?.id,
+                                                    },
+                                                  }
+                                                )
+                                                .then((response) => {});
+
+                                              const homePageCall = await axios
+                                                .get(
+                                                  VITE_BASE_LINK + "home_page"
+                                                )
+                                                .then((response) => {
+                                                  setActiveSection(
+                                                    response?.data
+                                                      ?.all_sections[0]
+                                                      ?.section_name
+                                                  );
+                                                  setPageData(response?.data);
+                                                });
+                                            }
+                                          }}
+                                        />
+                                      )}
                                     </div>
                                   </div>
 
-                                  <div className="mt-2 bg-white  border border-dashed rounded-lg h-full  border-[#E0E2E7] relative ">
+                                  <div className="mt-2 bg-white  border border-dashed rounded-lg h-full  border-[#E0E2E7] relative  ">
                                     <label
                                       // onClick={handleClick}
                                       htmlFor={`upload-image ${sectionData?.id}`}
-                                      className="flex flex-col  justify-center items-center h-full  border cursor-pointer group transition-all relative "
+                                      className="flex flex-col  justify-center items-center h-full  border cursor-pointer group transition-all relative min-h-[300px] "
                                     >
-                                      <div className=" flex-col justify-center items-center absolute  bg-black bg-opacity-95 inset-0 hidden group-hover:flex transition-all duration-[1000] ">
+                                      <div className=" flex-col justify-center items-center absolute  bg-black bg-opacity-95 inset-0 hidden group-hover:flex transition-all duration-[1000] min-h-[300px]">
                                         <img
                                           src={image_icon}
                                           alt="upload image"
@@ -939,7 +1055,7 @@ const AdminHomePage = () => {
                       {data?.section_name === "Section 1"
                         ? "Hero Section"
                         : data?.section_name === "Section 2"
-                        ? "Banner Section"
+                        ? "Grid Banner"
                         : data?.section_name}
                     </button>
 
@@ -986,10 +1102,10 @@ const AdminHomePage = () => {
                       className=" h-full  "
                       onClick={async () => {
                         const hideSection = await axios
-                          .put(VITE_BASE_LINK + "addSectionLandingPage", {
+                          .patch(VITE_BASE_LINK + "home_page", {
                             data: {
-                              section_id: data?.section_id,
-                              current_status: data?.status,
+                              id: data?.id,
+                              // current_status: data?.status,
                             },
                           })
                           .then((response) => {
