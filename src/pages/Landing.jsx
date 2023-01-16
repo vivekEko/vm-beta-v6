@@ -44,10 +44,6 @@ const Landing = () => {
   });
 
   useEffect(() => {
-    console.log("subscribeValues:", subscribeValues);
-  }, [subscribeValues]);
-
-  useEffect(() => {
     axios
       .get(VITE_BASE_LINK + "landing_page")
       .then(function (response) {
@@ -160,6 +156,7 @@ const Landing = () => {
         }}
         className="h-[23px] sticky top-0 z-[20000]"
       ></div>
+
       {/* {landingPageData?.data?.map((sectionData, sectionIndex) => {
         return (
           <div key={sectionIndex} className="">
@@ -169,7 +166,7 @@ const Landing = () => {
       })} */}
 
       <div className="xl:pl-[300px] lg:pr-[400px]">
-        <header className="bg-white py-5 flex flex-col justify-center items-center px-5 text-center">
+        <header className=" py-5 flex flex-col justify-center items-center px-5 text-center">
           <div>
             <img src={header_image} alt="vanamamalai" className="h-[50px]" />
           </div>

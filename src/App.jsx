@@ -30,9 +30,11 @@ import AdminGalleryMainPage from "./admin_pages/AdminGalleryMainPage";
 import AdminSubAlbumPage from "./admin_pages/AdminSubAlbumPage";
 import AdminAlbumPage from "./admin_pages/AdminAlbumPage";
 import AdminHomePageV2 from "./admin_pages/AdminHomePageV2";
+import sidebarStatusAtom from "./recoil/sidebar/sidebarStatusAtom";
 
 function App() {
   const [currentPath, setCurrentPath] = useRecoilState(currentPathAtom);
+  const [sidebarStatus, setSidebarStatus] = useRecoilState(sidebarStatusAtom);
   const location = useLocation();
 
   useEffect(() => {
@@ -43,6 +45,29 @@ function App() {
 
   return (
     <div className="font-oswald cursor-default">
+      <div
+        className={` ${
+          sidebarStatus ? "block" : "hidden"
+        } z-[9000] bg-black bg-opacity-40 fixed inset-0`}
+        onClick={() => setSidebarStatus(false)}
+      ></div>
+
+      <button
+        className={`  ${
+          currentPath?.pathname?.includes("/home")
+            ? "fixed z-[10000] top-9 left-2 md:left-5 lg:left-8 xl:left-10 text-xl  font-bold cursor-pointer"
+            : "hidden"
+        } 
+          
+          ${sidebarStatus ? "text-[#630000]" : "text-[#630000]"}
+
+         
+
+          `}
+        onClick={() => setSidebarStatus(!sidebarStatus)}
+      >
+        MENU
+      </button>
       {/* <marquee
         width="100%"
         direction="right"

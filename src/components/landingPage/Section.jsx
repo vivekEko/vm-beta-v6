@@ -109,6 +109,7 @@ const Section = (props) => {
             <Slider
               dots={false}
               slidesToShow={3}
+              fade={false}
               infinite
               prevArrow={<PreviousBtn />}
               nextArrow={<NextBtn />}

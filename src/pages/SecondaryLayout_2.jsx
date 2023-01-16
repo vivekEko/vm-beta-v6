@@ -239,6 +239,7 @@ const SecondaryLayout_2 = () => {
         <Slider
           dots={false}
           slidesToShow={3}
+          fade={false}
           infinite
           prevArrow={<PreviousBtn />}
           nextArrow={<NextBtn />}

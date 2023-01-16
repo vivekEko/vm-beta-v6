@@ -39,20 +39,22 @@ const Sidebar = () => {
 
   // Detect outside click and close sidebar
 
-  window.addEventListener("click", (event) => {
-    const sidebar = document?.getElementById("sidebar");
+  // window.addEventListener("click", (event) => {
+  //   const sidebar = document?.getElementById("sidebar");
 
-    if (sidebar) {
-      if (!sidebar?.contains(event?.target)) {
-        setSidebarStatus(false);
-      }
-    }
-  });
+  //   if (sidebar) {
+  //     if (!sidebar?.contains(event?.target)) {
+  //       setSidebarStatus(false);
+  //     }
+  //   }
+  // });
 
   useEffect(() => {
     if (sidebarStatus === false) {
       setOpenedLink(null);
     }
+
+    console.log("SidebarStatus", sidebarStatus);
   }, [sidebarStatus]);
 
   return (
@@ -90,28 +92,28 @@ const Sidebar = () => {
             <div
               className={` ${
                 sidebarStatus ? "rotate-45 translate-y-3 " : "rotate-0"
-              } h-[4px] border-full bg-white rounded-full transition-all duration-300`}
+              } h-[4px] border-full bg-[#630000] rounded-full transition-all duration-300`}
             ></div>
             <div
               className={` ${
                 sidebarStatus ? "hidden" : "block"
-              } h-[4px] border-full bg-white rounded-full transition-all duration-300`}
+              } h-[4px] border-full bg-[#630000] rounded-full transition-all duration-300`}
             ></div>
             <div
               className={` ${
                 sidebarStatus ? "-rotate-45 -translate-y-2" : "rotate-0"
-              } h-[4px] border-full bg-white rounded-full transition-all duration-300`}
+              } h-[4px] border-full bg-[#630000] rounded-full transition-all duration-300`}
             ></div>
           </div>
 
-          <button
-            className={` ${
+          {/* <button
+            className={`  ${
               currentPath?.pathname?.includes("/home")
                 ? "fixed top-9 left-2 md:left-5 lg:left-8 xl:left-10 text-xl  font-bold cursor-pointer"
                 : "hidden"
             } 
           
-          ${sidebarStatus ? "text-white" : "text-[#630000]"}
+          ${sidebarStatus ? "text-[#630000]" : "text-[#630000]"}
 
          
 
@@ -119,7 +121,7 @@ const Sidebar = () => {
             onClick={() => setSidebarStatus(!sidebarStatus)}
           >
             MENU
-          </button>
+          </button> */}
         </div>
 
         <button
@@ -263,28 +265,43 @@ const Sidebar = () => {
         </div>
       </div>
       {sidebarStatus && (
-        <div className="absolute bottom-0 flex justify-between items-center right-0 left-0 p-5">
-          <a
-            href="https://www.facebook.com/srivanamamalaimuttofficial/"
-            target="_blank"
-            rel="noreferer"
-          >
-            <img src={fb} alt="" />
-          </a>
-          <a
-            href="https://www.instagram.com/srivanamamalaimutt.official/?hl=en"
-            target="_blank"
-            rel="noreferer"
-          >
-            <img src={insta} alt="" />
-          </a>
-          <a
-            href="https://www.youtube.com/@srivanamamalaithothadrimutt"
-            target="_blank"
-            rel="noreferer"
-          >
-            <img src={yt} alt="" />
-          </a>
+        <div className="absolute bottom-0 right-0 left-0 p-5">
+          <div className="w-full p-5 ">
+            <button
+              className="w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-xl bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
+              "
+              onClick={() => setSubscribe(true)}
+            >
+              <div>
+                <img src={avatar} alt="avatar" className="w-[35px]" />
+              </div>
+              <h1>Subscribe</h1>
+            </button>
+          </div>
+
+          <div className=" flex justify-between items-center ">
+            <a
+              href="https://www.facebook.com/srivanamamalaimuttofficial/"
+              target="_blank"
+              rel="noreferer"
+            >
+              <img src={fb} alt="" />
+            </a>
+            <a
+              href="https://www.instagram.com/srivanamamalaimutt.official/?hl=en"
+              target="_blank"
+              rel="noreferer"
+            >
+              <img src={insta} alt="" />
+            </a>
+            <a
+              href="https://www.youtube.com/@srivanamamalaithothadrimutt"
+              target="_blank"
+              rel="noreferer"
+            >
+              <img src={yt} alt="" />
+            </a>
+          </div>
         </div>
       )}
     </div>

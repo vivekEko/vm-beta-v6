@@ -65,7 +65,7 @@ const Section_2 = (props) => {
               autoplay={true}
               autoplaySpeed={5000}
               pauseOnHover={true}
-              fade={true}
+              fade={false}
               //   prevArrow={<PreviousBtn />}
               //   nextArrow={<NextBtn />}
               className="w-full mx-auto"
