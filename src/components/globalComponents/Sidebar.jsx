@@ -14,11 +14,14 @@ import yt from "../../assets/img/sidebar/yt.svg";
 
 import axios from "axios";
 import { VITE_BASE_LINK } from "../../base_link/BaseLink";
+import subScribeAtom from "../../recoil/sidebar/subScribeAtom";
+import avatar from "../../assets/img/landingPage/avatar.svg";
 
 const Sidebar = () => {
   // Global variables
   const [currentPath] = useRecoilState(currentPathAtom);
   const [sidebarStatus, setSidebarStatus] = useRecoilState(sidebarStatusAtom);
+  const [subscribe, setSubscribe] = useRecoilState(subScribeAtom);
 
   // local variables
   const [openedLink, setOpenedLink] = useState(null);
@@ -53,8 +56,6 @@ const Sidebar = () => {
     if (sidebarStatus === false) {
       setOpenedLink(null);
     }
-
-    console.log("SidebarStatus", sidebarStatus);
   }, [sidebarStatus]);
 
   return (
@@ -80,7 +81,7 @@ const Sidebar = () => {
     >
       <div className=" overflow-x-hidden  ">
         {/* hamburger */}
-        <div className="">
+        {/* <button className="">
           <div
             onClick={() => setSidebarStatus(!sidebarStatus)}
             className={` ${
@@ -106,26 +107,13 @@ const Sidebar = () => {
             ></div>
           </div>
 
-          {/* <button
-            className={`  ${
-              currentPath?.pathname?.includes("/home")
-                ? "fixed top-9 left-2 md:left-5 lg:left-8 xl:left-10 text-xl  font-bold cursor-pointer"
-                : "hidden"
-            } 
-          
-          ${sidebarStatus ? "text-[#630000]" : "text-[#630000]"}
-
          
+        </button> */}
 
-          `}
-            onClick={() => setSidebarStatus(!sidebarStatus)}
-          >
-            MENU
-          </button> */}
-        </div>
+        {/* btnnnn */}
 
-        <button
-          className={`  ${
+        {/* <button
+          className={`   ${
             !currentPath?.pathname?.includes("/home")
               ? "fixed top-0 left-0 md:left-5 lg:left-8 xl:left-10 text-xl  font-bold md:hidden "
               : "hidden"
@@ -134,29 +122,31 @@ const Sidebar = () => {
           `}
           onClick={() => setSidebarStatus(!sidebarStatus)}
         >
-          <div className="w-[30px] h-[25px] mt-5 flex flex-col justify-between gap-2 mr-auto cursor-pointer ml-2 ">
+          <div className="w-[30px] h-[25px] mt-5 flex flex-col justify-between gap-2 mr-auto cursor-pointer ml-2 bg-[#FCDAD0]  box-content p-2 rounded-lg  ">
             <div
               className={` ${
                 sidebarStatus ? "rotate-45 translate-y-3 " : "rotate-0"
-              } h-[4px] border-full bg-white rounded-full transition-all duration-300`}
+              } h-[4px] border-full bg-[#630000] rounded-full transition-all duration-300`}
             ></div>
             <div
               className={` ${
                 sidebarStatus ? "hidden" : "block"
-              } h-[4px] border-full bg-white rounded-full transition-all duration-300`}
+              } h-[4px] border-full bg-[#630000] rounded-full transition-all duration-300`}
             ></div>
             <div
               className={` ${
                 sidebarStatus ? "-rotate-45 -translate-y-2" : "rotate-0"
-              } h-[4px] border-full bg-white rounded-full transition-all duration-300`}
+              } h-[4px] border-full bg-[#630000] rounded-full transition-all duration-300`}
             ></div>
           </div>
-        </button>
+        </button> */}
+
+        {/* btnnnn */}
 
         <div
           className={` ${
             currentPath?.pathname?.includes("/home") ? "mt-[7.5rem]" : "mt-20"
-          } min-w-[300px]   `}
+          } min-w-[300px] max-h-[60vh] overflow-y-scroll scrollbar-hide `}
         >
           {/* sidebar links container */}
           {sidebarData?.map((data, index) => {
@@ -165,7 +155,7 @@ const Sidebar = () => {
                 key={index}
                 className={` ${
                   openedLink === data?.main_link?.link_name
-                    ? "bg-[#FF5A29] bg-opacity-[33%]"
+                    ? "bg-[#FF5A29] bg-opacity-[10%]"
                     : ""
                 }  pl-2 overflow-y-hidden`}
               >
@@ -248,8 +238,8 @@ const Sidebar = () => {
                               sub_data?.link_code
                             ) && currentPath?.pathname?.includes(sub_data?.id)
                               ? "opacity-100"
-                              : "opacity-50"
-                          } text-white py-3 pl-16 uppercase
+                              : "opacity-80"
+                          } text-[#FF3A00] py-3 pl-16 uppercase
                           `}
                           >
                             {sub_data?.sub_link_name}
@@ -264,46 +254,65 @@ const Sidebar = () => {
           })}
         </div>
       </div>
-      {sidebarStatus && (
-        <div className="absolute bottom-0 right-0 left-0 p-5">
-          <div className="w-full p-5 ">
-            <button
-              className="w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-xl bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
-              "
-              onClick={() => setSubscribe(true)}
-            >
-              <div>
-                <img src={avatar} alt="avatar" className="w-[35px]" />
-              </div>
-              <h1>Subscribe</h1>
-            </button>
-          </div>
 
-          <div className=" flex justify-between items-center ">
-            <a
-              href="https://www.facebook.com/srivanamamalaimuttofficial/"
-              target="_blank"
-              rel="noreferer"
-            >
-              <img src={fb} alt="" />
-            </a>
-            <a
-              href="https://www.instagram.com/srivanamamalaimutt.official/?hl=en"
-              target="_blank"
-              rel="noreferer"
-            >
-              <img src={insta} alt="" />
-            </a>
-            <a
-              href="https://www.youtube.com/@srivanamamalaithothadrimutt"
-              target="_blank"
-              rel="noreferer"
-            >
-              <img src={yt} alt="" />
-            </a>
-          </div>
+      <div
+        className={` ${
+          sidebarStatus ? "block" : "hidden lg:block"
+        } absolute bottom-0 right-0 left-0  bg-[#FCDAD0]`}
+      >
+        <div
+          className={` ${
+            currentPath?.pathname?.includes("home")
+              ? "lg:hidden"
+              : sidebarStatus
+              ? "block"
+              : "hidden"
+          }  w-full p-2 `}
+        >
+          <button
+            className="w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-xl bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
+              "
+            onClick={() => setSubscribe(true)}
+          >
+            <div>
+              <img src={avatar} alt="avatar" className="w-[35px]" />
+            </div>
+            <h1>Subscribe</h1>
+          </button>
         </div>
-      )}
+
+        <div
+          className={` ${
+            currentPath?.pathname?.includes("home")
+              ? "block"
+              : sidebarStatus
+              ? "block"
+              : "hidden"
+          }  flex justify-between items-center px-2 my-5`}
+        >
+          <a
+            href="https://www.facebook.com/srivanamamalaimuttofficial/"
+            target="_blank"
+            rel="noreferer"
+          >
+            <img src={fb} alt="" />
+          </a>
+          <a
+            href="https://www.instagram.com/srivanamamalaimutt.official/?hl=en"
+            target="_blank"
+            rel="noreferer"
+          >
+            <img src={insta} alt="" />
+          </a>
+          <a
+            href="https://www.youtube.com/@srivanamamalaithothadrimutt"
+            target="_blank"
+            rel="noreferer"
+          >
+            <img src={yt} alt="" />
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

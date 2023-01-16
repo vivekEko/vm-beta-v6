@@ -75,6 +75,6 @@ input[type="color"]::-webkit-color-swatch {
 
 .custom-border {
   border: 30px solid;
-  border-image: url("../../src/assets/img/landingPage/border-svg.svg");
+  border-image: url("border-svg.svg");
   border-image-slice: 30;
 }

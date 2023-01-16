@@ -31,11 +31,23 @@ import AdminSubAlbumPage from "./admin_pages/AdminSubAlbumPage";
 import AdminAlbumPage from "./admin_pages/AdminAlbumPage";
 import AdminHomePageV2 from "./admin_pages/AdminHomePageV2";
 import sidebarStatusAtom from "./recoil/sidebar/sidebarStatusAtom";
+import subScribeAtom from "./recoil/sidebar/subScribeAtom";
+import cross from "./assets/img/landingPage/cross.svg";
+import { useState } from "react";
 
 function App() {
   const [currentPath, setCurrentPath] = useRecoilState(currentPathAtom);
   const [sidebarStatus, setSidebarStatus] = useRecoilState(sidebarStatusAtom);
+  const [subscribe, setSubscribe] = useRecoilState(subScribeAtom);
   const location = useLocation();
+
+  // local variables
+  const [subscribeValues, setSubscribeValues] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_no: "",
+  });
 
   useEffect(() => {
     // console.log("pathname:");
@@ -47,11 +59,16 @@ function App() {
     <div className="font-oswald cursor-default">
       <div
         className={` ${
-          sidebarStatus ? "block" : "hidden"
+          currentPath?.pathname?.includes("home")
+            ? ` ${sidebarStatus ? "block lg:hidden" : "hidden"}`
+            : sidebarStatus
+            ? "block"
+            : "hidden"
         } z-[9000] bg-black bg-opacity-40 fixed inset-0`}
         onClick={() => setSidebarStatus(false)}
       ></div>
 
+      {/* menu */}
       <button
         className={`  ${
           currentPath?.pathname?.includes("/home")
@@ -68,6 +85,146 @@ function App() {
       >
         MENU
       </button>
+
+      {/* hamburger menu */}
+      <button
+        className={` z-[20000]  ${
+          !currentPath?.pathname?.includes("/home")
+            ? "fixed top-0 left-0  text-xl  font-bold  "
+            : "hidden"
+        } 
+
+          `}
+        onClick={() => setSidebarStatus(!sidebarStatus)}
+      >
+        <div className="w-[30px] h-[25px] mt-5 flex flex-col justify-between gap-2 mr-auto cursor-pointer ml-2 bg-[#FCDAD0]  box-content p-2 rounded-lg  ">
+          <div
+            className={` ${
+              sidebarStatus ? "rotate-45 translate-y-3 " : "rotate-0"
+            } h-[4px] border-full bg-[#630000] rounded-full transition-all duration-300`}
+          ></div>
+          <div
+            className={` ${
+              sidebarStatus ? "hidden" : "block"
+            } h-[4px] border-full bg-[#630000] rounded-full transition-all duration-300`}
+          ></div>
+          <div
+            className={` ${
+              sidebarStatus ? "-rotate-45 -translate-y-2" : "rotate-0"
+            } h-[4px] border-full bg-[#630000] rounded-full transition-all duration-300`}
+          ></div>
+        </div>
+      </button>
+
+      {/* subscribe modal */}
+      {/* overlay */}
+      <div
+        onClick={() => setSubscribe(false)}
+        className={` ${
+          subscribe ? "ease-in block" : "ease-out hidden"
+        } fixed inset-0 bg-black duration-300 bg-opacity-60 z-[21000]`}
+      ></div>
+
+      {/* subscribe popup */}
+      <div
+        className={`${
+          subscribe ? "ease-in block" : "ease-out hidden"
+        } fixed z-[21500] bg-[#FFD29E] p-5 min-h-[250px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[600px]`}
+      >
+        <div className="flex justify-end">
+          <button onClick={() => setSubscribe(false)}>
+            <img src={cross} alt="close" className="w-[25px] cursor-pointer" />
+          </button>
+        </div>
+
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            axios
+              ?.post(VITE_BASE_LINK + "suscribeStore", subscribeValues)
+              .then((res) => {
+                setSubscribe(false);
+                alert("Subscribed sucessfully");
+                setSubscribeValues({
+                  first_name: "",
+                  last_name: "",
+                  email: "",
+                  phone_no: "",
+                });
+              });
+          }}
+          className="space-y-5 mt-5"
+        >
+          <div className="flex justify-center gap-5">
+            <label htmlFor="" className="block w-full">
+              <h1 className="mb-1">First Name</h1>
+              <input
+                name="first_name"
+                type="text"
+                value={subscribeValues?.first_name}
+                onChange={(e) => {
+                  setSubscribeValues({
+                    ...subscribeValues,
+                    first_name: e?.target?.value,
+                  });
+                }}
+                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+              />
+            </label>
+            <label htmlFor="" className="block w-full">
+              <h1 className="mb-1">Last Name</h1>
+              <input
+                name="last_name"
+                type="text"
+                value={subscribeValues?.last_name}
+                onChange={(e) => {
+                  setSubscribeValues({
+                    ...subscribeValues,
+                    last_name: e?.target?.value,
+                  });
+                }}
+                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+              />
+            </label>
+          </div>
+
+          <label htmlFor="" className="block w-full">
+            <h1 className="mb-1">Mobile Number</h1>
+            <input
+              name="phone"
+              type="number"
+              value={subscribeValues?.phone_no}
+              onChange={(e) => {
+                setSubscribeValues({
+                  ...subscribeValues,
+                  phone_no: e?.target?.value,
+                });
+              }}
+              className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+            />
+          </label>
+          <label htmlFor="" className="block w-full">
+            <h1 className="mb-1">Email</h1>
+            <input
+              name="email"
+              type="email"
+              value={subscribeValues?.email}
+              onChange={(e) => {
+                setSubscribeValues({
+                  ...subscribeValues,
+                  email: e?.target?.value,
+                });
+              }}
+              className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border mb-4"
+            />
+          </label>
+
+          <button className="bg-[#FC8D0B]  p-2 uppercase text-lg w-full text-white active:scale-95 transition-all">
+            Submit
+          </button>
+        </form>
+      </div>
+
       {/* <marquee
         width="100%"
         direction="right"
