@@ -14,31 +14,31 @@ const Section_2 = (props) => {
   // const pageName = "laughingcolours";
   const pageName = "srivanamamalaimuttofficial";
   const responsive = [
-    {
-      breakpoint: 1800,
-      settings: {
-        slidesToShow: 3,
-      },
-    },
-    {
-      breakpoint: 1604,
-      settings: {
-        slidesToShow: 2,
-      },
-    },
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-      },
-    },
+    // {
+    //   breakpoint: 1800,
+    //   settings: {
+    //     slidesToShow: 3,
+    //   },
+    // },
+    // {
+    //   breakpoint: 1604,
+    //   settings: {
+    //     slidesToShow: 2,
+    //   },
+    // },
+    // {
+    //   breakpoint: 1024,
+    //   settings: {
+    //     slidesToShow: 3,
+    //   },
+    // },
 
-    {
-      breakpoint: 900,
-      settings: {
-        slidesToShow: 2,
-      },
-    },
+    // {
+    //   breakpoint: 900,
+    //   settings: {
+    //     slidesToShow: 2,
+    //   },
+    // },
     {
       breakpoint: 500,
       settings: {
