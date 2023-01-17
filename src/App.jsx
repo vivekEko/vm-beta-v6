@@ -36,6 +36,7 @@ import cross from "./assets/img/landingPage/cross.svg";
 import { useState } from "react";
 import axios from "axios";
 import { VITE_BASE_LINK } from "./base_link/BaseLink";
+import { useDetectClickOutside } from "react-detect-click-outside";
 
 import { Country, State, City } from "country-state-city";
 
@@ -60,8 +61,15 @@ function App() {
   const [stateList, setStateList] = useState([]);
   const [countryList, setCountryList] = useState([]);
 
+  const [addressList, setAddressList] = useState({
+    country: false,
+    state: false,
+    city: false,
+  });
+
   const [selectedCountryCode, setSelectedCountryCode] = useState();
   const [selectedStateCode, setSelectedSateCode] = useState();
+  const [selectedCity, setSelectedCity] = useState();
   useEffect(() => {
     // console.log("pathname:");
     // console.log(location?.pathname);
@@ -69,12 +77,6 @@ function App() {
   }, [location]);
 
   useEffect(() => {
-    console.log(Country.getAllCountries());
-    // console.log(State.getAllStates());
-    // console.log(City.getAllCities());
-
-    console.log("state of india", State.getStatesOfCountry("IN"));
-
     setCountryList(Country.getAllCountries());
     // setStateList(State.getAllStates());
     // setCityList(City.getAllCities());
@@ -96,6 +98,24 @@ function App() {
       );
     }
   }, [selectedStateCode]);
+
+  // useEffect(() => {
+  //   console.log("addressList", addressList);
+  // }, [addressList]);
+
+  // outside click country
+  // window.addEventListener("click", (event) => {
+  //   const country = document?.getElementById("country");
+
+  //   if (country) {
+  //     if (!country?.contains(event?.target)) {
+  //       setAddressList({
+  //         ...addressList,
+  //         country: false,
+  //       });
+  //     }
+  //   }
+  // });
 
   return (
     <div className="font-oswald cursor-default">
@@ -183,21 +203,21 @@ function App() {
           onSubmit={(e) => {
             e.preventDefault();
 
-            // axios
-            //   ?.post(VITE_BASE_LINK + "suscribeStore", subscribeValues)
-            //   .then((res) => {
-            //     setSubscribe(false);
-            //     alert("Subscribed sucessfully");
-            //     setSubscribeValues({
-            //   first_name: "",
-            //   last_name: "",
-            //   email: "",
-            //   phone_no: "",
-            //   city: "",
-            //   state: "",
-            //   country: ""
-            // });
-            //   });
+            axios
+              ?.post(VITE_BASE_LINK + "suscribeStore", subscribeValues)
+              .then((res) => {
+                setSubscribe(false);
+                alert("Subscribed sucessfully");
+                setSubscribeValues({
+                  first_name: "",
+                  last_name: "",
+                  email: "",
+                  phone_no: "",
+                  city: "",
+                  state: "",
+                  country: "",
+                });
+              });
           }}
           className="space-y-5 mt-5"
         >
@@ -252,7 +272,11 @@ function App() {
 
           <div className="flex justify-center gap-5">
             {/* country */}
-            <label htmlFor="" className="block w-full relative pb-2">
+            <label
+              // ref={countryRef}
+              id="country"
+              className="block w-full relative pb-2"
+            >
               <h1 className="mb-1">Country</h1>
               <input
                 name="country"
@@ -264,66 +288,149 @@ function App() {
                     country: e?.target?.value,
                   });
                 }}
-                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border "
+                onClick={() => {
+                  setAddressList({
+                    ...addressList,
+                    country: !addressList?.country,
+                  });
+                }}
+                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border peer"
               />
 
-              {/*               
-?.filter((filtered_data) => {
+              <div
+                className={` ${
+                  addressList?.country ? "block" : "hidden"
+                }  absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll  `}
+              >
+                {countryList
+                  ?.filter((filtered_data) => {
                     if (
                       filtered_data?.name
-                        ?.toLowercase()
+                        ?.toLowerCase()
                         ?.includes(subscribeValues?.country?.toLowerCase())
                     ) {
                       return filtered_data;
                     }
                   })
-                  ?. */}
-
-              <div className="absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll  ">
-                {countryList?.map((data) => {
-                  return (
-                    <div
-                      className=" font-caladea text-base hover:bg-gray-100 transition-all cursor-pointer text-gray-900 p-2"
-                      onClick={() => {
-                        setSelectedCountryCode(data?.isoCode);
-                      }}
-                    >
-                      {data?.name}
-                    </div>
-                  );
-                })}
-              </div>
-            </label>
-
-            {/* state */}
-            <label htmlFor="" className="block w-full relative pb-2">
-              <h1 className="mb-1">State</h1>
-              <input
-                name="state"
-                type="text"
-                value={subscribeValues?.state}
-                onChange={(e) => {
-                  setSubscribeValues({
-                    ...subscribeValues,
-                    state: e?.target?.value,
-                  });
-                }}
-                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
-              />
-              <div className="absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll p-2 ">
-                {stateList?.length > 0 ? (
-                  stateList?.map((data) => {
+                  ?.map((data) => {
                     return (
                       <div
-                        className=" font-caladea text-base hover:bg-gray-100 transition-all cursor-pointer text-gray-900 p-2"
+                        className={` ${
+                          data?.isoCode === selectedCountryCode
+                            ? "bg-[#FF9D7D] bg-opacity-40"
+                            : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                        }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
                         onClick={() => {
-                          setSelectedSateCode(data?.isoCode);
+                          setSelectedCountryCode(data?.isoCode);
+                          setSubscribeValues({
+                            ...subscribeValues,
+                            country: data?.name,
+                          });
                         }}
                       >
                         {data?.name}
                       </div>
                     );
-                  })
+                  })}
+              </div>
+            </label>
+
+            {/* state */}
+
+            <label
+              // ref={stateRef}
+              id="state"
+              className="block w-full relative pb-2"
+            >
+              <h1 className="mb-1">State</h1>
+              {subscribeValues?.country?.length > 1 ? (
+                <input
+                  name="state"
+                  type="text"
+                  value={subscribeValues?.state}
+                  onClick={() => {
+                    if (subscribeValues?.country?.length > 1) {
+                      setAddressList({
+                        ...addressList,
+                        state: !addressList?.state,
+                      });
+                    }
+                  }}
+                  onChange={(e) => {
+                    if (subscribeValues?.country?.length > 1) {
+                      setSubscribeValues({
+                        ...subscribeValues,
+                        state: e?.target?.value,
+                      });
+                    }
+                  }}
+                  className="w-full curso p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+                />
+              ) : (
+                <input
+                  name="state"
+                  type="text"
+                  value={subscribeValues?.state}
+                  onClick={() => {
+                    if (subscribeValues?.country?.length > 1) {
+                      setAddressList({
+                        ...addressList,
+                        state: !addressList?.state,
+                      });
+                    }
+                  }}
+                  onChange={(e) => {
+                    if (subscribeValues?.country?.length > 1) {
+                      setSubscribeValues({
+                        ...subscribeValues,
+                        state: e?.target?.value,
+                      });
+                    }
+                  }}
+                  style={{
+                    cursor: "not-allowed",
+                    opacity: 0.2,
+                  }}
+                  className="w-full curso p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+                />
+              )}
+
+              <div
+                className={` ${
+                  addressList?.state ? "block" : "hidden"
+                } absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll  `}
+              >
+                {stateList?.length > 0 ? (
+                  stateList
+                    ?.filter((filtered_data) => {
+                      if (
+                        filtered_data?.name
+                          ?.toLowerCase()
+                          ?.includes(subscribeValues?.state?.toLowerCase())
+                      ) {
+                        return filtered_data;
+                      }
+                    })
+                    ?.map((data) => {
+                      return (
+                        <div
+                          className={` ${
+                            data?.isoCode === selectedStateCode
+                              ? "bg-[#FF9D7D] bg-opacity-40"
+                              : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                          }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
+                          onClick={() => {
+                            setSelectedSateCode(data?.isoCode);
+                            setSubscribeValues({
+                              ...subscribeValues,
+                              state: data?.name,
+                            });
+                          }}
+                        >
+                          {data?.name}
+                        </div>
+                      );
+                    })
                 ) : (
                   <div className=" text-center font-caladea text-base  transition-all cursor-pointer text-gray-500 p-2">
                     No results
@@ -333,34 +440,101 @@ function App() {
             </label>
 
             {/* city */}
-            <label htmlFor="" className="block w-full relative pb-2">
+
+            <label
+              // ref={cityRef}
+              id="city"
+              className="block w-full relative pb-2"
+            >
               <h1 className="mb-1">City</h1>
-              <input
-                name="city"
-                type="text"
-                value={subscribeValues?.city}
-                onChange={(e) => {
-                  setSubscribeValues({
-                    ...subscribeValues,
-                    city: e?.target?.value,
-                  });
-                }}
-                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
-              />
-              <div className="absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll p-2 ">
+              {subscribeValues?.state?.length > 1 ? (
+                <input
+                  name="city"
+                  type="text"
+                  value={subscribeValues?.city}
+                  onChange={(e) => {
+                    if (subscribeValues?.state?.length > 1) {
+                      setSubscribeValues({
+                        ...subscribeValues,
+                        city: e?.target?.value,
+                      });
+                    }
+                  }}
+                  onClick={() => {
+                    if (subscribeValues?.state?.length > 1) {
+                      setAddressList({
+                        ...addressList,
+                        city: !addressList?.city,
+                      });
+                    }
+                  }}
+                  className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+                />
+              ) : (
+                <input
+                  name="city"
+                  type="text"
+                  value={subscribeValues?.city}
+                  onChange={(e) => {
+                    if (subscribeValues?.state?.length > 1) {
+                      setSubscribeValues({
+                        ...subscribeValues,
+                        city: e?.target?.value,
+                      });
+                    }
+                  }}
+                  onClick={() => {
+                    if (subscribeValues?.state?.length > 1) {
+                      setAddressList({
+                        ...addressList,
+                        city: !addressList?.city,
+                      });
+                    }
+                  }}
+                  style={{
+                    cursor: "not-allowed",
+                    opacity: 0.2,
+                  }}
+                  className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+                />
+              )}
+
+              <div
+                className={` ${
+                  addressList?.city ? "block" : "hidden"
+                } absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll  `}
+              >
                 {cityList?.length > 0 ? (
-                  cityList?.map((data) => {
-                    return (
-                      <div
-                        className=" font-caladea text-base hover:bg-gray-100 transition-all cursor-pointer text-gray-900 p-2"
-                        // onClick={() => {
-                        //   setSelectedSateCode(data?.isoCode);
-                        // }}
-                      >
-                        {data?.name}
-                      </div>
-                    );
-                  })
+                  cityList
+                    ?.filter((filtered_data) => {
+                      if (
+                        filtered_data?.name
+                          ?.toLowerCase()
+                          ?.includes(subscribeValues?.city?.toLowerCase())
+                      ) {
+                        return filtered_data;
+                      }
+                    })
+                    ?.map((data) => {
+                      return (
+                        <div
+                          className={` ${
+                            data?.name === selectedCity
+                              ? "bg-[#FF9D7D] bg-opacity-40"
+                              : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                          }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
+                          onClick={() => {
+                            setSelectedCity(data?.name);
+                            setSubscribeValues({
+                              ...subscribeValues,
+                              city: data?.name,
+                            });
+                          }}
+                        >
+                          {data?.name}
+                        </div>
+                      );
+                    })
                 ) : (
                   <div className=" text-center font-caladea text-base  transition-all cursor-pointer text-gray-500 p-2">
                     No results
