@@ -34,6 +34,8 @@ import sidebarStatusAtom from "./recoil/sidebar/sidebarStatusAtom";
 import subScribeAtom from "./recoil/sidebar/subScribeAtom";
 import cross from "./assets/img/landingPage/cross.svg";
 import { useState } from "react";
+import axios from "axios";
+import { VITE_BASE_LINK } from "./base_link/BaseLink";
 
 function App() {
   const [currentPath, setCurrentPath] = useRecoilState(currentPathAtom);
