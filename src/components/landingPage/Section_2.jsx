@@ -46,6 +46,45 @@ const Section_2 = (props) => {
       },
     },
   ];
+  const card_responsive = [
+    {
+      breakpoint: 2500,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 1800,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 1604,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 500,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ];
 
   const opts = {
     height: "200",
@@ -214,7 +253,7 @@ const Section_2 = (props) => {
               //   nextArrow={<NextBtn />}
               className="w-full  md:w-[90%] mx-auto "
               // dotsClass="slick-dots custom-dots"
-              responsive={responsive}
+              responsive={responsive_1}
             >
               {props?.apiData?.card_data?.map((data, index) => {
                 return (
@@ -236,23 +275,34 @@ const Section_2 = (props) => {
       )}
 
       {props?.apiData?.layout === "facebook" && (
-        <section className="hidden">
-          <h1 className="pb-5 text-2xl mt-10 m-5 font-semibold">
-            Facebook Feed
-          </h1>
-          <div className=" w-fit  mx-auto  ">
-            <iframe
-              src={`https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F${pageName}%2F&tabs=timeline&width=300px&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId`}
-              height="500"
-              //   style={{ border: "none", overflow: "hidden" }}
-              scrolling="no"
-              frameBorder="0"
-              allowFullScreen={true}
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              className="w-full  max-w-[500px] mx-auto "
-            ></iframe>
-          </div>
-        </section>
+        <>
+          <section className="px-5 mt-5 sm:hidden">
+            <div className="   flex justify-center items-center  ">
+              <iframe
+                src={`https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F${pageName}%2F&tabs=timeline&width=350px&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId`}
+                height="600"
+                width="350"
+                center
+                allowFullScreen={true}
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                className=" w-full max-w-[350px]  mx-auto"
+              ></iframe>
+            </div>
+          </section>
+          <section className="px-5 mt-5 hidden sm:block lg:hidden">
+            <div className="   flex justify-center items-center  ">
+              <iframe
+                src={`https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F${pageName}%2F&tabs=timeline&width=500px&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId`}
+                height="600"
+                width="500"
+                center
+                allowFullScreen={true}
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                className=" w-full max-w-[500px]  mx-auto"
+              ></iframe>
+            </div>
+          </section>
+        </>
       )}
 
       {props?.apiData?.layout === "jeeyars" && (
@@ -260,7 +310,7 @@ const Section_2 = (props) => {
           <div className=" w-full">
             <Slider
               dots={true}
-              slidesToShow={3}
+              slidesToShow={4}
               infinite
               arrows={false}
               autoplay={true}
@@ -270,7 +320,7 @@ const Section_2 = (props) => {
               //   nextArrow={<NextBtn />}
               className="w-full  md:w-[100%] mx-auto "
               // dotsClass="slick-dots custom-dots"
-              responsive={responsive}
+              responsive={card_responsive}
             >
               {props?.apiData?.jeeyars?.map((data, index) => {
                 return (
