@@ -189,7 +189,7 @@ const Section_2 = (props) => {
         </>
       )}
 
-      {props?.apiData?.layout === "youtube_events" && (
+      {/* {props?.apiData?.layout === "youtube_events" && (
         <section className="py-5 lg:hidden">
           <div className="mx-5 mt-5">
             <h1 className="pb-5 text-2xl font-semibold">
@@ -212,7 +212,7 @@ const Section_2 = (props) => {
                       opts={opts}
                       className="w-full"
                     />
-                    {/* <h1 className=" py-2">{data?.yt_title}</h1> */}
+
                     <h1 className="py-2">{data?.yt_title}</h1>
                   </div>
                 );
@@ -220,7 +220,7 @@ const Section_2 = (props) => {
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       {props?.apiData?.layout === "small_banner" && (
         <section className="flex flex-col sm:flex-row  gap-5 py-10 px-5 border-y border-y-[#FF6E43] border-opacity-30 bg-[#FEF2EE]">
@@ -241,7 +241,7 @@ const Section_2 = (props) => {
         </section>
       )}
 
-      {props?.apiData?.layout === "cards" && (
+      {/* {props?.apiData?.layout === "cards" && (
         <section className="py-20   ">
           <div className=" w-full">
             <Slider
@@ -272,8 +272,8 @@ const Section_2 = (props) => {
             </Slider>
           </div>
         </section>
-      )}
-
+      )} */}
+      {/* 
       {props?.apiData?.layout === "facebook" && (
         <>
           <section className="px-5 mt-5 sm:hidden">
@@ -303,7 +303,7 @@ const Section_2 = (props) => {
             </div>
           </section>
         </>
-      )}
+      )} */}
 
       {props?.apiData?.layout === "jeeyars" && (
         <section className="py-10">

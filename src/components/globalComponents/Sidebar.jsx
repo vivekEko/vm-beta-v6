@@ -33,7 +33,7 @@ const Sidebar = () => {
       .get(VITE_BASE_LINK + "sideBar")
       .then(function (response) {
         setSidebarData(response?.data);
-        console.log(response?.data);
+        // console.log(response?.data);
       })
       .catch(function (error) {
         console.log(error);

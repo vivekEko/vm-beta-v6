@@ -38,7 +38,7 @@ import axios from "axios";
 import { VITE_BASE_LINK } from "./base_link/BaseLink";
 import { useDetectClickOutside } from "react-detect-click-outside";
 
-import { Country, State, City } from "country-state-city";
+// import { Country, State, City } from "country-state-city";
 
 function App() {
   const [currentPath, setCurrentPath] = useRecoilState(currentPathAtom);
@@ -70,52 +70,46 @@ function App() {
   const [selectedCountryCode, setSelectedCountryCode] = useState();
   const [selectedStateCode, setSelectedSateCode] = useState();
   const [selectedCity, setSelectedCity] = useState();
+
+  // search items
+  const [countrySearch, setCountrySearch] = useState(null);
+  const [stateSearch, setStateSearch] = useState(null);
+  const [citySearch, setCitySearch] = useState(null);
+
   useEffect(() => {
-    // console.log("pathname:");
-    // console.log(location?.pathname);
     setCurrentPath(location);
   }, [location]);
 
   useEffect(() => {
-    setCountryList(Country.getAllCountries());
-    // setStateList(State.getAllStates());
-    // setCityList(City.getAllCities());
+    axios?.post(VITE_BASE_LINK + "countriesAll")?.then((res) => {
+      setCountryList(res?.data?.country_list);
+    });
   }, []);
 
   useEffect(() => {
-    // console.log("selectedCountryCode", selectedCountryCode);
-
+    const formdata = new FormData();
+    formdata?.append("country", selectedCountryCode);
     if (selectedCountryCode?.length > 0) {
-      setStateList(() => State.getStatesOfCountry(selectedCountryCode));
-      setCityList(() => City.getCitiesOfCountry(selectedCountryCode));
+      axios?.post(VITE_BASE_LINK + "stateOfCountry", formdata)?.then((res) => {
+        // console.log("##### STATE LIST #####", res?.data);
+        setStateList(res?.data?.state_list);
+      });
     }
   }, [selectedCountryCode]);
 
   useEffect(() => {
+    const formdata = new FormData();
+    formdata?.append("country", selectedCountryCode);
+    formdata?.append("state", selectedStateCode);
     if (selectedCountryCode?.length > 0 && selectedStateCode?.length > 0) {
-      setCityList(() =>
-        City.getCitiesOfState(selectedCountryCode, selectedStateCode)
-      );
+      axios
+        ?.post(VITE_BASE_LINK + "cityOfCountryState", formdata)
+        ?.then((res) => {
+          // console.log("##### CITY LIST #####", res?.data);
+          setCityList(res?.data?.cities_list);
+        });
     }
   }, [selectedStateCode]);
-
-  // useEffect(() => {
-  //   console.log("addressList", addressList);
-  // }, [addressList]);
-
-  // outside click country
-  // window.addEventListener("click", (event) => {
-  //   const country = document?.getElementById("country");
-
-  //   if (country) {
-  //     if (!country?.contains(event?.target)) {
-  //       setAddressList({
-  //         ...addressList,
-  //         country: false,
-  //       });
-  //     }
-  //   }
-  // });
 
   return (
     <div className="font-oswald cursor-default">
@@ -179,7 +173,6 @@ function App() {
       </button>
 
       {/* subscribe modal */}
-      {/* overlay */}
       <div
         onClick={() => setSubscribe(false)}
         className={` ${
@@ -187,7 +180,6 @@ function App() {
         } fixed inset-0 bg-black duration-300 bg-opacity-60 z-[21000]`}
       ></div>
 
-      {/* subscribe popup */}
       <div
         className={`${
           subscribe ? "ease-in block" : "ease-out hidden"
@@ -272,11 +264,7 @@ function App() {
 
           <div className="flex justify-center gap-5">
             {/* country */}
-            <label
-              // ref={countryRef}
-              id="country"
-              className="block w-full relative pb-2"
-            >
+            {/* <label id="country" className="block w-full relative pb-2">
               <h1 className="mb-1">Country</h1>
               <input
                 name="country"
@@ -333,11 +321,11 @@ function App() {
                     );
                   })}
               </div>
-            </label>
+            </label> */}
 
             {/* state */}
 
-            <label
+            {/* <label
               // ref={stateRef}
               id="state"
               className="block w-full relative pb-2"
@@ -437,11 +425,11 @@ function App() {
                   </div>
                 )}
               </div>
-            </label>
+            </label> */}
 
             {/* city */}
 
-            <label
+            {/* <label
               // ref={cityRef}
               id="city"
               className="block w-full relative pb-2"
@@ -541,6 +529,249 @@ function App() {
                   </div>
                 )}
               </div>
+            </label> */}
+
+            {/* country */}
+            <label id="country" className="block w-full relative pb-2">
+              <h1 className="mb-1">Country</h1>
+              <div
+                onClick={() => {
+                  setAddressList({
+                    city: false,
+                    state: false,
+                    country: !addressList?.country,
+                  });
+                }}
+                className="w-full p-2 min-h-[40px] bg-white cursor-pointer border-[#FF9D7D] outline-[#FF9D7D] border peer"
+              >
+                {" "}
+                {subscribeValues?.country?.length > 0
+                  ? subscribeValues?.country
+                  : "Select country"}{" "}
+              </div>
+
+              <div
+                className={` ${
+                  addressList?.country ? "block" : "hidden"
+                }  absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll   `}
+              >
+                <div className="w-full mb-2 ">
+                  <input
+                    type="search"
+                    name="country"
+                    value={countrySearch}
+                    onChange={(e) => {
+                      setCountrySearch(e?.target?.value);
+                    }}
+                    placeholder=" Search country"
+                    className=" w-full p-2 outline-none border-b border-b-gray-300 font-caladea "
+                  />
+                </div>
+
+                {countryList
+                  ?.filter((filtered_data) => {
+                    if (countrySearch?.length > 0) {
+                      if (
+                        filtered_data
+                          ?.toLowerCase()
+                          ?.includes(countrySearch?.toLowerCase())
+                      ) {
+                        return filtered_data;
+                      }
+                    } else {
+                      return filtered_data;
+                    }
+                  })
+                  ?.map((data) => {
+                    return (
+                      <div
+                        className={` ${
+                          data === selectedCountryCode
+                            ? "bg-[#FF9D7D] bg-opacity-40"
+                            : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                        }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
+                        onClick={() => {
+                          setSelectedCountryCode(data);
+                          setSubscribeValues({
+                            ...subscribeValues,
+                            country: data,
+                            state: null,
+                            city: null,
+                          });
+                          setAddressList({
+                            city: false,
+                            state: false,
+                            country: !addressList?.country,
+                          });
+                        }}
+                      >
+                        {data}
+                      </div>
+                    );
+                  })}
+              </div>
+            </label>
+
+            {/* state */}
+            <label id="state" className="block w-full relative pb-2">
+              <h1 className="mb-1">State</h1>
+              <div
+                onClick={() => {
+                  setAddressList({
+                    city: false,
+                    country: false,
+                    state: !addressList?.state,
+                  });
+                }}
+                className="w-full p-2 min-h-[40px] bg-white cursor-pointer border-[#FF9D7D] outline-[#FF9D7D] border peer"
+              >
+                {" "}
+                {subscribeValues?.state?.length > 0
+                  ? subscribeValues?.state
+                  : "Select state"}{" "}
+              </div>
+
+              <div
+                className={` ${
+                  addressList?.state ? "block" : "hidden"
+                }  absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll   `}
+              >
+                <div className="w-full mb-2 ">
+                  <input
+                    type="search"
+                    name="state"
+                    value={stateSearch}
+                    onChange={(e) => {
+                      setStateSearch(e?.target?.value);
+                    }}
+                    placeholder=" Search state"
+                    className=" w-full p-2 outline-none border-b border-b-gray-300 font-caladea "
+                  />
+                </div>
+
+                {stateList
+                  ?.filter((filtered_data) => {
+                    if (stateSearch?.length > 0) {
+                      if (
+                        filtered_data
+                          ?.toLowerCase()
+                          ?.includes(stateSearch?.toLowerCase())
+                      ) {
+                        return filtered_data;
+                      }
+                    } else {
+                      return filtered_data;
+                    }
+                  })
+                  ?.map((data) => {
+                    return (
+                      <div
+                        className={` ${
+                          data === selectedStateCode
+                            ? "bg-[#FF9D7D] bg-opacity-40"
+                            : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                        }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
+                        onClick={() => {
+                          setSelectedSateCode(data);
+                          setSubscribeValues({
+                            ...subscribeValues,
+                            state: data,
+                            city: null,
+                          });
+                          setAddressList({
+                            city: false,
+                            country: false,
+                            state: !addressList?.state,
+                          });
+
+                          setCitySearch(e?.target?.value);
+                          setSelectedCity(null);
+                        }}
+                      >
+                        {data}
+                      </div>
+                    );
+                  })}
+              </div>
+            </label>
+
+            {/* city */}
+            <label id="city" className="block w-full relative pb-2">
+              <h1 className="mb-1">City</h1>
+              <div
+                onClick={() => {
+                  setAddressList({
+                    country: false,
+                    state: false,
+                    city: !addressList?.city,
+                  });
+                }}
+                className="w-full p-2 min-h-[40px] bg-white cursor-pointer border-[#FF9D7D] outline-[#FF9D7D] border peer"
+              >
+                {" "}
+                {subscribeValues?.city?.length > 0
+                  ? subscribeValues?.city
+                  : "Select city"}{" "}
+              </div>
+
+              <div
+                className={` ${
+                  addressList?.city ? "block" : "hidden"
+                }  absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll   `}
+              >
+                <div className="w-full mb-2 ">
+                  <input
+                    type="search"
+                    name="city"
+                    value={citySearch}
+                    onChange={(e) => {
+                      setCitySearch(e?.target?.value);
+                    }}
+                    placeholder=" Search city"
+                    className=" w-full p-2 outline-none border-b border-b-gray-300 font-caladea "
+                  />
+                </div>
+
+                {cityList
+                  ?.filter((filtered_data) => {
+                    if (citySearch?.length > 0) {
+                      if (
+                        filtered_data
+                          ?.toLowerCase()
+                          ?.includes(citySearch?.toLowerCase())
+                      ) {
+                        return filtered_data;
+                      }
+                    } else {
+                      return filtered_data;
+                    }
+                  })
+                  ?.map((data) => {
+                    return (
+                      <div
+                        className={` ${
+                          data === selectedCity
+                            ? "bg-[#FF9D7D] bg-opacity-40"
+                            : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                        }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
+                        onClick={() => {
+                          setSelectedCity(data);
+                          setSubscribeValues({
+                            ...subscribeValues,
+                            city: data,
+                          });
+                          setAddressList({
+                            country: false,
+                            state: false,
+                            city: !addressList?.city,
+                          });
+                        }}
+                      >
+                        {data}
+                      </div>
+                    );
+                  })}
+              </div>
             </label>
           </div>
           <label htmlFor="" className="block w-full">
@@ -565,20 +796,6 @@ function App() {
         </form>
       </div>
 
-      {/* <marquee
-        width="100%"
-        direction="right"
-        className="font-caladea  text-[#fb7e4a] text-lg font-semibold bg-yellow-200 mb-[-5px] sticky top-0 left-0 right-0  "
-      >
-        <div className="flex justify-between items-center gap-32">
-          <p>This website is under construction.</p>
-          <p>This website is under construction.</p>
-          <p>This website is under construction.</p>
-          <p>This website is under construction.</p>
-          <p>This website is under construction.</p>
-          <p>This website is under construction.</p>
-        </div>
-      </marquee> */}
       <div
         className={` ${currentPath?.pathname === "/login" ? "hidden" : " "} `}
       >

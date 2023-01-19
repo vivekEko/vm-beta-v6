@@ -1,0 +1,383 @@
+  <div
+        onClick={() => setSubscribe(false)}
+        className={` ${
+          subscribe ? "ease-in block" : "ease-out hidden"
+        } fixed inset-0 bg-black duration-300 bg-opacity-60 z-[21000]`}
+      ></div>
+
+      
+      <div
+        className={`${
+          subscribe ? "ease-in block" : "ease-out hidden"
+        } fixed z-[21500] bg-[#FFD29E] p-5 min-h-[250px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[600px]`}
+      >
+        <div className="flex justify-end">
+          <button onClick={() => setSubscribe(false)}>
+            <img src={cross} alt="close" className="w-[25px] cursor-pointer" />
+          </button>
+        </div>
+
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+
+            axios
+              ?.post(VITE_BASE_LINK + "suscribeStore", subscribeValues)
+              .then((res) => {
+                setSubscribe(false);
+                alert("Subscribed sucessfully");
+                setSubscribeValues({
+                  first_name: "",
+                  last_name: "",
+                  email: "",
+                  phone_no: "",
+                  city: "",
+                  state: "",
+                  country: "",
+                });
+              });
+          }}
+          className="space-y-5 mt-5"
+        >
+          <div className="flex justify-center gap-5">
+            <label htmlFor="" className="block w-full">
+              <h1 className="mb-1">First Name</h1>
+              <input
+                name="first_name"
+                type="text"
+                value={subscribeValues?.first_name}
+                onChange={(e) => {
+                  setSubscribeValues({
+                    ...subscribeValues,
+                    first_name: e?.target?.value,
+                  });
+                }}
+                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+              />
+            </label>
+            <label htmlFor="" className="block w-full">
+              <h1 className="mb-1">Last Name</h1>
+              <input
+                name="last_name"
+                type="text"
+                value={subscribeValues?.last_name}
+                onChange={(e) => {
+                  setSubscribeValues({
+                    ...subscribeValues,
+                    last_name: e?.target?.value,
+                  });
+                }}
+                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+              />
+            </label>
+          </div>
+
+          <label htmlFor="" className="block w-full">
+            <h1 className="mb-1">Mobile Number</h1>
+            <input
+              name="phone"
+              type="number"
+              value={subscribeValues?.phone_no}
+              onChange={(e) => {
+                setSubscribeValues({
+                  ...subscribeValues,
+                  phone_no: e?.target?.value,
+                });
+              }}
+              className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+            />
+          </label>
+
+          <div className="flex justify-center gap-5">
+            {/* country */}
+            <label
+              id="country"
+              className="block w-full relative pb-2"
+            >
+              <h1 className="mb-1">Country</h1>
+              <input
+                name="country"
+                type="text"
+                value={subscribeValues?.country}
+                onChange={(e) => {
+                  setSubscribeValues({
+                    ...subscribeValues,
+                    country: e?.target?.value,
+                  });
+                }}
+                onClick={() => {
+                  setAddressList({
+                    ...addressList,
+                    country: !addressList?.country,
+                  });
+                }}
+                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border peer"
+              />
+
+              <div
+                className={` ${
+                  addressList?.country ? "block" : "hidden"
+                }  absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll  `}
+              >
+                {countryList
+                  ?.filter((filtered_data) => {
+                    if (
+                      filtered_data?.name
+                        ?.toLowerCase()
+                        ?.includes(subscribeValues?.country?.toLowerCase())
+                    ) {
+                      return filtered_data;
+                    }
+                  })
+                  ?.map((data) => {
+                    return (
+                      <div
+                        className={` ${
+                          data?.isoCode === selectedCountryCode
+                            ? "bg-[#FF9D7D] bg-opacity-40"
+                            : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                        }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
+                        onClick={() => {
+                          setSelectedCountryCode(data?.isoCode);
+                          setSubscribeValues({
+                            ...subscribeValues,
+                            country: data?.name,
+                          });
+                        }}
+                      >
+                        {data?.name}
+                      </div>
+                    );
+                  })}
+              </div>
+            </label>
+
+            {/* state */}
+
+            <label
+              // ref={stateRef}
+              id="state"
+              className="block w-full relative pb-2"
+            >
+              <h1 className="mb-1">State</h1>
+              {subscribeValues?.country?.length > 1 ? (
+                <input
+                  name="state"
+                  type="text"
+                  value={subscribeValues?.state}
+                  onClick={() => {
+                    if (subscribeValues?.country?.length > 1) {
+                      setAddressList({
+                        ...addressList,
+                        state: !addressList?.state,
+                      });
+                    }
+                  }}
+                  onChange={(e) => {
+                    if (subscribeValues?.country?.length > 1) {
+                      setSubscribeValues({
+                        ...subscribeValues,
+                        state: e?.target?.value,
+                      });
+                    }
+                  }}
+                  className="w-full curso p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+                />
+              ) : (
+                <input
+                  name="state"
+                  type="text"
+                  value={subscribeValues?.state}
+                  onClick={() => {
+                    if (subscribeValues?.country?.length > 1) {
+                      setAddressList({
+                        ...addressList,
+                        state: !addressList?.state,
+                      });
+                    }
+                  }}
+                  onChange={(e) => {
+                    if (subscribeValues?.country?.length > 1) {
+                      setSubscribeValues({
+                        ...subscribeValues,
+                        state: e?.target?.value,
+                      });
+                    }
+                  }}
+                  style={{
+                    cursor: "not-allowed",
+                    opacity: 0.2,
+                  }}
+                  className="w-full curso p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+                />
+              )}
+
+              <div
+                className={` ${
+                  addressList?.state ? "block" : "hidden"
+                } absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll  `}
+              >
+                {stateList?.length > 0 ? (
+                  stateList
+                    ?.filter((filtered_data) => {
+                      if (
+                        filtered_data?.name
+                          ?.toLowerCase()
+                          ?.includes(subscribeValues?.state?.toLowerCase())
+                      ) {
+                        return filtered_data;
+                      }
+                    })
+                    ?.map((data) => {
+                      return (
+                        <div
+                          className={` ${
+                            data?.isoCode === selectedStateCode
+                              ? "bg-[#FF9D7D] bg-opacity-40"
+                              : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                          }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
+                          onClick={() => {
+                            setSelectedSateCode(data?.isoCode);
+                            setSubscribeValues({
+                              ...subscribeValues,
+                              state: data?.name,
+                            });
+                          }}
+                        >
+                          {data?.name}
+                        </div>
+                      );
+                    })
+                ) : (
+                  <div className=" text-center font-caladea text-base  transition-all cursor-pointer text-gray-500 p-2">
+                    No results
+                  </div>
+                )}
+              </div>
+            </label>
+
+            {/* city */}
+
+            <label
+              // ref={cityRef}
+              id="city"
+              className="block w-full relative pb-2"
+            >
+              <h1 className="mb-1">City</h1>
+              {subscribeValues?.state?.length > 1 ? (
+                <input
+                  name="city"
+                  type="text"
+                  value={subscribeValues?.city}
+                  onChange={(e) => {
+                    if (subscribeValues?.state?.length > 1) {
+                      setSubscribeValues({
+                        ...subscribeValues,
+                        city: e?.target?.value,
+                      });
+                    }
+                  }}
+                  onClick={() => {
+                    if (subscribeValues?.state?.length > 1) {
+                      setAddressList({
+                        ...addressList,
+                        city: !addressList?.city,
+                      });
+                    }
+                  }}
+                  className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+                />
+              ) : (
+                <input
+                  name="city"
+                  type="text"
+                  value={subscribeValues?.city}
+                  onChange={(e) => {
+                    if (subscribeValues?.state?.length > 1) {
+                      setSubscribeValues({
+                        ...subscribeValues,
+                        city: e?.target?.value,
+                      });
+                    }
+                  }}
+                  onClick={() => {
+                    if (subscribeValues?.state?.length > 1) {
+                      setAddressList({
+                        ...addressList,
+                        city: !addressList?.city,
+                      });
+                    }
+                  }}
+                  style={{
+                    cursor: "not-allowed",
+                    opacity: 0.2,
+                  }}
+                  className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+                />
+              )}
+
+              <div
+                className={` ${
+                  addressList?.city ? "block" : "hidden"
+                } absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll  `}
+              >
+                {cityList?.length > 0 ? (
+                  cityList
+                    ?.filter((filtered_data) => {
+                      if (
+                        filtered_data?.name
+                          ?.toLowerCase()
+                          ?.includes(subscribeValues?.city?.toLowerCase())
+                      ) {
+                        return filtered_data;
+                      }
+                    })
+                    ?.map((data) => {
+                      return (
+                        <div
+                          className={` ${
+                            data?.name === selectedCity
+                              ? "bg-[#FF9D7D] bg-opacity-40"
+                              : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                          }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
+                          onClick={() => {
+                            setSelectedCity(data?.name);
+                            setSubscribeValues({
+                              ...subscribeValues,
+                              city: data?.name,
+                            });
+                          }}
+                        >
+                          {data?.name}
+                        </div>
+                      );
+                    })
+                ) : (
+                  <div className=" text-center font-caladea text-base  transition-all cursor-pointer text-gray-500 p-2">
+                    No results
+                  </div>
+                )}
+              </div>
+            </label>
+          </div>
+          <label htmlFor="" className="block w-full">
+            <h1 className="mb-1">Email</h1>
+            <input
+              name="email"
+              type="email"
+              value={subscribeValues?.email}
+              onChange={(e) => {
+                setSubscribeValues({
+                  ...subscribeValues,
+                  email: e?.target?.value,
+                });
+              }}
+              className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border mb-4"
+            />
+          </label>
+
+          <button className="bg-[#FC8D0B]  p-2 uppercase text-lg w-full text-white active:scale-95 transition-all">
+            Submit
+          </button>
+        </form>
+      </div>

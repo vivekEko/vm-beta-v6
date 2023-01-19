@@ -10,7 +10,7 @@ const Sidebar_right = (props) => {
 
   return (
     <div className="  ">
-      {props?.apiData?.layout === "youtube_events" && (
+      {/* {props?.apiData?.layout === "youtube_events" && (
         <section>
           <div className="mx-5">
             <h1 className="pb-5 text-2xl font-semibold">
@@ -34,7 +34,7 @@ const Sidebar_right = (props) => {
                       opts={opts}
                       className="w-full"
                     />
-                    {/* <h1 className=" py-2">{data?.yt_title}</h1> */}
+
                     <h1 className="py-2">{data?.yt_title}</h1>
                   </div>
                 );
@@ -42,9 +42,9 @@ const Sidebar_right = (props) => {
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
-      {props?.apiData?.layout === "facebook" && (
+      {/* {props?.apiData?.layout === "facebook" && (
         <section>
           <h1 className="pb-5 text-2xl mt-10 m-5 font-semibold">
             Facebook Feed
@@ -62,7 +62,7 @@ const Sidebar_right = (props) => {
             ></iframe>
           </div>
         </section>
-      )}
+      )} */}
     </div>
   );
 };
