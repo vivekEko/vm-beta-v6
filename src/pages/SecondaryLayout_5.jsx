@@ -18,7 +18,6 @@ const SecondaryLayout_5 = () => {
       .get(VITE_BASE_LINK + "jeeyars")
       .then(function (response) {
         setPageData(response?.data);
-        console.log(response?.data);
       })
       .catch(function (error) {
         console.log(error);

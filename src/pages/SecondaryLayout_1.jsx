@@ -18,102 +18,6 @@ const SecondaryLayout_1 = () => {
 
   const parameters = useParams();
 
-  // const pageData = {
-  //   banner: {
-  //     heading: "Sri Ramanuja Public and Educational Charitable Trust ",
-  //     image: "",
-  //   },
-
-  //   content: {
-  //     title: "Sri Vanamahachala Vidhya Peetam",
-  //     sub_title: "Vedha Patasala at Srirangam",
-  //     image: "",
-  //   },
-
-  //   tab_data: [
-  //     {
-  //       name: "Details",
-  //       content: [
-  //         {
-  //           data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quo ipsam accusantium molestias nobis perspiciatis sapiente ipsa eveniet dolore cupiditate at adipisci non omnis expedita, qui error repudiandae magnam enim quisquam tempora reprehenderit quasi illo praesentium. Sit nam non distinctio exercitationem, quaerat reiciendis illo molestias. Deleniti ipsum odit cum laudantium. Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quo ipsam accusantium molestias nobis perspiciatis sapiente ipsa eveniet dolore cupiditate at adipisci non omnis expedita, qui error repudiandae magnam enim quisquam tempora reprehenderit quasi illo praesentium. Sit nam non distinctio exercitationem, quaerat reiciendis illo molestias. Deleniti ipsum odit cum laudantium.Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quo ipsam accusantium molestias nobis perspiciatis sapiente ipsa eveniet dolore cupiditate at adipisci non omnis expedita, qui error repudiandae magnam enim quisquam tempora reprehenderit quasi illo praesentium. Sit nam non distinctio exercitationem, quaerat reiciendis illo molestias. Deleniti ipsum odit cum laudantium.",
-  //           type: "text",
-  //         },
-  //         {
-  //           data: "/image-path",
-  //           type: "image",
-  //         },
-
-  //         {
-  //           data: "   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur labore mollitia ratione autem delectus dolor sint, voluptatibus unde voluptas a. Ad iste rerum necessitatibus, quis id a voluptates error! A illo labore, consequatur blanditiis odit quos nihil minus quod porro, doloribus asperiores, iste provident possimus error accusantium ratione molestias quas.",
-  //           type: "image",
-  //         },
-  //       ],
-  //     },
-
-  //     {
-  //       name: "History",
-  //       content: [
-  //         {
-  //           data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quo ipsam accusantium molestias nobis perspiciatis sapiente ipsa eveniet dolore cupiditate at adipisci non omnis expedita, qui error repudiandae magnam enim quisquam tempora reprehenderit quasi illo praesentium. Sit nam non distinctio exercitationem, quaerat reiciendis illo molestias. Deleniti ipsum odit cum laudantium. e ipsa eveniet dolore cupiditate at adipisci non omnis expedita, qui error repudiandae magnam enim quisquam tempora reprehenderit quasi illo praesentium. Sit nam non distinctio exercitationem, quaerat reiciendis illo molestias. Deleniti ipsum odit cum laudantium.",
-  //           type: "text",
-  //         },
-  //         {
-  //           data: "/image-path",
-  //           type: "image",
-  //         },
-
-  //         {
-  //           data: "   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur labore mollitia ratione autem delectus dolor sint, voluptatibus unde voluptas a. Ad iste rerum necessitatibus, quis id a voluptates error! A illo labore, consequatur blanditiis odit quos nihil minus quod porro, doloribus asperiores, iste provident possimus error accusantium ratione molestias quas.",
-  //           type: "image",
-  //         },
-  //       ],
-  //     },
-
-  //     {
-  //       name: "Uthsavams",
-  //       content: [
-  //         {
-  //           data: "      Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quo ipsam accusantium molestias nobis perspiciatis sapiente ipsa eveniet dolore cupiditate at adipisci non omnis expedita, qui error repudiandae magnam enim quisquam tempora reprehenderit quasi illo praesentium. Sit nam non distinctio exercitationem, quaerat reiciendis illo molestias. Deleniti ipsum odit cum laudantium.Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quo ipsam accusantium molestias nobis perspiciatis sapiente ipsa eveniet dolore cupiditate at adipisci non omnis expedita, qui error repudiandae magnam enim quisquam tempora reprehenderit quasi illo praesentium. Sit nam non distinctio exercitationem, quaerat reiciendis illo molestias. Deleniti ipsum odit cum laudantium.",
-  //           type: "text",
-  //         },
-  //         {
-  //           data: "/image-path",
-  //           type: "image",
-  //         },
-
-  //         {
-  //           data: "   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur labore mollitia ratione autem delectus dolor sint, voluptatibus unde voluptas a. Ad iste rerum necessitatibus, quis id a voluptates error! A illo labore, consequatur blanditiis odit quos nihil minus quod porro, doloribus asperiores, iste provident possimus error accusantium ratione molestias quas.",
-  //           type: "image",
-  //         },
-  //       ],
-  //     },
-
-  //     {
-  //       name: "How to Reach",
-  //       content: [
-  //         {
-  //           data: "      Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quo ipsam accusantium molestias nobis perspiciatis sapiente ipsa eveniet dolore cupiditate at adipisci non omnis expedita, qui error repudiandae magnam enim quisquam tempora reprehenderit quasi illo praesentium. Sit nam non distinctio exercitationem, quaerat reiciendis illo molestias. Deleniti ipsum odit cum laudantium.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quo ipsam accusantium molestias nobis perspiciatis sapiente ipsa eveniet dolore cupiditate at adipisci non omnis expedita, qui error repudiandae magnam enim quisquam tempora reprehenderit",
-  //           type: "text",
-  //         },
-  //         {
-  //           data: "/image-path",
-  //           type: "image",
-  //         },
-
-  //         {
-  //           data: "   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur labore mollitia ratione autem delectus dolor sint, voluptatibus unde voluptas a. Ad iste rerum necessitatibus, quis id a voluptates error! A illo labore, consequatur blanditiis odit quos nihil minus quod porro, doloribus asperiores, iste provident possimus error accusantium ratione molestias quas.",
-  //           type: "image",
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // };
-
-  // useEffect(() => {
-  //   console.log("layout 1 parameters changed:");
-  //   console.log(parameters);
-  // }, [parameters]);
-
   useEffect(() => {
     axios
       .post(VITE_BASE_LINK + parameters?.call_link, {
@@ -121,7 +25,6 @@ const SecondaryLayout_1 = () => {
       })
       .then(function (response) {
         setPageData(response?.data);
-        console.log("#### PAGE DATA ####", response?.data);
       })
       .catch(function (error) {
         console.log(error);

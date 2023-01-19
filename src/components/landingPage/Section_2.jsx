@@ -162,7 +162,7 @@ const Section_2 = (props) => {
               href={VITE_BASE_LINK + "media/img/calender.pdf"}
               target="_blank"
               rel="noreferer"
-              className="bg-[#C97A15]  text-white p-5 flex justify-center gap-3 items-center flex-1"
+              className="bg-[#C97A15]  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
             >
               <img src={download_icon} alt="download" />
               <h1>Calendar</h1>
@@ -171,7 +171,7 @@ const Section_2 = (props) => {
               href={VITE_BASE_LINK + "media/img/newsletter.pdf"}
               target="_blank"
               rel="noreferer"
-              className="bg-[#C97A15]  text-white p-5 flex justify-center gap-3 items-center flex-1"
+              className="bg-[#C97A15]  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
             >
               <img src={download_icon} alt="download" />
               <h1>Newsletter</h1>
@@ -180,16 +180,18 @@ const Section_2 = (props) => {
               href={VITE_BASE_LINK + "media/img/thaniyan.pdf"}
               target="_blank"
               rel="noreferer"
-              className="bg-[#C97A15] text-white p-5 flex justify-center gap-3 items-center flex-1"
+              className="bg-[#C97A15] text-white p-4 text-sm flex justify-center gap-3 items-center flex-1 "
             >
               <img src={download_icon} alt="download" />
-              <h1 className=""> Vanamamalaimutt Thaniyan </h1>
+              <div>
+                <h1 className="w-max"> Vanamamalaimutt Thaniyan </h1>
+              </div>
             </a>
           </section>
         </>
       )}
 
-      {/* {props?.apiData?.layout === "youtube_events" && (
+      {props?.apiData?.layout === "youtube_events" && (
         <section className="py-5 lg:hidden">
           <div className="mx-5 mt-5">
             <h1 className="pb-5 text-2xl font-semibold">
@@ -220,9 +222,9 @@ const Section_2 = (props) => {
             </div>
           </div>
         </section>
-      )} */}
+      )}
 
-      {props?.apiData?.layout === "small_banner" && (
+      {/* {props?.apiData?.layout === "small_banner" && (
         <section className="flex flex-col sm:flex-row  gap-5 py-10 px-5 border-y border-y-[#FF6E43] border-opacity-30 bg-[#FEF2EE]">
           <div className="flex-[0.3] w-full">
             <img
@@ -239,7 +241,7 @@ const Section_2 = (props) => {
             <p className="text-[#B5090E] text-lg mt-5">{props?.apiData?.p}</p>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* {props?.apiData?.layout === "cards" && (
         <section className="py-20   ">
@@ -273,7 +275,7 @@ const Section_2 = (props) => {
           </div>
         </section>
       )} */}
-      {/* 
+
       {props?.apiData?.layout === "facebook" && (
         <>
           <section className="px-5 mt-5 sm:hidden">
@@ -282,7 +284,6 @@ const Section_2 = (props) => {
                 src={`https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F${pageName}%2F&tabs=timeline&width=350px&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId`}
                 height="600"
                 width="350"
-                center
                 allowFullScreen={true}
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 className=" w-full max-w-[350px]  mx-auto"
@@ -295,7 +296,6 @@ const Section_2 = (props) => {
                 src={`https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F${pageName}%2F&tabs=timeline&width=500px&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId`}
                 height="600"
                 width="500"
-                center
                 allowFullScreen={true}
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 className=" w-full max-w-[500px]  mx-auto"
@@ -303,7 +303,7 @@ const Section_2 = (props) => {
             </div>
           </section>
         </>
-      )} */}
+      )}
 
       {props?.apiData?.layout === "jeeyars" && (
         <section className="py-10">

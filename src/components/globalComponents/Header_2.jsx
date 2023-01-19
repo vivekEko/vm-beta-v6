@@ -17,8 +17,8 @@ const Header_2 = () => {
           />
         </div>
         <div className="hidden md:flex justify-end items-center gap-10 flex-1">
-          <img src={translate_icon} alt="translate icon" className="w-[35px]" />
-          <img src={search_icon} alt="search icon" className="w-[25px]" />
+          {/* <img src={translate_icon} alt="translate icon" className="w-[35px]" />
+          <img src={search_icon} alt="search icon" className="w-[25px]" /> */}
         </div>
       </div>
 

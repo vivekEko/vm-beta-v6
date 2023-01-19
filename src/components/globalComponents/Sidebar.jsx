@@ -33,24 +33,11 @@ const Sidebar = () => {
       .get(VITE_BASE_LINK + "sideBar")
       .then(function (response) {
         setSidebarData(response?.data);
-        // console.log(response?.data);
       })
       .catch(function (error) {
         console.log(error);
       });
   }, []);
-
-  // Detect outside click and close sidebar
-
-  // window.addEventListener("click", (event) => {
-  //   const sidebar = document?.getElementById("sidebar");
-
-  //   if (sidebar) {
-  //     if (!sidebar?.contains(event?.target)) {
-  //       setSidebarStatus(false);
-  //     }
-  //   }
-  // });
 
   useEffect(() => {
     if (sidebarStatus === false) {
@@ -59,16 +46,6 @@ const Sidebar = () => {
   }, [sidebarStatus]);
 
   return (
-    // <div
-    //   id="sidebar"
-    //   className={` ${
-    //     sidebarStatus
-    //       ? "w-[100%] ease-in"
-    //       : !currentPath?.pathname?.includes("/home")
-    //       ? "w-[0%] ease-out   min-w-[0px] md:w-[0.1%] md:min-w-[60px]"
-    //       : "w-[0%] ease-out  min-w-[0px]"
-    //   } h-screen bg-[#FC8D0B] fixed top-0 bottom-0  max-w-[300px] transition-all duration-300  shadow-2xl z-[9999] overflow-y-scroll scrollbar-hide  pb-[100px]  `}
-    // >
     <div
       id="sidebar"
       className={` ${
