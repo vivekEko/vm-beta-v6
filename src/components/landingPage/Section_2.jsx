@@ -230,7 +230,7 @@ const Section_2 = (props) => {
             <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row gap-5 items-center">
               {/* image */}
               <div className="bg-gray-100 w-full 2xl:flex-[0.6] rounded-lg ">
-                <img src="../hero-banner.svg" className="w-full" alt="" />
+                <img src="../india.svg" className="w-full" alt="" />
               </div>
               <div className="w-full 2xl:flex-[0.4]">
                 {/* text */}
@@ -265,6 +265,28 @@ const Section_2 = (props) => {
                 // dotsClass="slick-dots custom-dots"
                 responsive={hero_responsive}
               >
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_01.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">
+                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
+                  </p>
+                </div>
+
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_02.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">
+                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
+                  </p>
+                </div>
+
                 <div className="flex flex-col justify-center items-center px-5 mr-5 ">
                   <div className="mb-5">
                     <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
@@ -308,17 +330,6 @@ const Section_2 = (props) => {
                     </div>
                   </div>
                   <p className="text-center text-sm">Kanu Uthsavam Day 6</p>
-                </div>
-
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_2.svg" className="w-full" alt="" />
-                    </div>
-                  </div>
-                  <p className="text-center text-sm">
-                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
-                  </p>
                 </div>
               </Slider>
             </div>
@@ -394,7 +405,7 @@ const Section_2 = (props) => {
             <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row gap-5 items-center">
               {/* image */}
               <div className="bg-gray-100 w-full 2xl:flex-[0.6] rounded-lg ">
-                <img src="../hero-banner.svg" className="w-full" alt="" />
+                <img src="../india.svg" className="w-full" alt="" />
               </div>
               <div className="w-full 2xl:flex-[0.4]">
                 {/* text */}
@@ -429,6 +440,27 @@ const Section_2 = (props) => {
                 // dotsClass="slick-dots custom-dots"
                 responsive={hero_responsive}
               >
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_01.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">
+                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
+                  </p>
+                </div>
+
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_02.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">
+                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
+                  </p>
+                </div>
                 <div className="flex flex-col justify-center items-center px-5 mr-5 ">
                   <div className="mb-5">
                     <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
