@@ -309,6 +309,17 @@ const Section_2 = (props) => {
                   </div>
                   <p className="text-center text-sm">Kanu Uthsavam Day 6</p>
                 </div>
+
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_2.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">
+                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
+                  </p>
+                </div>
               </Slider>
             </div>
           </section>
