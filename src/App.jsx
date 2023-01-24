@@ -139,10 +139,10 @@ function App() {
       ></div>
 
       {/* menu */}
-      <button
+      <div
         className={`  ${
           currentPath?.pathname?.includes("/home")
-            ? "fixed z-[10000] top-9 left-2 md:left-5 lg:left-8 xl:left-10 text-xl  font-bold cursor-pointer"
+            ? "fixed z-[10000] top-9 left-2 md:left-5 lg:left-8 xl:left-5 text-xl  font-bold hidden 2xl:block"
             : "hidden"
         } 
           
@@ -151,18 +151,15 @@ function App() {
          
 
           `}
-        onClick={() => setSidebarStatus(!sidebarStatus)}
       >
         MENU
-      </button>
+      </div>
 
       {/* hamburger menu */}
       <button
-        className={` z-[20000]  ${
-          !currentPath?.pathname?.includes("/home")
-            ? "fixed top-0 left-0  text-xl  font-bold  "
-            : "hidden"
-        } 
+        className={` z-[20000]  fixed top-0 left-0  text-xl  font-bold  2xl:hidden
+       
+        
 
           `}
         onClick={() => setSidebarStatus(!sidebarStatus)}
@@ -197,7 +194,7 @@ function App() {
       <div
         className={`${
           subscribe ? "ease-in block" : "ease-out hidden"
-        } fixed z-[21500] bg-[#FFD29E] p-5 min-h-[250px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[600px]`}
+        } fixed z-[21500] bg-[#FFD29E] p-5 min-h-[250px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[600px] rounded-lg`}
       >
         <div className="flex justify-end">
           <button onClick={() => setSubscribe(false)}>
@@ -250,7 +247,7 @@ function App() {
                     first_name: e?.target?.value,
                   });
                 }}
-                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border rounded-lg"
               />
             </label>
             <label htmlFor="" className="block w-full">
@@ -265,7 +262,7 @@ function App() {
                     last_name: e?.target?.value,
                   });
                 }}
-                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border"
               />
             </label>
           </div>
@@ -282,7 +279,7 @@ function App() {
                   phone_no: e?.target?.value,
                 });
               }}
-              className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border"
+              className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border"
             />
           </label>
 
@@ -298,7 +295,7 @@ function App() {
                     country: !addressList?.country,
                   });
                 }}
-                className="w-full p-2 min-h-[40px] bg-white cursor-pointer border-[#FF9D7D] outline-[#FF9D7D] border peer"
+                className="w-full p-2 min-h-[40px] bg-white cursor-pointer border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border peer"
               >
                 {" "}
                 {subscribeValues?.country?.length > 0 ? (
@@ -388,7 +385,7 @@ function App() {
                   disableFields?.state
                     ? "bg-opacity-30 cursor-not-allowed"
                     : "bg-opacity-100"
-                } w-full p-2 min-h-[40px] bg-white cursor-pointer border-[#FF9D7D] outline-[#FF9D7D] border peer`}
+                } w-full p-2 min-h-[40px] bg-white cursor-pointer border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border peer`}
               >
                 {" "}
                 {subscribeValues?.state?.length > 0 ? (
@@ -488,7 +485,7 @@ function App() {
                   disableFields?.city
                     ? "bg-opacity-30 cursor-not-allowed"
                     : "bg-opacity-100"
-                } w-full p-2 min-h-[40px] bg-white cursor-pointer border-[#FF9D7D] outline-[#FF9D7D] border peer`}
+                } w-full p-2 min-h-[40px] bg-white cursor-pointer border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border peer`}
               >
                 {" "}
                 {subscribeValues?.city?.length > 0 ? (
@@ -579,11 +576,11 @@ function App() {
                   email: e?.target?.value,
                 });
               }}
-              className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border mb-4"
+              className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border mb-4"
             />
           </label>
 
-          <button className="bg-[#FC8D0B]  p-2 uppercase text-lg w-full text-white active:scale-95 transition-all">
+          <button className="bg-[#FC8D0B] rounded-lg  p-2 uppercase text-lg w-full text-white active:scale-95 transition-all">
             Submit
           </button>
         </form>

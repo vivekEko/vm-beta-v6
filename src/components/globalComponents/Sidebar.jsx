@@ -53,7 +53,7 @@ const Sidebar = () => {
           ? "w-[100%] ease-in"
           : !currentPath?.pathname?.includes("/home")
           ? "w-[0%] ease-out   min-w-[0px] md:w-[0.1%] md:min-w-[60px]"
-          : "w-[0%] ease-out  min-w-[0px] xl:w-[100%]"
+          : "w-[0%] ease-out  min-w-[0px] md:min-w-[60px] 2xl:w-[100%]"
       } h-screen bg-[#FCDAD0] fixed top-0 bottom-0  max-w-[300px] transition-all duration-300  shadow-2xl z-[9999] overflow-y-scroll scrollbar-hide  pb-[100px]  `}
     >
       <div className=" overflow-x-hidden  ">
@@ -237,6 +237,7 @@ const Sidebar = () => {
           sidebarStatus ? "block" : "hidden lg:block"
         } absolute bottom-0 right-0 left-0  bg-[#FCDAD0]`}
       >
+        {/* subscribe btn */}
         <div
           className={` ${
             currentPath?.pathname?.includes("home")
@@ -247,7 +248,7 @@ const Sidebar = () => {
           }  w-full p-2 `}
         >
           <button
-            className="w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-xl bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
+            className="rounded-lg w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-xl bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
               "
             onClick={() => setSubscribe(true)}
           >
@@ -258,14 +259,16 @@ const Sidebar = () => {
           </button>
         </div>
 
+        {/* social media */}
         <div
-          className={` ${
-            currentPath?.pathname?.includes("home")
-              ? "block"
-              : sidebarStatus
-              ? "block"
-              : "hidden"
-          }  flex justify-between items-center px-2 my-5`}
+          className={`
+           ${
+             sidebarStatus
+               ? "flex"
+               : currentPath?.pathname?.includes("home")
+               ? "hidden 2xl:flex"
+               : "hidden"
+           }   justify-between items-center px-2 my-5`}
         >
           <a
             href="https://www.facebook.com/srivanamamalaimuttofficial/"

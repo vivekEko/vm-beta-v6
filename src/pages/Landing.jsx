@@ -156,23 +156,21 @@ const Landing = () => {
         );
       })} */}
 
-      <div className="xl:pl-[300px] lg:pr-[400px]">
+      <div className="md:pl-[60px] 2xl:pl-[300px] lg:pr-[400px] ">
         <header className=" py-5 flex flex-col justify-center items-center px-5 text-center">
           <div>
             <img src={header_image} alt="vanamamalai" className="h-[50px]" />
           </div>
 
-          <div className="flex flex-col justify-center gap-2 md:gap-10 md:flex-row items-center mt-5 sm:text-lg xl:text-xl ">
-            <h1 className="uppercase text-sm">Srimathe Ramanujaya Nama:</h1>
-            <h1 className="uppercase text-sm">Srimath Varavaramunaye Nama:</h1>
-            <h1 className="uppercase text-sm">
-              Sri vanachaLa Mahamunibyo Nama:
-            </h1>
+          <div className="flex  justify-center gap-2 md:gap-10 md:flex-row items-center mt-5 text-[8px] sm:text-xs md:text=sm xl:text-base ">
+            <h1 className="uppercase ">Srimathe Ramanujaya Nama:</h1>
+            <h1 className="uppercase ">Srimath Varavaramunaye Nama:</h1>
+            <h1 className="uppercase ">Sri vanachaLa Mahamunibyo Nama:</h1>
           </div>
         </header>
 
         <div className=" w-full">
-          <div className=" md:mx-5 bg-[#FDE9E3]">
+          <div className=" md:mx-5 ">
             {landingPageData?.data?.map((sectionData, sectionIndex) => {
               return (
                 <div key={sectionIndex} className="">
@@ -186,9 +184,10 @@ const Landing = () => {
             className="hidden lg:block w-full max-w-[400px] h-[100vh] scrollbar-hide overflow-y-scroll fixed bottom-0 top-0 right-0
           bg-[#F1400B] bg-opacity-20 pt-5"
           >
-            <div className="w-full p-5 ">
+            <div className="w-full p-5 bg-[#fcd9ce]  ">
+              {/* subscribe btn */}
               <button
-                className="w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-xl bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
+                className="rounded-lg  w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-xl bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
               "
                 onClick={() => setSubscribe(true)}
               >

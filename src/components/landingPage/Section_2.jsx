@@ -10,6 +10,46 @@ import Slider from "react-slick";
 import YouTube from "react-youtube";
 import { Link } from "react-router-dom";
 
+function NextBtn(props) {
+  const { className, style, onClick } = props;
+  return (
+    <>
+      <div
+        className={className}
+        style={{ ...style, display: "none" }}
+        onClick={onClick}
+      />
+
+      <div
+        onClick={onClick}
+        className=" absolute top-[30%] right-[-10px] cursor-pointer z-50"
+      >
+        <img src="../next_btn.svg" alt="next" />
+      </div>
+    </>
+  );
+}
+
+function PreviousBtn(props) {
+  const { className, style, onClick } = props;
+  return (
+    <>
+      <div
+        className={className}
+        style={{ ...style, display: "none" }}
+        onClick={onClick}
+      />
+
+      <div
+        onClick={onClick}
+        className=" absolute top-[30%] left-[-10px] cursor-pointer z-50"
+      >
+        <img src="../prev_btn.svg" alt="next" />
+      </div>
+    </>
+  );
+}
+
 const Section_2 = (props) => {
   // const pageName = "laughingcolours";
   const pageName = "srivanamamalaimuttofficial";
@@ -86,14 +126,70 @@ const Section_2 = (props) => {
     },
   ];
 
+  const hero_responsive = [
+    {
+      breakpoint: 2500,
+      settings: {
+        slidesToShow: 4,
+      },
+    },
+    {
+      breakpoint: 1800,
+      settings: {
+        slidesToShow: 4,
+      },
+    },
+    {
+      breakpoint: 1604,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 1100,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 500,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+  ];
+
   const opts = {
     height: "200",
     width: "100%",
   };
 
+  const newHeroData = {
+    hero_banner: {
+      img: "/",
+      content: [
+        "HH Sri Madhurakavi Vanamamalai Ramanuja Jeeyar Swamigal explains the significance and Tatvas present in Thiruppavai paasurams.",
+        "ஸ்ரீமத் பரமஹம்ஸேத்யாதி ஸ்ரீ மதுரகவி வானமாமலை ராமானுஜ ஜீயர் ஸ்வாமிகள் (31 வது பட்டம்)",
+      ],
+    },
+  };
   return (
     <div>
-      {props?.apiData?.layout === "hero" && (
+      {/* {props?.apiData?.layout === "hero" && (
         <section className="pb-10">
           <div className=" w-full">
             <Slider
@@ -125,9 +221,98 @@ const Section_2 = (props) => {
             </Slider>
           </div>
         </section>
-      )}
+      )} */}
+
       {props?.apiData?.layout === "banner" && (
         <>
+          {/* newsletter hero */}
+          <section className="p-5 hidden lg:block">
+            <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row gap-5 items-center">
+              {/* image */}
+              <div className="bg-gray-100 w-full 2xl:flex-[0.6] rounded-lg ">
+                <img src="../hero-banner.svg" className="w-full" alt="" />
+              </div>
+              <div className="w-full 2xl:flex-[0.4]">
+                {/* text */}
+                <div className="font-inter space-y-5  ">
+                  {newHeroData?.hero_banner?.content?.map((data, index) => {
+                    return <div key={index}>{data}</div>;
+                  })}
+                </div>
+
+                {/* <div className="mt-5">
+                  <button className="bg-[#FF440D] bg-opacity-80 text-white p-3 rounded-lg font-inter px-10 mx-auto md:mx-0 active:scale-95 transition-all md:ml-auto block">
+                    Read More
+                  </button>
+                </div> */}
+              </div>
+            </div>
+          </section>
+          {/* newsletter slider */}
+          <section className="hidden lg:block">
+            <div className=" w-full  pt-5 pb-10">
+              <Slider
+                // dots={true}
+                slidesToShow={4}
+                infinite
+                arrows={true}
+                // autoplay={true}
+                // autoplaySpeed={1500}
+                pauseOnHover={true}
+                prevArrow={<PreviousBtn />}
+                nextArrow={<NextBtn />}
+                className="w-full  md:w-[100%] mx-auto "
+                // dotsClass="slick-dots custom-dots"
+                responsive={hero_responsive}
+              >
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_1.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">
+                    கனு உத்ஸவம் - பரிவேட்டை. தெய்வநாயகன் குதிரை வாகனத்தில்
+                    எழுந்தருளல்.
+                  </p>
+                </div>
+
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_2.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">
+                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
+                  </p>
+                </div>
+
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_3.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">
+                    கனுத் திருநாளான இன்று, ஶ்ரீ தெய்வநாயகனும் ஶ்ரீ வரமங்கையும்,
+                    தாயாரின் பிறந்தகமான, ஶ்ரீ மடத்திற்கு பல்லக்கில்
+                    எழுந்தருளினர்.
+                  </p>
+                </div>
+
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_4.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">Kanu Uthsavam Day 6</p>
+                </div>
+              </Slider>
+            </div>
+          </section>
+
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-5  p-5 place-items-center">
             {props?.apiData?.banner_data?.map((data, index) => {
               if (data?.type === "image") {
@@ -162,27 +347,27 @@ const Section_2 = (props) => {
               href={VITE_BASE_LINK + "media/img/calender.pdf"}
               target="_blank"
               rel="noreferer"
-              className="bg-[#C97A15]  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
             >
-              <img src={download_icon} alt="download" />
+              <img src={download_icon} className="w-[15px]" alt="download" />
               <h1>Calendar</h1>
             </a>
             <a
               href={VITE_BASE_LINK + "media/img/newsletter.pdf"}
               target="_blank"
               rel="noreferer"
-              className="bg-[#C97A15]  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
             >
-              <img src={download_icon} alt="download" />
+              <img src={download_icon} className="w-[15px]" alt="download" />
               <h1>Newsletter</h1>
             </a>
             <a
               href={VITE_BASE_LINK + "media/img/thaniyan.pdf"}
               target="_blank"
               rel="noreferer"
-              className="bg-[#C97A15] text-white p-4 text-sm flex justify-center gap-3 items-center flex-1 "
+              className="bg-[#C97A15] rounded-lg text-white p-4 text-sm flex justify-center gap-3 items-center flex-1 "
             >
-              <img src={download_icon} alt="download" />
+              <img src={download_icon} className="w-[15px]" alt="download" />
               <div>
                 <h1 className="w-max"> Vanamamalaimutt Thaniyan </h1>
               </div>
@@ -192,36 +377,127 @@ const Section_2 = (props) => {
       )}
 
       {props?.apiData?.layout === "youtube_events" && (
-        <section className="py-5 lg:hidden">
-          <div className="mx-5 mt-5">
-            <h1 className="pb-5 text-2xl font-semibold">
-              {props?.apiData?.h1}
-            </h1>
+        <>
+          {/* newsletter hero */}
+          <section className="p-5 lg:hidden">
+            <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row gap-5 items-center">
+              {/* image */}
+              <div className="bg-gray-100 w-full 2xl:flex-[0.6] rounded-lg ">
+                <img src="../hero-banner.svg" className="w-full" alt="" />
+              </div>
+              <div className="w-full 2xl:flex-[0.4]">
+                {/* text */}
+                <div className="font-inter space-y-5  ">
+                  {newHeroData?.hero_banner?.content?.map((data, index) => {
+                    return <div key={index}>{data}</div>;
+                  })}
+                </div>
 
-            <div className=" flex overflow-y-scroll scrollbar-hide ">
-              {props?.apiData?.caraousel_data?.map((data, index) => {
-                return (
-                  <div key={index} className=" mr-5 min-w-[300px]">
-                    <YouTube
-                      videoId={
-                        data?.yt_link
-                          .split("/")
-                          .reverse()[0]
-                          .includes("watch?v=")
-                          ? data?.yt_link.split("watch?v=").reverse()[0]
-                          : data?.yt_link.split("/").reverse()[0]
-                      }
-                      opts={opts}
-                      className="w-full"
-                    />
-
-                    <h1 className="py-2">{data?.yt_title}</h1>
-                  </div>
-                );
-              })}
+                {/* <div className="mt-5">
+                  <button className="bg-[#FF440D] bg-opacity-80 text-white p-3 rounded-lg font-inter px-10 mx-auto md:mx-0 active:scale-95 transition-all md:ml-auto block">
+                    Read More
+                  </button>
+                </div> */}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+          {/* newsletter slider */}
+          <section className="block lg:hidden">
+            <div className="   pt-5  w-[90%] mx-auto">
+              <Slider
+                // dots={true}
+                slidesToShow={4}
+                infinite
+                arrows={true}
+                // autoplay={true}
+                // autoplaySpeed={1500}
+                pauseOnHover={true}
+                prevArrow={<PreviousBtn />}
+                nextArrow={<NextBtn />}
+                className="w-full  md:w-[100%] mx-auto "
+                // dotsClass="slick-dots custom-dots"
+                responsive={hero_responsive}
+              >
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_1.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">
+                    கனு உத்ஸவம் - பரிவேட்டை. தெய்வநாயகன் குதிரை வாகனத்தில்
+                    எழுந்தருளல்.
+                  </p>
+                </div>
+
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_2.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">
+                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
+                  </p>
+                </div>
+
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_3.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">
+                    கனுத் திருநாளான இன்று, ஶ்ரீ தெய்வநாயகனும் ஶ்ரீ வரமங்கையும்,
+                    தாயாரின் பிறந்தகமான, ஶ்ரீ மடத்திற்கு பல்லக்கில்
+                    எழுந்தருளினர்.
+                  </p>
+                </div>
+
+                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
+                  <div className="mb-5">
+                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                      <img src="../slide_4.svg" className="w-full" alt="" />
+                    </div>
+                  </div>
+                  <p className="text-center text-sm">Kanu Uthsavam Day 6</p>
+                </div>
+              </Slider>
+            </div>
+          </section>
+
+          {/* yt */}
+          <section className="pb-5 lg:hidden">
+            <div className="mx-5 mt-5">
+              <h1 className="pb-5 text-2xl font-semibold">
+                {props?.apiData?.h1}
+              </h1>
+
+              <div className=" flex overflow-y-scroll scrollbar-hide ">
+                {props?.apiData?.caraousel_data?.map((data, index) => {
+                  return (
+                    <div key={index} className=" mr-5 min-w-[300px]">
+                      <YouTube
+                        videoId={
+                          data?.yt_link
+                            .split("/")
+                            .reverse()[0]
+                            .includes("watch?v=")
+                            ? data?.yt_link.split("watch?v=").reverse()[0]
+                            : data?.yt_link.split("/").reverse()[0]
+                        }
+                        opts={opts}
+                        className="w-full"
+                      />
+
+                      <h1 className="py-2">{data?.yt_title}</h1>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        </>
       )}
 
       {/* {props?.apiData?.layout === "small_banner" && (
@@ -306,7 +582,7 @@ const Section_2 = (props) => {
       )}
 
       {props?.apiData?.layout === "jeeyars" && (
-        <section className="py-10">
+        <section className="py-5 pb-10 rounded-lg my-5 bg-[#FDE9E3]">
           <div className=" w-full">
             <Slider
               dots={true}
