@@ -157,9 +157,13 @@ function App() {
 
       {/* hamburger menu */}
       <button
-        className={` z-[20000]  fixed top-0 left-0  text-xl  font-bold  2xl:hidden
-       
-        
+        className={` z-[20000]  
+        fixed top-0 left-0  text-xl  font-bold 
+        ${
+          currentPath?.pathname?.includes("/home")
+            ? "  2xl:hidden block"
+            : "block"
+        } 
 
           `}
         onClick={() => setSidebarStatus(!sidebarStatus)}
