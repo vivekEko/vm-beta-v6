@@ -6,6 +6,7 @@ import square_image from "../../assets/img/landingPage/26_EN.jpg";
 import square_image1 from "../../assets/img/landingPage/27_EN.jpg";
 import square_image2 from "../../assets/img/landingPage/28_EN.jpg";
 import download_icon from "../../assets/img/landingPage/download.svg";
+// import arrow_right from "../../assets/img/landingPage/arrow-right-eduation-section.svg";
 import Slider from "react-slick";
 import YouTube from "react-youtube";
 import { Link } from "react-router-dom";
@@ -363,7 +364,7 @@ const Section_2 = (props) => {
               }
             })}
           </section>
-
+          {/* Download buttons */}
           <section className="font-caladea text-lg flex gap-5 justify-between mx-5 flex-wrap">
             <a
               href={VITE_BASE_LINK + "media/img/calender.pdf"}
@@ -394,6 +395,74 @@ const Section_2 = (props) => {
                 <h1 className="w-max"> Vanamamalaimutt Thaniyan </h1>
               </div>
             </a>
+          </section>
+
+          {/* Vidyapeetham */}
+          <section className="p-5 mt-5">
+            <div className=" border-[#FBBCA9] border rounded-3xl bg-[#FFF4F0] flex flex-col xl:flex-row items-center gap-5">
+              <img
+                src="../pathshala_section_img.svg"
+                alt=""
+                className="w-full "
+              />
+
+              <div className="w-full p-5">
+                <h1 className="text-[#830300] uppercase font-semibold text-xl mb-5">
+                  Vanamahachala VidhyaPeetam
+                </h1>
+                <div className="flex items-start gap-3   ">
+                  <div className="flex items-center   ">
+                    <div className="bg-[#B5090E] aspect-square translate-y-2 w-[10px]  rounded-full"></div>
+                  </div>
+                  <h3 className=" text-[#B5090E] font-inter">
+                    The significance of Patasala on Ramanuja 1000{" "}
+                  </h3>
+                </div>
+
+                <div className="flex items-start gap-3   ">
+                  <div className="flex items-start h-full   ">
+                    <div className="bg-[#B5090E] aspect-square translate-y-2 w-[10px]  rounded-full"></div>
+                  </div>
+                  <h3 className=" text-[#B5090E] font-inter">
+                    Role of our Mutt sishya and abhimani on this Project
+                  </h3>
+                </div>
+
+                <div className="flex items-start gap-3   ">
+                  <div className="flex items-center   ">
+                    <div className="bg-[#B5090E] aspect-square translate-y-2 w-[10px]  rounded-full"></div>
+                  </div>
+                  <h3 className=" text-[#B5090E] font-inter">
+                    The need of collecting funds and our perspective on this.
+                  </h3>
+                </div>
+
+                <div className="flex items-start gap-3   ">
+                  <div className="flex items-center   ">
+                    <div className="bg-[#B5090E] aspect-square translate-y-2 w-[10px]  rounded-full"></div>
+                  </div>
+                  <h3 className=" text-[#B5090E] font-inter">
+                    Unique opportunity to have our family name inscribed on a
+                    class room on the Patasala
+                  </h3>
+                </div>
+
+                <div className="my-5 flex justify-end">
+                  <Link to="/sub_page/vn_education/2" className="">
+                    <button className="flex items-center gap-3">
+                      <h2 className="text-[#830300] block text-lg">
+                        Read More
+                      </h2>
+                      <img
+                        src="../arrow-right-eduation-section.svg"
+                        alt=""
+                        className="block"
+                      />
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </section>
         </>
       )}

@@ -184,15 +184,23 @@ const Landing = () => {
             className="hidden lg:block w-full max-w-[400px] h-[100vh] scrollbar-hide overflow-y-scroll fixed bottom-0 top-0 right-0
           bg-[#F1400B] bg-opacity-20 pt-5"
           >
-            <div className="w-full p-5 bg-[#fcd9ce]  ">
+            <div className="w-full p-5 bg-[#fcd9ce] flex gap-3 items-center  ">
+              {/* donate btn */}
+              {/* <button
+                className="rounded-lg  w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-base bg-[#00ac69] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
+              "
+              >
+               
+                <h1>Donate</h1>
+              </button> */}
               {/* subscribe btn */}
               <button
-                className="rounded-lg  w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-xl bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
+                className="rounded-lg  w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-base bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
               "
                 onClick={() => setSubscribe(true)}
               >
                 <div>
-                  <img src={avatar} alt="avatar" className="w-[35px]" />
+                  <img src={avatar} alt="avatar" className="w-[25px]" />
                 </div>
                 <h1>Subscribe</h1>
               </button>
