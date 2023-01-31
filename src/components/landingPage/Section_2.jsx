@@ -10,6 +10,7 @@ import download_icon from "../../assets/img/landingPage/download.svg";
 import Slider from "react-slick";
 import YouTube from "react-youtube";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 function NextBtn(props) {
   const { className, style, onClick } = props;
@@ -52,6 +53,10 @@ function PreviousBtn(props) {
 }
 
 const Section_2 = (props) => {
+  useEffect(() => {
+    console.log(props?.apiData);
+  }, [props]);
+
   // const pageName = "laughingcolours";
   const pageName = "srivanamamalaimuttofficial";
   const responsive = [
@@ -183,10 +188,38 @@ const Section_2 = (props) => {
     hero_banner: {
       img: "/",
       content: [
-        "HH Sri Madhurakavi Vanamamalai Ramanuja Jeeyar Swamigal explains the significance and Tatvas present in Thiruppavai paasurams.",
-        "ஸ்ரீமத் பரமஹம்ஸேத்யாதி ஸ்ரீ மதுரகவி வானமாமலை ராமானுஜ ஜீயர் ஸ்வாமிகள் (31 வது பட்டம்)",
+        "HH Vanamamalai Ramanuja Jeeyar swami is on Naimisaranyam Yatra",
+        "It is a yatra of 51 days from Vanamamalai to Nepal covering various significant places",
       ],
     },
+
+    hero_carousel: [
+      {
+        image: "../carousel-3.svg",
+        subtitle: "Jeeyar swami reached Itarsi - Madhyapradesh",
+      },
+      {
+        image: "../carousel-2.svg",
+
+        subtitle: " Jeeyar swmai has reached Wardha - Maharashtra",
+      },
+      {
+        image: "../carousel-1.svg",
+        subtitle:
+          "Vanamamalai Ramanuja Jeeyar swami arrives at Sri Ranganath swami temple - Secunderabad.",
+      },
+
+      {
+        image: "../carousel-4.svg",
+        subtitle:
+          "HH Vanamamalai Ramanuja Jeeyar swami arrives at Vijayawada, as part of Naimisaranyam Yatra",
+      },
+
+      {
+        image: "../carousel-5.svg",
+        subtitle: " Vanamamalai Theppa Uthsavam Day 1 (Plavanothsavam)",
+      },
+    ],
   };
   return (
     <div>
@@ -266,76 +299,25 @@ const Section_2 = (props) => {
                 // dotsClass="slick-dots custom-dots"
                 responsive={hero_responsive}
               >
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_01.svg" className="w-full" alt="" />
+                {newHeroData?.hero_carousel?.map((data, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="flex flex-col justify-center items-center px-5 mr-5 "
+                    >
+                      <div className="mb-5">
+                        <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                          <img src={data?.image} className="w-full" alt="" />
+                        </div>
+                      </div>
+                      <p className="text-center text-sm">{data?.subtitle}</p>
                     </div>
-                  </div>
-                  <p className="text-center text-sm">
-                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
-                  </p>
-                </div>
-
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_02.svg" className="w-full" alt="" />
-                    </div>
-                  </div>
-                  <p className="text-center text-sm">
-                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
-                  </p>
-                </div>
-
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_1.svg" className="w-full" alt="" />
-                    </div>
-                  </div>
-                  <p className="text-center text-sm">
-                    கனு உத்ஸவம் - பரிவேட்டை. தெய்வநாயகன் குதிரை வாகனத்தில்
-                    எழுந்தருளல்.
-                  </p>
-                </div>
-
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_2.svg" className="w-full" alt="" />
-                    </div>
-                  </div>
-                  <p className="text-center text-sm">
-                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
-                  </p>
-                </div>
-
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_3.svg" className="w-full" alt="" />
-                    </div>
-                  </div>
-                  <p className="text-center text-sm">
-                    கனுத் திருநாளான இன்று, ஶ்ரீ தெய்வநாயகனும் ஶ்ரீ வரமங்கையும்,
-                    தாயாரின் பிறந்தகமான, ஶ்ரீ மடத்திற்கு பல்லக்கில்
-                    எழுந்தருளினர்.
-                  </p>
-                </div>
-
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_4.svg" className="w-full" alt="" />
-                    </div>
-                  </div>
-                  <p className="text-center text-sm">Kanu Uthsavam Day 6</p>
-                </div>
+                  );
+                })}
               </Slider>
             </div>
           </section>
-
+          {/* banner */}
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-5  p-5 place-items-center">
             {props?.apiData?.banner_data?.map((data, index) => {
               if (data?.type === "image") {
@@ -509,71 +491,21 @@ const Section_2 = (props) => {
                 // dotsClass="slick-dots custom-dots"
                 responsive={hero_responsive}
               >
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_01.svg" className="w-full" alt="" />
+                {newHeroData?.hero_carousel?.map((data, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="flex flex-col justify-center items-center px-5 mr-5 "
+                    >
+                      <div className="mb-5">
+                        <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
+                          <img src={data?.image} className="w-full" alt="" />
+                        </div>
+                      </div>
+                      <p className="text-center text-sm">{data?.subtitle}</p>
                     </div>
-                  </div>
-                  <p className="text-center text-sm">
-                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
-                  </p>
-                </div>
-
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_02.svg" className="w-full" alt="" />
-                    </div>
-                  </div>
-                  <p className="text-center text-sm">
-                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
-                  </p>
-                </div>
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_1.svg" className="w-full" alt="" />
-                    </div>
-                  </div>
-                  <p className="text-center text-sm">
-                    கனு உத்ஸவம் - பரிவேட்டை. தெய்வநாயகன் குதிரை வாகனத்தில்
-                    எழுந்தருளல்.
-                  </p>
-                </div>
-
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_2.svg" className="w-full" alt="" />
-                    </div>
-                  </div>
-                  <p className="text-center text-sm">
-                    ஶ்ரீ மடத்தில் திவ்ய தம்பதியினர் மகரகண்டிகை சேவை.
-                  </p>
-                </div>
-
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_3.svg" className="w-full" alt="" />
-                    </div>
-                  </div>
-                  <p className="text-center text-sm">
-                    கனுத் திருநாளான இன்று, ஶ்ரீ தெய்வநாயகனும் ஶ்ரீ வரமங்கையும்,
-                    தாயாரின் பிறந்தகமான, ஶ்ரீ மடத்திற்கு பல்லக்கில்
-                    எழுந்தருளினர்.
-                  </p>
-                </div>
-
-                <div className="flex flex-col justify-center items-center px-5 mr-5 ">
-                  <div className="mb-5">
-                    <div className="aspect-square rounded-lg bg-gray-100  mx-auto">
-                      <img src="../slide_4.svg" className="w-full" alt="" />
-                    </div>
-                  </div>
-                  <p className="text-center text-sm">Kanu Uthsavam Day 6</p>
-                </div>
+                  );
+                })}
               </Slider>
             </div>
           </section>
