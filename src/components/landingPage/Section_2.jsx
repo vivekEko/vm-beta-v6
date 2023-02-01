@@ -188,8 +188,7 @@ const Section_2 = (props) => {
     hero_banner: {
       img: "/",
       content: [
-        "HH Vanamamalai Ramanuja Jeeyar swami is on Naimisaranyam Yatra",
-        "It is a yatra of 51 days from Vanamamalai to Nepal covering various significant places",
+        "HH Vanamamalai Ramanuja Jeeyar swami on Yatra to Naimisaranyam and Nepal.",
       ],
     },
 

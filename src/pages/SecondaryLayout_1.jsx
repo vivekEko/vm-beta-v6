@@ -35,7 +35,7 @@ const SecondaryLayout_1 = () => {
     <section>
       {/* banner */}
       <div
-        className="bg-[#D9D9D9] bg-no-repeat bg-cover bg-right-bottom min-h-[500px]"
+        className="bg-[#D9D9D9] bg-no-repeat bg-cover bg-center min-h-[500px]"
         style={{
           backgroundImage:
             "url(" + VITE_BASE_LINK + pageData?.banner?.image + ")",
