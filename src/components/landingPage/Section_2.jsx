@@ -53,9 +53,9 @@ function PreviousBtn(props) {
 }
 
 const Section_2 = (props) => {
-  useEffect(() => {
-    console.log(props?.apiData);
-  }, [props]);
+  // useEffect(() => {
+  //   console.log(props?.apiData);
+  // }, [props]);
 
   // const pageName = "laughingcolours";
   const pageName = "srivanamamalaimuttofficial";
@@ -193,6 +193,28 @@ const Section_2 = (props) => {
     },
 
     hero_carousel: [
+   
+      {
+        image: "../reached_moradabad.svg",
+        subtitle: "Sri Madhurakavi Vanamamalai Ramanuja Jeeyar swami at Moradabad.",
+      },
+      {
+        image: "../reached_luchnow.svg",
+        subtitle: "Sri Madhurakavi Vanamamalai Ramanuja Jeeyar swami visited Sri Kanchi Kamakodi Swami's Patasalai and blessed the Vidhyarthis - at Lucknow",
+      },
+      
+      {
+        image: "../reached_chitrakoot.svg",
+        subtitle: "Sri Vanamamalai Ramanuja Jeeyar swami at Mukharavind Mandhir - Chitrakoot ",
+      },
+      {
+        image: "../reached_chilbila.svg",
+        subtitle: "Sri Madhurakavi Vanamamalai Ramanuja Jeeyar swami has arrived Chilbila - Uttar Pradesh.",
+      },
+      {
+        image: "../reached_ayodhya.svg",
+        subtitle: "Sri Vanamamalai Ramanuja Jeeyar swami has reached Ayodhya - Sri Thothadri Mutt",
+      },
       {
         image: "../carousel-3.svg",
         subtitle: "Jeeyar swami reached Itarsi - Madhyapradesh",
@@ -218,6 +240,8 @@ const Section_2 = (props) => {
         image: "../carousel-5.svg",
         subtitle: " Vanamamalai Theppa Uthsavam Day 1 (Plavanothsavam)",
       },
+
+     
     ],
   };
   return (
@@ -283,7 +307,7 @@ const Section_2 = (props) => {
           </section>
           {/* newsletter slider */}
           <section className="hidden lg:block">
-            <div className=" w-full  pt-5 pb-10">
+            <div className=" w-full  pt-5 ">
               <Slider
                 // dots={true}
                 slidesToShow={4}
@@ -316,70 +340,9 @@ const Section_2 = (props) => {
               </Slider>
             </div>
           </section>
-          {/* banner */}
-          <section className="grid grid-cols-1 sm:grid-cols-2 gap-5  p-5 place-items-center">
-            {props?.apiData?.banner_data?.map((data, index) => {
-              if (data?.type === "image") {
-                return (
-                  <div key={index} className=" w-full">
-                    <img
-                      src={VITE_BASE_LINK + data?.image}
-                      alt="square_image"
-                      className="w-full"
-                    />
-                  </div>
-                );
-              }
 
-              if (data?.type === "text") {
-                return (
-                  <div key={index} className="p-5 ">
-                    <h1 className="text-[calc(0.4vw+1.5rem)] font-semibold mb-5 font-oswald">
-                      {data?.h1}
-                    </h1>
-                    <h1 className="font-caladea text-[calc(0.3vw+1rem)] max-h-[250px] overflow-y-scroll scrollbar-hide ">
-                      {data?.p}
-                    </h1>
-                  </div>
-                );
-              }
-            })}
-          </section>
-          {/* Download buttons */}
-          <section className="font-caladea text-lg flex gap-5 justify-between mx-5 flex-wrap">
-            <a
-              href={VITE_BASE_LINK + "media/img/calender.pdf"}
-              target="_blank"
-              rel="noreferer"
-              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
-            >
-              <img src={download_icon} className="w-[15px]" alt="download" />
-              <h1>Calendar</h1>
-            </a>
-            <a
-              href={VITE_BASE_LINK + "media/img/newsletter.pdf"}
-              target="_blank"
-              rel="noreferer"
-              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
-            >
-              <img src={download_icon} className="w-[15px]" alt="download" />
-              <h1>Newsletter</h1>
-            </a>
-            <a
-              href={VITE_BASE_LINK + "media/img/thaniyan.pdf"}
-              target="_blank"
-              rel="noreferer"
-              className="bg-[#C97A15] rounded-lg text-white p-4 text-sm flex justify-center gap-3 items-center flex-1 "
-            >
-              <img src={download_icon} className="w-[15px]" alt="download" />
-              <div>
-                <h1 className="w-max"> Vanamamalaimutt Thaniyan </h1>
-              </div>
-            </a>
-          </section>
-
-          {/* Vidyapeetham */}
-          <section className="p-5 mt-5">
+            {/* Vidyapeetham */}
+            <section className="p-5 pt-0 ">
             <div className=" border-[#FBBCA9] border rounded-3xl bg-[#FFF4F0] flex flex-col xl:flex-row items-center gap-5">
               <img
                 src="../pathshala_section_img.svg"
@@ -445,6 +408,76 @@ const Section_2 = (props) => {
               </div>
             </div>
           </section>
+
+
+          {/* new news */}
+          
+<section className="rounded-3xl w-[97%] mx-auto bg-gray-300 h-[300px]"></section>
+
+
+          {/* banner */}
+          <section className="grid grid-cols-1 sm:grid-cols-2 gap-5  p-5 place-items-center">
+            {props?.apiData?.banner_data?.map((data, index) => {
+              if (data?.type === "image") {
+                return (
+                  <div key={index} className=" w-full">
+                    <img
+                      src={VITE_BASE_LINK + data?.image}
+                      alt="square_image"
+                      className="w-full"
+                    />
+                  </div>
+                );
+              }
+
+              if (data?.type === "text") {
+                return (
+                  <div key={index} className="p-5 ">
+                    <h1 className="text-[calc(0.4vw+1.5rem)] font-semibold mb-5 font-oswald">
+                      {data?.h1}
+                    </h1>
+                    <h1 className="font-caladea text-[calc(0.3vw+1rem)] max-h-[250px] overflow-y-scroll scrollbar-hide ">
+                      {data?.p}
+                    </h1>
+                  </div>
+                );
+              }
+            })}
+          </section>
+          {/* Download buttons */}
+          <section className="font-caladea text-lg flex gap-5 justify-between mx-5 flex-wrap">
+            <a
+              href={VITE_BASE_LINK + "media/img/calender.pdf"}
+              target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <h1>Calendar</h1>
+            </a>
+            <a
+              href={VITE_BASE_LINK + "media/img/newsletter.pdf"}
+              target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <h1>Newsletter</h1>
+            </a>
+            <a
+              href={VITE_BASE_LINK + "media/img/thaniyan.pdf"}
+              target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg text-white p-4 text-sm flex justify-center gap-3 items-center flex-1 "
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <div>
+                <h1 className="w-max"> Vanamamalaimutt Thaniyan </h1>
+              </div>
+            </a>
+          </section>
+
+        
         </>
       )}
 
