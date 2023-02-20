@@ -462,8 +462,13 @@ const Section_2 = (props) => {
             )}
           </div>
 
+          {/* event baner */}
+          <section className="hidden lg:block bg-[#FFF4F0] rounded-3xl mx-5 overflow-hidden">
+            <img src="../banner_25_feb.png" alt="25 feb" className="w-full" />
+          </section>
+
           {/* Vidyapeetham */}
-          <section className="p-5 pt-0 ">
+          <section className="hidden lg:block p-5 pt-0 mt-5">
             <div className=" border-[#FBBCA9] border rounded-3xl bg-[#FFF4F0] flex flex-col xl:flex-row items-center gap-5">
               <img
                 src="../pathshala_section_img.svg"
@@ -528,6 +533,19 @@ const Section_2 = (props) => {
                 </div>
               </div>
             </div>
+          </section>
+          {/* Download vidyapeetham buttons */}
+          <section className="hidden lg:flex font-caladea text-lg  gap-5 justify-between mx-5 flex-wrap">
+            <a
+              href="../VanamahachalaVidhyaPeetam.pdf"
+              download="VanamahachalaVidhyaPeetam.pdf"
+              // target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <h1>Vanamahachala Vidhya Peetam</h1>
+            </a>
           </section>
 
           {/* banner */}
@@ -654,7 +672,6 @@ const Section_2 = (props) => {
               </Slider>
             </div>
           </section>
-
           {/* admission */}
           <section className="lg:hidden mt-5">
             {/* admission  */}
@@ -768,6 +785,93 @@ const Section_2 = (props) => {
               </>
             )}
           </section>
+
+          {/* event banner */}
+          <section className=" lg:hidden bg-[#FFF4F0] rounded-3xl mx-5 overflow-hidden">
+            <img src="../banner_25_feb.png" alt="25 feb" className="w-full" />
+          </section>
+          {/* Vidyapeetham */}
+          <section className="lg:hidden p-5 pt-0 mt-5">
+            <div className=" border-[#FBBCA9] border rounded-3xl bg-[#FFF4F0] flex flex-col xl:flex-row items-center gap-5">
+              <img
+                src="../pathshala_section_img.svg"
+                alt=""
+                className="w-full "
+              />
+
+              <div className="w-full p-5">
+                <h1 className="text-[#830300] uppercase font-semibold text-xl mb-5">
+                  Vanamahachala VidhyaPeetam
+                </h1>
+                <div className="flex items-start gap-3   ">
+                  <div className="flex items-center   ">
+                    <div className="bg-[#B5090E] aspect-square translate-y-2 w-[10px]  rounded-full"></div>
+                  </div>
+                  <h3 className=" text-[#B5090E] font-inter">
+                    The significance of Patasala on Ramanuja 1000{" "}
+                  </h3>
+                </div>
+
+                <div className="flex items-start gap-3   ">
+                  <div className="flex items-start h-full   ">
+                    <div className="bg-[#B5090E] aspect-square translate-y-2 w-[10px]  rounded-full"></div>
+                  </div>
+                  <h3 className=" text-[#B5090E] font-inter">
+                    Role of our Mutt sishya and abhimani on this Project
+                  </h3>
+                </div>
+
+                <div className="flex items-start gap-3   ">
+                  <div className="flex items-center   ">
+                    <div className="bg-[#B5090E] aspect-square translate-y-2 w-[10px]  rounded-full"></div>
+                  </div>
+                  <h3 className=" text-[#B5090E] font-inter">
+                    The need of collecting funds and our perspective on this.
+                  </h3>
+                </div>
+
+                <div className="flex items-start gap-3   ">
+                  <div className="flex items-center   ">
+                    <div className="bg-[#B5090E] aspect-square translate-y-2 w-[10px]  rounded-full"></div>
+                  </div>
+                  <h3 className=" text-[#B5090E] font-inter">
+                    Unique opportunity to have our family name inscribed on a
+                    class room on the Patasala
+                  </h3>
+                </div>
+
+                <div className="my-5 flex justify-end">
+                  <Link to="/sub_page/vn_education/2" className="">
+                    <button className="flex items-center gap-3">
+                      <h2 className="text-[#830300] block text-lg">
+                        Read More
+                      </h2>
+                      <img
+                        src="../arrow-right-eduation-section.svg"
+                        alt=""
+                        className="block"
+                      />
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Download vidyapeetham buttons */}
+          <section className="flex lg:hidden font-caladea text-lg  gap-5 justify-between mx-5 flex-wrap">
+            <a
+              href="../VanamahachalaVidhyaPeetam.pdf"
+              download="VanamahachalaVidhyaPeetam.pdf"
+              // target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <h1>Vanamahachala Vidhya Peetam</h1>
+            </a>
+          </section>
+
           {/* yt */}
           <section className="pb-5 lg:hidden">
             <div className="mx-5 mt-5">
