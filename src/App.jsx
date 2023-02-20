@@ -251,7 +251,7 @@ function App() {
                     first_name: e?.target?.value,
                   });
                 }}
-                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border rounded-lg"
+                className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D]  border rounded-lg"
               />
             </label>
             <label htmlFor="" className="block w-full">
@@ -584,7 +584,10 @@ function App() {
             />
           </label>
 
-          <button className="bg-[#FC8D0B] rounded-lg  p-2 uppercase text-lg w-full text-white active:scale-95 transition-all">
+          <button
+            type="submit"
+            className="bg-[#FC8D0B] rounded-lg  p-2 uppercase text-lg w-full text-white active:scale-95 transition-all"
+          >
             Submit
           </button>
         </form>

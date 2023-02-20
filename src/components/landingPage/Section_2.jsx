@@ -11,6 +11,9 @@ import Slider from "react-slick";
 import YouTube from "react-youtube";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import cross from "../../assets/img/landingPage/cross.svg";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 function NextBtn(props) {
   const { className, style, onClick } = props;
@@ -193,27 +196,31 @@ const Section_2 = (props) => {
     },
 
     hero_carousel: [
-   
       {
         image: "../reached_moradabad.svg",
-        subtitle: "Sri Madhurakavi Vanamamalai Ramanuja Jeeyar swami at Moradabad.",
+        subtitle:
+          "Sri Madhurakavi Vanamamalai Ramanuja Jeeyar swami at Moradabad.",
       },
       {
         image: "../reached_luchnow.svg",
-        subtitle: "Sri Madhurakavi Vanamamalai Ramanuja Jeeyar swami visited Sri Kanchi Kamakodi Swami's Patasalai and blessed the Vidhyarthis - at Lucknow",
+        subtitle:
+          "Sri Madhurakavi Vanamamalai Ramanuja Jeeyar swami visited Sri Kanchi Kamakodi Swami's Patasalai and blessed the Vidhyarthis - at Lucknow",
       },
-      
+
       {
         image: "../reached_chitrakoot.svg",
-        subtitle: "Sri Vanamamalai Ramanuja Jeeyar swami at Mukharavind Mandhir - Chitrakoot ",
+        subtitle:
+          "Sri Vanamamalai Ramanuja Jeeyar swami at Mukharavind Mandhir - Chitrakoot ",
       },
       {
         image: "../reached_chilbila.svg",
-        subtitle: "Sri Madhurakavi Vanamamalai Ramanuja Jeeyar swami has arrived Chilbila - Uttar Pradesh.",
+        subtitle:
+          "Sri Madhurakavi Vanamamalai Ramanuja Jeeyar swami has arrived Chilbila - Uttar Pradesh.",
       },
       {
         image: "../reached_ayodhya.svg",
-        subtitle: "Sri Vanamamalai Ramanuja Jeeyar swami has reached Ayodhya - Sri Thothadri Mutt",
+        subtitle:
+          "Sri Vanamamalai Ramanuja Jeeyar swami has reached Ayodhya - Sri Thothadri Mutt",
       },
       {
         image: "../carousel-3.svg",
@@ -240,10 +247,11 @@ const Section_2 = (props) => {
         image: "../carousel-5.svg",
         subtitle: " Vanamamalai Theppa Uthsavam Day 1 (Plavanothsavam)",
       },
-
-     
     ],
   };
+
+  const [admissionOverlay, setAdmissionOverlay] = useState(false);
+  const admissionForm = useRef();
   return (
     <div>
       {/* {props?.apiData?.layout === "hero" && (
@@ -306,7 +314,7 @@ const Section_2 = (props) => {
             </div>
           </section>
           {/* newsletter slider */}
-          <section className="hidden lg:block">
+          <section className="hidden lg:block mb-5">
             <div className=" w-full  pt-5 ">
               <Slider
                 // dots={true}
@@ -340,9 +348,122 @@ const Section_2 = (props) => {
               </Slider>
             </div>
           </section>
+          {/* admission */}
+          <div className="hidden lg:block">
+            {/* admission  */}
+            <section className=" w-[97%] mx-auto bg-gray-300 rounded-3xl overflow-hidden mb-5">
+              <img
+                src="../pathshala_banner_1.png"
+                className="w-full  cursor-pointer "
+                alt="admission banner"
+                onClick={() => setAdmissionOverlay(true)}
+              />
+            </section>
 
-            {/* Vidyapeetham */}
-            <section className="p-5 pt-0 ">
+            {admissionOverlay && (
+              <>
+                {/* admission overlay */}
+                <div
+                  onClick={() => setAdmissionOverlay(false)}
+                  className="fixed z-[10000] inset-0 bg-black bg-opacity-20"
+                ></div>
+
+                {/* admission modal */}
+                <form
+                  ref={admissionForm}
+                  className="fixed z-[21500] bg-[#FFD29E] p-5 min-h-[250px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[600px] rounded-2xl "
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    emailjs
+                      .sendForm(
+                        "service_a9xcxdb",
+                        "template_t6mwhui",
+                        admissionForm.current,
+                        "ikPfuo0YPLOJXtysc"
+                      )
+                      .then(
+                        (result) => {
+                          console.log("form send", result);
+                          alert("Details submitted successfully!");
+                          setAdmissionOverlay(false);
+                        },
+                        (error) => {
+                          console.log("form error", error);
+                          alert("Something went wrong, please submit again.");
+                        }
+                      );
+                  }}
+                >
+                  <div className="flex justify-end">
+                    <button onClick={() => setAdmissionOverlay(false)}>
+                      <img
+                        src={cross}
+                        alt="close"
+                        className="w-[25px] cursor-pointer"
+                      />
+                    </button>
+                  </div>
+
+                  <div className="flex justify-center gap-5">
+                    <label htmlFor="first_name" className="block w-full">
+                      <h1 className="mb-1">First Name</h1>
+                      <input
+                        name="first_name"
+                        type="text"
+                        className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border rounded-lg"
+                      />
+                    </label>
+                    <label htmlFor="last_name" className="block w-full">
+                      <h1 className="mb-1">Last Name</h1>
+                      <input
+                        name="last_name"
+                        type="text"
+                        className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border"
+                      />
+                    </label>
+                  </div>
+                  <label htmlFor="email" className="block w-full mt-5">
+                    <h1 className="mb-1">Email</h1>
+                    <input
+                      name="email"
+                      type="email"
+                      className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border rounded-lg"
+                    />
+                  </label>
+                  <div className="flex justify-center gap-5 mt-5">
+                    <label htmlFor="isd" className="block w-full">
+                      <h1 className="mb-1">ISD Code</h1>
+                      <input
+                        name="isd"
+                        type="text"
+                        className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border rounded-lg"
+                        placeholder="+91"
+                        defaultValue="+91"
+                      />
+                    </label>
+                    <label htmlFor="phone" className="block w-full">
+                      <h1 className="mb-1">Phone Number</h1>
+                      <input
+                        name="phone"
+                        type="text"
+                        className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border"
+                      />
+                    </label>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="bg-[#FC8D0B] mt-5 rounded-lg  p-2 uppercase text-lg w-full text-white active:scale-95 transition-all"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+
+          {/* Vidyapeetham */}
+          <section className="p-5 pt-0 ">
             <div className=" border-[#FBBCA9] border rounded-3xl bg-[#FFF4F0] flex flex-col xl:flex-row items-center gap-5">
               <img
                 src="../pathshala_section_img.svg"
@@ -409,12 +530,6 @@ const Section_2 = (props) => {
             </div>
           </section>
 
-
-          {/* new news */}
-          
-<section className="rounded-3xl w-[97%] mx-auto bg-gray-300 h-[300px]"></section>
-
-
           {/* banner */}
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-5  p-5 place-items-center">
             {props?.apiData?.banner_data?.map((data, index) => {
@@ -476,8 +591,6 @@ const Section_2 = (props) => {
               </div>
             </a>
           </section>
-
-        
         </>
       )}
 
@@ -542,6 +655,119 @@ const Section_2 = (props) => {
             </div>
           </section>
 
+          {/* admission */}
+          <section className="lg:hidden mt-5">
+            {/* admission  */}
+            <section className=" w-[97%] mx-auto bg-gray-300 rounded-3xl overflow-hidden mb-5">
+              <img
+                src="../pathshala_banner_1.png"
+                className="w-full  cursor-pointer"
+                alt="admission banner"
+                onClick={() => setAdmissionOverlay(true)}
+              />
+            </section>
+
+            {admissionOverlay && (
+              <>
+                {/* admission overlay */}
+                <div
+                  onClick={() => setAdmissionOverlay(false)}
+                  className="fixed z-[10000] inset-0 bg-black bg-opacity-20"
+                ></div>
+
+                {/* admission modal */}
+                <form
+                  ref={admissionForm}
+                  className="fixed z-[21500] bg-[#FFD29E] p-5 min-h-[250px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[600px] rounded-2xl "
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    emailjs
+                      .sendForm(
+                        "service_a9xcxdb",
+                        "template_t6mwhui",
+                        admissionForm.current,
+                        "ikPfuo0YPLOJXtysc"
+                      )
+                      .then(
+                        (result) => {
+                          console.log("form send", result);
+                          alert("Details submitted successfully!");
+                          setAdmissionOverlay(false);
+                        },
+                        (error) => {
+                          console.log("form error", error);
+                          alert("Something went wrong, please submit again.");
+                        }
+                      );
+                  }}
+                >
+                  <div className="flex justify-end">
+                    <button onClick={() => setAdmissionOverlay(false)}>
+                      <img
+                        src={cross}
+                        alt="close"
+                        className="w-[25px] cursor-pointer"
+                      />
+                    </button>
+                  </div>
+
+                  <div className="flex justify-center gap-5">
+                    <label htmlFor="first_name" className="block w-full">
+                      <h1 className="mb-1">First Name</h1>
+                      <input
+                        name="first_name"
+                        type="text"
+                        className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border rounded-lg"
+                      />
+                    </label>
+                    <label htmlFor="last_name" className="block w-full">
+                      <h1 className="mb-1">Last Name</h1>
+                      <input
+                        name="last_name"
+                        type="text"
+                        className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border"
+                      />
+                    </label>
+                  </div>
+                  <label htmlFor="email" className="block w-full mt-5">
+                    <h1 className="mb-1">Email</h1>
+                    <input
+                      name="email"
+                      type="email"
+                      className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border rounded-lg"
+                    />
+                  </label>
+                  <div className="flex justify-center gap-5 mt-5">
+                    <label htmlFor="isd" className="block w-full">
+                      <h1 className="mb-1">ISD Code</h1>
+                      <input
+                        name="isd"
+                        type="text"
+                        className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border rounded-lg"
+                        placeholder="+91"
+                        defaultValue="+91"
+                      />
+                    </label>
+                    <label htmlFor="phone" className="block w-full">
+                      <h1 className="mb-1">Phone Number</h1>
+                      <input
+                        name="phone"
+                        type="text"
+                        className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border"
+                      />
+                    </label>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="bg-[#FC8D0B] mt-5 rounded-lg  p-2 uppercase text-lg w-full text-white active:scale-95 transition-all"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </>
+            )}
+          </section>
           {/* yt */}
           <section className="pb-5 lg:hidden">
             <div className="mx-5 mt-5">
