@@ -56,9 +56,17 @@ function PreviousBtn(props) {
 }
 
 const Section_2 = (props) => {
-  // useEffect(() => {
-  //   console.log(props?.apiData);
-  // }, [props]);
+  let settings = {
+    dots: true,
+    arrows: false,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    fade: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+  };
 
   // const pageName = "laughingcolours";
   const pageName = "srivanamamalaimuttofficial";
@@ -341,7 +349,7 @@ const Section_2 = (props) => {
                           <img src={data?.image} className="w-full" alt="" />
                         </div>
                       </div>
-                      <p className="text-center text-sm">{data?.subtitle}</p>
+                      <p className="text-center text-base font-inter">{data?.subtitle}</p>
                     </div>
                   );
                 })}
@@ -352,12 +360,26 @@ const Section_2 = (props) => {
           <div className="hidden lg:block">
             {/* admission  */}
             <section className=" w-[97%] mx-auto bg-gray-300 rounded-3xl overflow-hidden mb-5">
-              <img
-                src="../pathshala_banner_1.png"
-                className="w-full  cursor-pointer "
+            
+
+<Slider
+          className="w-full"
+          {...settings}
+        >
+          <img
+                src="../admission_banner_1.png"
+                className="w-full  cursor-pointer aspect-video"
                 alt="admission banner"
                 onClick={() => setAdmissionOverlay(true)}
               />
+
+<img
+                src="../admission_banner_2.png"
+                className="w-full  cursor-pointer aspect-video"
+                alt="admission banner"
+                onClick={() => setAdmissionOverlay(true)}
+              />
+        </Slider >
             </section>
 
             {admissionOverlay && (
@@ -463,7 +485,7 @@ const Section_2 = (props) => {
           </div>
 
           {/* event baner */}
-          <section className="hidden lg:block bg-[#FFF4F0] rounded-3xl mx-5 overflow-hidden">
+          <section className="hidden lg:block bg-[#FFF4F0] rounded-3xl mx-5 overflow-hidden ">
             <img src="../banner_25_feb.png" alt="25 feb" className="w-full" />
           </section>
 
@@ -665,7 +687,7 @@ const Section_2 = (props) => {
                           <img src={data?.image} className="w-full" alt="" />
                         </div>
                       </div>
-                      <p className="text-center text-sm">{data?.subtitle}</p>
+                      <p className="text-center text-sm font-inter">{data?.subtitle}</p>
                     </div>
                   );
                 })}
@@ -676,12 +698,24 @@ const Section_2 = (props) => {
           <section className="lg:hidden mt-5">
             {/* admission  */}
             <section className=" w-[97%] mx-auto bg-gray-300 rounded-3xl overflow-hidden mb-5">
-              <img
-                src="../pathshala_banner_1.png"
-                className="w-full  cursor-pointer"
+            <Slider
+          className="w-full"
+          {...settings}
+        >
+          <img
+                src="../admission_banner_1.png"
+                className="w-full  cursor-pointer aspect-video"
                 alt="admission banner"
                 onClick={() => setAdmissionOverlay(true)}
               />
+
+<img
+                src="../admission_banner_2.png"
+                className="w-full  cursor-pointer aspect-video"
+                alt="admission banner"
+                onClick={() => setAdmissionOverlay(true)}
+              />
+        </Slider >
             </section>
 
             {admissionOverlay && (
