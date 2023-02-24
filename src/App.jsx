@@ -37,6 +37,7 @@ import { useState } from "react";
 import axios from "axios";
 import { VITE_BASE_LINK } from "./base_link/BaseLink";
 import { useDetectClickOutside } from "react-detect-click-outside";
+import ShishyaEnrollForm from "./pages/ShishyaEnrollForm";
 
 // import { Country, State, City } from "country-state-city";
 
@@ -627,6 +628,7 @@ function App() {
             element={<SecondaryLayout_4 />}
           />
           <Route path="/jeeyars" element={<SecondaryLayout_5 />} />
+          <Route path="/shishyas_enroll_form" element={<ShishyaEnrollForm />} />
 
           <Route element={<ProtectedRoutes />}>
             <Route

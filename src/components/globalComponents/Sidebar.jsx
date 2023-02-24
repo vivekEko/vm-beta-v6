@@ -247,16 +247,18 @@ const Sidebar = () => {
               : "hidden"
           }  w-full p-2 `}
         >
-          <button
-            className="rounded-lg w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-xl bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
+          <Link
+            onClick={() => setSidebarStatus(false)}
+            to="/shishyas_enroll_form"
+            className="rounded-lg w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest  bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
               "
-            onClick={() => setSubscribe(true)}
+            // onClick={() => setSubscribe(true)}
           >
             <div>
               <img src={avatar} alt="avatar" className="w-[35px]" />
             </div>
-            <h1>Subscribe</h1>
-          </button>
+            <h1>Sishyas Enrollment</h1>
+          </Link>
         </div>
 
         {/* social media */}

@@ -4,6 +4,6 @@ export const VITE_BASE_LINK = "https://api.vanamamalai.us/";
 
 // "http://192.168.1.14:8000/"
 
-// http://vanamamalai.us:3000/
+// https://vanamamalai.us:3000/
 
-// "http://api.vanamamalai.us/"
+// "https://api.vanamamalai.us/"

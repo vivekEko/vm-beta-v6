@@ -349,7 +349,9 @@ const Section_2 = (props) => {
                           <img src={data?.image} className="w-full" alt="" />
                         </div>
                       </div>
-                      <p className="text-center text-base font-inter">{data?.subtitle}</p>
+                      <p className="text-center text-base font-inter">
+                        {data?.subtitle}
+                      </p>
                     </div>
                   );
                 })}
@@ -360,26 +362,21 @@ const Section_2 = (props) => {
           <div className="hidden lg:block">
             {/* admission  */}
             <section className=" w-[97%] mx-auto bg-gray-300 rounded-3xl overflow-hidden mb-5">
-            
+              <Slider className="w-full" {...settings}>
+                <img
+                  src="../admission_banner_1.png"
+                  className="w-full  cursor-pointer aspect-video"
+                  alt="admission banner"
+                  onClick={() => setAdmissionOverlay(true)}
+                />
 
-<Slider
-          className="w-full"
-          {...settings}
-        >
-          <img
-                src="../admission_banner_1.png"
-                className="w-full  cursor-pointer aspect-video"
-                alt="admission banner"
-                onClick={() => setAdmissionOverlay(true)}
-              />
-
-<img
-                src="../admission_banner_2.png"
-                className="w-full  cursor-pointer aspect-video"
-                alt="admission banner"
-                onClick={() => setAdmissionOverlay(true)}
-              />
-        </Slider >
+                <img
+                  src="../admission_banner_2.png"
+                  className="w-full  cursor-pointer aspect-video"
+                  alt="admission banner"
+                  onClick={() => setAdmissionOverlay(true)}
+                />
+              </Slider>
             </section>
 
             {admissionOverlay && (
@@ -687,7 +684,9 @@ const Section_2 = (props) => {
                           <img src={data?.image} className="w-full" alt="" />
                         </div>
                       </div>
-                      <p className="text-center text-sm font-inter">{data?.subtitle}</p>
+                      <p className="text-center text-sm font-inter">
+                        {data?.subtitle}
+                      </p>
                     </div>
                   );
                 })}
@@ -698,24 +697,24 @@ const Section_2 = (props) => {
           <section className="lg:hidden mt-5">
             {/* admission  */}
             <section className=" w-[97%] mx-auto bg-gray-300 rounded-3xl overflow-hidden mb-5">
-            <Slider
-          className="w-full"
-          {...settings}
-        >
-          <img
-                src="../admission_banner_1.png"
-                className="w-full  cursor-pointer aspect-video"
-                alt="admission banner"
-                onClick={() => setAdmissionOverlay(true)}
-              />
+              <div>
+                {" "}
+                <Slider className="w-full" {...settings}>
+                  <img
+                    src="../admission_banner_1.png"
+                    className="w-full  cursor-pointer aspect-video"
+                    alt="admission banner"
+                    onClick={() => setAdmissionOverlay(true)}
+                  />
 
-<img
-                src="../admission_banner_2.png"
-                className="w-full  cursor-pointer aspect-video"
-                alt="admission banner"
-                onClick={() => setAdmissionOverlay(true)}
-              />
-        </Slider >
+                  <img
+                    src="../admission_banner_2.png"
+                    className="w-full  cursor-pointer aspect-video"
+                    alt="admission banner"
+                    onClick={() => setAdmissionOverlay(true)}
+                  />
+                </Slider>
+              </div>
             </section>
 
             {admissionOverlay && (
@@ -1056,7 +1055,7 @@ const Section_2 = (props) => {
                             <img
                               src={VITE_BASE_LINK + data?.image}
                               alt={data?.name}
-                              className="mx-auto h-full w-full "
+                              className="mx-auto h-full w-full"
                             />
                           )}
                         </div>
