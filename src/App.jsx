@@ -39,15 +39,17 @@ import { VITE_BASE_LINK } from "./base_link/BaseLink";
 import { useDetectClickOutside } from "react-detect-click-outside";
 import ShishyaEnrollForm from "./pages/ShishyaEnrollForm";
 
-// import ReactGA from "react-ga4";
+import ReactGA from "react-ga4";
 
 // import { Country, State, City } from "country-state-city";
 
 function App() {
   // google analytics code
-  // const TRACKIN_ID = "G-9Y57V6Y25G";
-  // ReactGA.initialize(TRACKIN_ID);
+  const TRACKIN_ID = "G-9Y57V6Y25G";
+  ReactGA.initialize(TRACKIN_ID);
   // ReactGA.pageview(document.location.pathname);
+  // Send pageview with a custom path
+  ReactGA.send({ hitType: "pageview", page: "/home" });
 
   const [currentPath, setCurrentPath] = useRecoilState(currentPathAtom);
   const [sidebarStatus, setSidebarStatus] = useRecoilState(sidebarStatusAtom);
