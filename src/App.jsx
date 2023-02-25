@@ -45,11 +45,10 @@ import ReactGA from "react-ga4";
 
 function App() {
   // google analytics code
-  const TRACKIN_ID = "G-9Y57V6Y25G";
-  ReactGA.initialize(TRACKIN_ID);
-  // ReactGA.pageview(document.location.pathname);
+  // const TRACKIN_ID = "G-9Y57V6Y25G";
+  // ReactGA.initialize(TRACKIN_ID);
   // Send pageview with a custom path
-  ReactGA.send({ hitType: "pageview", page: "/home" });
+  // ReactGA.send({ hitType: "pageview", page: "/home" });
 
   const [currentPath, setCurrentPath] = useRecoilState(currentPathAtom);
   const [sidebarStatus, setSidebarStatus] = useRecoilState(sidebarStatusAtom);
