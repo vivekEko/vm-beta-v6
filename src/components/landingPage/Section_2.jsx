@@ -568,7 +568,7 @@ const Section_2 = (props) => {
           </section>
 
           {/* banner */}
-          <section className="grid grid-cols-1 sm:grid-cols-2 gap-5  p-5 place-items-center">
+          {/* <section className="grid grid-cols-1 sm:grid-cols-2 gap-5  p-5 place-items-center">
             {props?.apiData?.banner_data?.map((data, index) => {
               if (data?.type === "image") {
                 return (
@@ -595,9 +595,9 @@ const Section_2 = (props) => {
                 );
               }
             })}
-          </section>
+          </section> */}
           {/* Download buttons */}
-          <section className="font-caladea text-lg flex gap-5 justify-between mx-5 flex-wrap">
+          <section className="mt-5 font-caladea text-lg flex gap-5 justify-between mx-5 flex-wrap">
             <a
               href={VITE_BASE_LINK + "media/img/calender.pdf"}
               target="_blank"
