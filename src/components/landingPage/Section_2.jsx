@@ -481,6 +481,11 @@ const Section_2 = (props) => {
             )}
           </div>
 
+          {/* banner-2 */}
+          <section className="hidden lg:block">
+            <img src="../vm6march.png" alt="" className="w-full" />
+          </section>
+
           {/* event baner */}
           <section className="hidden lg:block bg-[#FFF4F0] rounded-3xl mx-5 overflow-hidden ">
             <img src="../banner_25_feb.png" alt="25 feb" className="w-full" />
@@ -554,16 +559,16 @@ const Section_2 = (props) => {
             </div>
           </section>
           {/* Download vidyapeetham buttons */}
-          <section className="hidden lg:flex font-caladea text-lg  gap-5 justify-between mx-5 flex-wrap">
+          <section className="hidden lg:flex font-caladea  gap-5 justify-between mx-5 flex-wrap font-inter tracking-wider">
             <a
               href="../VanamahachalaVidhyaPeetam.pdf"
               download="VanamahachalaVidhyaPeetam.pdf"
               // target="_blank"
               rel="noreferer"
-              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
+              className="bg-[#C97A15] rounded-lg  text-white p-4  flex justify-center gap-3 items-center flex-1"
             >
               <img src={download_icon} className="w-[15px]" alt="download" />
-              <h1>Vanamahachala Vidhya Peetam</h1>
+              <h1 className="text-lg">Vanamahachala Vidhya Peetam</h1>
             </a>
           </section>
 
@@ -597,12 +602,12 @@ const Section_2 = (props) => {
             })}
           </section> */}
           {/* Download buttons */}
-          <section className="mt-5 font-caladea text-lg flex gap-5 justify-between mx-5 flex-wrap">
+          <section className="mt-5 font-caladea text-lg flex gap-5 justify-between mx-5 flex-wrap font-inter tracking-wider">
             <a
               href={VITE_BASE_LINK + "media/img/calender.pdf"}
               target="_blank"
               rel="noreferer"
-              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-lg flex justify-center gap-3 items-center flex-1 "
             >
               <img src={download_icon} className="w-[15px]" alt="download" />
               <h1>Calendar</h1>
@@ -611,7 +616,7 @@ const Section_2 = (props) => {
               href={VITE_BASE_LINK + "media/img/newsletter.pdf"}
               target="_blank"
               rel="noreferer"
-              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-lg flex justify-center gap-3 items-center flex-1 "
             >
               <img src={download_icon} className="w-[15px]" alt="download" />
               <h1>Newsletter</h1>
@@ -620,7 +625,7 @@ const Section_2 = (props) => {
               href={VITE_BASE_LINK + "media/img/thaniyan.pdf"}
               target="_blank"
               rel="noreferer"
-              className="bg-[#C97A15] rounded-lg text-white p-4 text-sm flex justify-center gap-3 items-center flex-1 "
+              className="bg-[#C97A15] rounded-lg text-white p-4 text-lg flex justify-center gap-3 items-center flex-1  "
             >
               <img src={download_icon} className="w-[15px]" alt="download" />
               <div>
@@ -819,6 +824,11 @@ const Section_2 = (props) => {
             )}
           </section>
 
+          {/* banner-2 */}
+          <section className=" lg:hidden">
+            <img src="../vm6march.png" alt="" className="w-full" />
+          </section>
+
           {/* event banner */}
           <section className=" lg:hidden bg-[#FFF4F0] rounded-3xl mx-5 overflow-hidden">
             <img src="../banner_25_feb.png" alt="25 feb" className="w-full" />
@@ -892,7 +902,7 @@ const Section_2 = (props) => {
           </section>
 
           {/* Download vidyapeetham buttons */}
-          <section className="flex lg:hidden font-caladea text-lg  gap-5 justify-between mx-5 flex-wrap">
+          <section className="flex lg:hidden font-caladea text-lg  gap-5 justify-between mx-5 flex-wrap font-inter tracking-wider">
             <a
               href="../VanamahachalaVidhyaPeetam.pdf"
               download="VanamahachalaVidhyaPeetam.pdf"
@@ -901,7 +911,7 @@ const Section_2 = (props) => {
               className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
             >
               <img src={download_icon} className="w-[15px]" alt="download" />
-              <h1>Vanamahachala Vidhya Peetam</h1>
+              <h1 className="text-base">Vanamahachala Vidhya Peetam</h1>
             </a>
           </section>
 
