@@ -387,8 +387,8 @@ const Section_2 = (props) => {
                   className="fixed z-[10000] inset-0 bg-black bg-opacity-20"
                 ></div>
 
-                {/* admission modal */}
-                <form
+                {/* admission modal desktop */}
+                {/* <form
                   ref={admissionForm}
                   className="fixed z-[21500] bg-[#FFD29E] p-5 min-h-[250px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[600px] rounded-2xl "
                   onSubmit={(e) => {
@@ -476,6 +476,120 @@ const Section_2 = (props) => {
                   >
                     Submit
                   </button>
+                </form> */}
+                <form
+                  ref={admissionForm}
+                  className="fixed z-[21500] bg-white pb-5 min-h-[250px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[600px] rounded-2xl "
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    emailjs
+                      .sendForm(
+                        "service_a9xcxdb",
+                        "template_t6mwhui",
+                        admissionForm.current,
+                        "ikPfuo0YPLOJXtysc"
+                      )
+                      .then(
+                        (result) => {
+                          console.log("form send", result);
+                          alert("Details submitted successfully!");
+                          setAdmissionOverlay(false);
+                        },
+                        (error) => {
+                          console.log("form error", error);
+                          alert("Something went wrong, please submit again.");
+                        }
+                      );
+                  }}
+                >
+
+                  {/* header */}
+                  <div className="flex justify-start px-5 py-3 bg-gray-200 rounded-t-2xl">
+                    <h1 className="text-[24px] text-gray-700 font-[500]">Addmission Form</h1>
+                  </div>
+
+                  {/* content */}
+                  <div className="pt-5 px-5">
+                    {/* cross */}
+                    {/* <div className="flex justify-end">
+                    <button onClick={() => setAdmissionOverlay(false)}>
+                      <img
+                        src={cross}
+                        alt="close"
+                        className="w-[25px] cursor-pointer"
+                      />
+                    </button>
+                  </div> */}
+
+
+                    {/* name */}
+                    <div className="flex justify-center gap-[100px]">
+                      <label htmlFor="first_name" className="block w-full">
+                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">First Name</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <input
+                          name="first_name"
+                          type="text"
+                          className="w-full p-2 border-gray-300 outline-none border rounded-lg"
+                        />
+                      </label>
+                      <label htmlFor="last_name" className="block w-full">
+                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">Last Name</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <input
+                          name="last_name"
+                          type="text"
+                          className="w-full p-2 border-gray-300 outline-none rounded-lg border"
+                        />
+                      </label>
+                    </div>
+
+                    {/* email & phone */}
+                    <div className="flex justify-center gap-[100px] mt-5">
+                      {/* <label htmlFor="isd" className="block w-full">
+                      <h1 className="mb-1">ISD Code</h1>
+                      <input
+                        name="isd"
+                        type="text"
+                        className="w-full p-2 border-gray-300 outline-none border rounded-lg"
+                        placeholder="+91"
+                        defaultValue="+91"
+                      />
+                    </label> */}
+                      <label htmlFor="email" className="block w-full">
+                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">Email</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <input
+                          name="email"
+                          type="email"
+                          className="w-full p-2 border-gray-300 outline-none border rounded-lg"
+                        />
+                      </label>
+                      <label htmlFor="phone" className="block w-full">
+                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">Phone Number</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <input
+                          name="phone"
+                          type="text"
+                          className="w-full p-2 border-gray-300 outline-none rounded-lg border"
+                        />
+                      </label>
+                    </div>
+
+                    {/* message */}
+                    <div className="flex justify-center mt-5">
+                      <label htmlFor="phone" className="block w-full">
+                        <h1 className="mb-1">Message</h1>
+                        <textarea name="Message" className="w-full p-2 border-gray-300 outline-none rounded-lg border" id="" cols="30" rows="5"></textarea>
+                      </label>
+                    </div>
+
+                    {/* submit button */}
+                    <div className="w-full flex justify-end items-center">
+                      <button
+                        type="submit"
+                        className="bg-black mt-3 rounded-lg px-4 py-2 uppercase text-[15px] tracking-[1px] text-white active:scale-95 transition-all"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
                 </form>
               </>
             )}
@@ -730,8 +844,8 @@ const Section_2 = (props) => {
                   className="fixed z-[10000] inset-0 bg-black bg-opacity-20"
                 ></div>
 
-                {/* admission modal */}
-                <form
+                {/* admission modal mobile */}
+                {/* <form
                   ref={admissionForm}
                   className="fixed z-[21500] bg-[#FFD29E] p-5 min-h-[250px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[600px] rounded-2xl "
                   onSubmit={(e) => {
@@ -772,7 +886,7 @@ const Section_2 = (props) => {
                       <input
                         name="first_name"
                         type="text"
-                        className="w-full p-2 border-[#FF9D7D] outline-[#FF9D7D] border rounded-lg"
+                        className="w-full p-2 border-gray-300 outline-none border rounded-lg"
                       />
                     </label>
                     <label htmlFor="last_name" className="block w-full">
@@ -819,9 +933,125 @@ const Section_2 = (props) => {
                   >
                     Submit
                   </button>
+                </form> */}
+
+                <form
+                  ref={admissionForm}
+                  className="fixed z-[21500] bg-white pb-5  min-h-[250px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[95%] mx-auto max-w-[400px] md:max-w-[500px] rounded-2xl "
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    emailjs
+                      .sendForm(
+                        "service_a9xcxdb",
+                        "template_t6mwhui",
+                        admissionForm.current,
+                        "ikPfuo0YPLOJXtysc"
+                      )
+                      .then(
+                        (result) => {
+                          console.log("form send", result);
+                          alert("Details submitted successfully!");
+                          setAdmissionOverlay(false);
+                        },
+                        (error) => {
+                          console.log("form error", error);
+                          alert("Something went wrong, please submit again.");
+                        }
+                      );
+                  }}
+                >
+
+                  {/* header */}
+                  <div className="flex justify-start px-5 py-3 bg-gray-200 rounded-t-2xl">
+                    <h1 className="text-[24px] text-gray-700 font-[500]">Addmission Form</h1>
+                  </div>
+
+                  {/* content */}
+                  <div className="pt-5 px-5">
+                    {/* cross */}
+                    {/* <div className="flex justify-end">
+                    <button onClick={() => setAdmissionOverlay(false)}>
+                      <img
+                        src={cross}
+                        alt="close"
+                        className="w-[25px] cursor-pointer"
+                      />
+                    </button>
+                  </div> */}
+
+
+                    {/* name */}
+                    <div className="flex justify-center gap-[20px]">
+                      <label htmlFor="first_name" className="block w-full">
+                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">First Name</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <input
+                          name="first_name"
+                          type="text"
+                          className="w-full p-2 border-gray-300 outline-none border rounded-lg"
+                        />
+                      </label>
+                      <label htmlFor="last_name" className="block w-full">
+                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">Last Name</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <input
+                          name="last_name"
+                          type="text"
+                          className="w-full p-2 border-gray-300 outline-none rounded-lg border"
+                        />
+                      </label>
+                    </div>
+
+                    {/* email & phone */}
+                    <div className="flex justify-center gap-[20px] mt-5">
+                      {/* <label htmlFor="isd" className="block w-full">
+                      <h1 className="mb-1">ISD Code</h1>
+                      <input
+                        name="isd"
+                        type="text"
+                        className="w-full p-2 border-gray-300 outline-none border rounded-lg"
+                        placeholder="+91"
+                        defaultValue="+91"
+                      />
+                    </label> */}
+                      <label htmlFor="email" className="block w-full">
+                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">Email</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <input
+                          name="email"
+                          type="email"
+                          className="w-full p-2 border-gray-300 outline-none border rounded-lg"
+                        />
+                      </label>
+                      <label htmlFor="phone" className="block w-full">
+                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">Phone Number</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <input
+                          name="phone"
+                          type="text"
+                          className="w-full p-2 border-gray-300 outline-none rounded-lg border"
+                        />
+                      </label>
+                    </div>
+
+                    {/* message */}
+                    <div className="flex justify-center mt-5">
+                      <label htmlFor="phone" className="block w-full">
+                        <h1 className="mb-1">Message</h1>
+                        <textarea name="Message" className="w-full p-2 border-gray-300 outline-none rounded-lg border" id="" cols="30" rows="5"></textarea>
+                      </label>
+                    </div>
+
+                    {/* submit button */}
+                    <div className="w-full flex justify-end items-center">
+                      <button
+                        type="submit"
+                        className="bg-black mt-3 rounded-lg px-4 py-2 uppercase text-[15px] tracking-[1px] text-white active:scale-95 transition-all"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
                 </form>
               </>
             )}
+            
           </section>
 
           {/* banner-2 */}
