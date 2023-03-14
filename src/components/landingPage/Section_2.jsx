@@ -358,6 +358,40 @@ const Section_2 = (props) => {
               </Slider>
             </div>
           </section>
+
+          {/* Download buttons pc */}
+          <section className="hidden lg:flex  mt-5 font-caladea text-lg mb-5 gap-5 justify-between mx-5 flex-wrap font-inter tracking-wider">
+            <a
+              href={VITE_BASE_LINK + "media/img/calender.pdf"}
+              target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-lg flex justify-center gap-3 items-center flex-1 "
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <h1>Calendar</h1>
+            </a>
+            <a
+              href={VITE_BASE_LINK + "media/img/newsletter.pdf"}
+              target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-lg flex justify-center gap-3 items-center flex-1 "
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <h1>Newsletter</h1>
+            </a>
+            <a
+              href={VITE_BASE_LINK + "media/img/thaniyan.pdf"}
+              target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg text-white p-4 text-lg flex justify-center gap-3 items-center flex-1  "
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <div>
+                <h1 className="w-max"> Vanamamalaimutt Thaniyan </h1>
+              </div>
+            </a>
+          </section>
+
           {/* admission */}
           <div className="hidden lg:block">
             {/* admission  */}
@@ -613,6 +647,20 @@ const Section_2 = (props) => {
             )}
           </div>
 
+          {/* Download vidyapeetham buttons pc */}
+          <section className="hidden lg:flex font-caladea  gap-5 justify-between mx-5 flex-wrap font-inter tracking-wider mb-5">
+            <a
+              href="../VanamahachalaVidhyaPeetam.pdf"
+              download="VanamahachalaVidhyaPeetam.pdf"
+              // target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg  text-white p-4  flex justify-center gap-3 items-center flex-1"
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <h1 className="text-lg">Vanamahachala Vidhya Peetam</h1>
+            </a>
+          </section>
+
           {/* banner-2 */}
           <section className="hidden lg:block">
             <img src="../vm6march.png" alt="" className="w-full" />
@@ -690,19 +738,6 @@ const Section_2 = (props) => {
               </div>
             </div>
           </section>
-          {/* Download vidyapeetham buttons */}
-          <section className="hidden lg:flex font-caladea  gap-5 justify-between mx-5 flex-wrap font-inter tracking-wider">
-            <a
-              href="../VanamahachalaVidhyaPeetam.pdf"
-              download="VanamahachalaVidhyaPeetam.pdf"
-              // target="_blank"
-              rel="noreferer"
-              className="bg-[#C97A15] rounded-lg  text-white p-4  flex justify-center gap-3 items-center flex-1"
-            >
-              <img src={download_icon} className="w-[15px]" alt="download" />
-              <h1 className="text-lg">Vanamahachala Vidhya Peetam</h1>
-            </a>
-          </section>
 
           {/* banner */}
           {/* <section className="grid grid-cols-1 sm:grid-cols-2 gap-5  p-5 place-items-center">
@@ -733,38 +768,6 @@ const Section_2 = (props) => {
               }
             })}
           </section> */}
-          {/* Download buttons */}
-          <section className="mt-5 font-caladea text-lg flex gap-5 justify-between mx-5 flex-wrap font-inter tracking-wider">
-            <a
-              href={VITE_BASE_LINK + "media/img/calender.pdf"}
-              target="_blank"
-              rel="noreferer"
-              className="bg-[#C97A15] rounded-lg  text-white p-4 text-lg flex justify-center gap-3 items-center flex-1 "
-            >
-              <img src={download_icon} className="w-[15px]" alt="download" />
-              <h1>Calendar</h1>
-            </a>
-            <a
-              href={VITE_BASE_LINK + "media/img/newsletter.pdf"}
-              target="_blank"
-              rel="noreferer"
-              className="bg-[#C97A15] rounded-lg  text-white p-4 text-lg flex justify-center gap-3 items-center flex-1 "
-            >
-              <img src={download_icon} className="w-[15px]" alt="download" />
-              <h1>Newsletter</h1>
-            </a>
-            <a
-              href={VITE_BASE_LINK + "media/img/thaniyan.pdf"}
-              target="_blank"
-              rel="noreferer"
-              className="bg-[#C97A15] rounded-lg text-white p-4 text-lg flex justify-center gap-3 items-center flex-1  "
-            >
-              <img src={download_icon} className="w-[15px]" alt="download" />
-              <div>
-                <h1 className="w-max"> Vanamamalaimutt Thaniyan </h1>
-              </div>
-            </a>
-          </section>
         </>
       )}
 
@@ -830,6 +833,40 @@ const Section_2 = (props) => {
               </Slider>
             </div>
           </section>
+
+          {/* Download buttons mobile */}
+          <section className="flex lg:hidden  mt-5 font-caladea text-lg mb-5 gap-5 justify-between mx-5 flex-wrap font-inter tracking-wider">
+            <a
+              href={VITE_BASE_LINK + "media/img/calender.pdf"}
+              target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-lg flex justify-center gap-3 items-center flex-1 "
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <h1>Calendar</h1>
+            </a>
+            <a
+              href={VITE_BASE_LINK + "media/img/newsletter.pdf"}
+              target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-lg flex justify-center gap-3 items-center flex-1 "
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <h1>Newsletter</h1>
+            </a>
+            <a
+              href={VITE_BASE_LINK + "media/img/thaniyan.pdf"}
+              target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg text-white p-4 text-lg flex justify-center gap-3 items-center flex-1  "
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <div>
+                <h1 className="w-max"> Vanamamalaimutt Thaniyan </h1>
+              </div>
+            </a>
+          </section>
+
           {/* admission */}
           <section className="lg:hidden mt-5">
             {/* admission  */}
@@ -1085,6 +1122,20 @@ const Section_2 = (props) => {
             )}
           </section>
 
+          {/* Download vidyapeetham buttons mobile*/}
+          <section className="flex lg:hidden font-caladea text-lg  gap-5 justify-between mx-5 flex-wrap font-inter tracking-wider">
+            <a
+              href="../VanamahachalaVidhyaPeetam.pdf"
+              download="VanamahachalaVidhyaPeetam.pdf"
+              // target="_blank"
+              rel="noreferer"
+              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
+            >
+              <img src={download_icon} className="w-[15px]" alt="download" />
+              <h1 className="text-base">Vanamahachala Vidhya Peetam</h1>
+            </a>
+          </section>
+
           {/* banner-2 */}
           <section className=" lg:hidden">
             <img src="../vm6march.png" alt="" className="w-full" />
@@ -1160,20 +1211,6 @@ const Section_2 = (props) => {
                 </div>
               </div>
             </div>
-          </section>
-
-          {/* Download vidyapeetham buttons */}
-          <section className="flex lg:hidden font-caladea text-lg  gap-5 justify-between mx-5 flex-wrap font-inter tracking-wider">
-            <a
-              href="../VanamahachalaVidhyaPeetam.pdf"
-              download="VanamahachalaVidhyaPeetam.pdf"
-              // target="_blank"
-              rel="noreferer"
-              className="bg-[#C97A15] rounded-lg  text-white p-4 text-sm flex justify-center gap-3 items-center flex-1"
-            >
-              <img src={download_icon} className="w-[15px]" alt="download" />
-              <h1 className="text-base">Vanamahachala Vidhya Peetam</h1>
-            </a>
           </section>
 
           {/* yt */}
