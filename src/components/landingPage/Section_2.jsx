@@ -441,7 +441,7 @@ const Section_2 = (props) => {
                       />
                     </label>
                   </div>
-                  <label htmlFor="email" className="block w-full mt-5">
+                  <label htmlFor="`email`" className="block w-full mt-5">
                     <h1 className="mb-1">Email</h1>
                     <input
                       name="email"
@@ -502,10 +502,11 @@ const Section_2 = (props) => {
                       );
                   }}
                 >
-
                   {/* header */}
                   <div className="flex justify-start px-5 py-3 bg-gray-200 rounded-t-2xl">
-                    <h1 className="text-[24px] text-gray-700 font-[500]">Addmission Form</h1>
+                    <h1 className="text-[24px] text-gray-700 font-[500]">
+                      Addmission Form
+                    </h1>
                   </div>
 
                   {/* content */}
@@ -521,11 +522,13 @@ const Section_2 = (props) => {
                     </button>
                   </div> */}
 
-
                     {/* name */}
                     <div className="flex justify-center gap-[100px]">
                       <label htmlFor="first_name" className="block w-full">
-                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">First Name</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <div className="flex gap-1 items-start justify-start">
+                          <h1 className="mb-1">First Name</h1>
+                          {/* <span className="text-[20px] text-red-500">*</span> */}
+                        </div>
                         <input
                           name="first_name"
                           type="text"
@@ -533,7 +536,10 @@ const Section_2 = (props) => {
                         />
                       </label>
                       <label htmlFor="last_name" className="block w-full">
-                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">Last Name</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <div className="flex gap-1 items-start justify-start">
+                          <h1 className="mb-1">Last Name</h1>
+                          {/* <span className="text-[20px] text-red-500">*</span> */}
+                        </div>
                         <input
                           name="last_name"
                           type="text"
@@ -555,7 +561,10 @@ const Section_2 = (props) => {
                       />
                     </label> */}
                       <label htmlFor="email" className="block w-full">
-                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">Email</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <div className="flex gap-1 items-start justify-start">
+                          <h1 className="mb-1">Email</h1>
+                          {/* <span className="text-[20px] text-red-500">*</span> */}
+                        </div>
                         <input
                           name="email"
                           type="email"
@@ -563,7 +572,10 @@ const Section_2 = (props) => {
                         />
                       </label>
                       <label htmlFor="phone" className="block w-full">
-                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">Phone Number</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <div className="flex gap-1 items-start justify-start">
+                          <h1 className="mb-1">Phone Number</h1>
+                          {/* <span className="text-[20px] text-red-500">*</span> */}
+                        </div>
                         <input
                           name="phone"
                           type="text"
@@ -576,7 +588,13 @@ const Section_2 = (props) => {
                     <div className="flex justify-center mt-5">
                       <label htmlFor="phone" className="block w-full">
                         <h1 className="mb-1">Message</h1>
-                        <textarea name="Message" className="w-full p-2 border-gray-300 outline-none rounded-lg border" id="" cols="30" rows="5"></textarea>
+                        <textarea
+                          name="message"
+                          className="w-full p-2 border-gray-300 outline-none rounded-lg border"
+                          id=""
+                          cols="30"
+                          rows="5"
+                        ></textarea>
                       </label>
                     </div>
 
@@ -960,10 +978,11 @@ const Section_2 = (props) => {
                       );
                   }}
                 >
-
                   {/* header */}
                   <div className="flex justify-start px-5 py-3 bg-gray-200 rounded-t-2xl">
-                    <h1 className="text-[24px] text-gray-700 font-[500]">Addmission Form</h1>
+                    <h1 className="text-[24px] text-gray-700 font-[500]">
+                      Addmission Form
+                    </h1>
                   </div>
 
                   {/* content */}
@@ -979,11 +998,12 @@ const Section_2 = (props) => {
                     </button>
                   </div> */}
 
-
                     {/* name */}
                     <div className="flex justify-center gap-[20px]">
                       <label htmlFor="first_name" className="block w-full">
-                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">First Name</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <div className="flex gap-1 items-start justify-start">
+                          <h1 className="mb-1">First Name</h1>
+                        </div>
                         <input
                           name="first_name"
                           type="text"
@@ -991,7 +1011,9 @@ const Section_2 = (props) => {
                         />
                       </label>
                       <label htmlFor="last_name" className="block w-full">
-                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">Last Name</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <div className="flex gap-1 items-start justify-start">
+                          <h1 className="mb-1">Last Name</h1>
+                        </div>
                         <input
                           name="last_name"
                           type="text"
@@ -1013,7 +1035,9 @@ const Section_2 = (props) => {
                       />
                     </label> */}
                       <label htmlFor="email" className="block w-full">
-                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">Email</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <div className="flex gap-1 items-start justify-start">
+                          <h1 className="mb-1">Email</h1>
+                        </div>
                         <input
                           name="email"
                           type="email"
@@ -1021,7 +1045,9 @@ const Section_2 = (props) => {
                         />
                       </label>
                       <label htmlFor="phone" className="block w-full">
-                        <div className="flex gap-1 items-start justify-start"><h1 className="mb-1">Phone Number</h1><span className="text-[20px] text-red-500">*</span></div>
+                        <div className="flex gap-1 items-start justify-start">
+                          <h1 className="mb-1">Phone Number</h1>
+                        </div>
                         <input
                           name="phone"
                           type="text"
@@ -1034,7 +1060,13 @@ const Section_2 = (props) => {
                     <div className="flex justify-center mt-5">
                       <label htmlFor="phone" className="block w-full">
                         <h1 className="mb-1">Message</h1>
-                        <textarea name="Message" className="w-full p-2 border-gray-300 outline-none rounded-lg border" id="" cols="30" rows="5"></textarea>
+                        <textarea
+                          name="message"
+                          className="w-full p-2 border-gray-300 outline-none rounded-lg border"
+                          id=""
+                          cols="30"
+                          rows="5"
+                        ></textarea>
                       </label>
                     </div>
 
@@ -1051,7 +1083,6 @@ const Section_2 = (props) => {
                 </form>
               </>
             )}
-            
           </section>
 
           {/* banner-2 */}

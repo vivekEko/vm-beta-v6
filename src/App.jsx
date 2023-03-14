@@ -400,7 +400,6 @@ function App() {
                     : "bg-opacity-100"
                 } w-full p-2 min-h-[40px] bg-white cursor-pointer border-[#FF9D7D] outline-[#FF9D7D] rounded-lg border peer`}
               >
-                {" "}
                 {subscribeValues?.state?.length > 0 ? (
                   subscribeValues?.state
                 ) : (
