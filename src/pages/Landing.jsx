@@ -46,99 +46,6 @@ const Landing = () => {
       .catch(function (error) {});
   }, []);
 
-  // const landingPageData = {
-  //   data: [
-  //     {
-  //       id: 1,
-  //       layout: "hero",
-  //       h1: "SRI VANAMAMALAI (THOTHADRI) MUTT",
-  //       h2: "SRI VANACHALA MAHAMUNI PARAMPARA",
-  //       img: "media/img/vm_temple_banner.png",
-  //     },
-  //     {
-  //       id: 2,
-  //       layout: "youtube_events",
-  //       h1: "Events",
-  //       caraousel_data: [
-  //         {
-  //           yt_link: "https://youtu.be/YPYghdZw8gM",
-  //           yt_title:
-  //             "Thiruppavai Pasuram 21 🤩 திருப்பாவை - ஏற்ற கலங்கள் | Tamil | 31st Vanamamalai Jeeyar Upanyasam",
-  //         },
-  //         {
-  //           yt_link: "https://youtu.be/YPYghdZw8gM",
-  //           yt_title:
-  //             "Thiruppavai Pasuram 21 🤩 திருப்பாவை - ஏற்ற கலங்கள் | Tamil | 31st Vanamamalai Jeeyar Upanyasam",
-  //         },
-  //         {
-  //           yt_link: "https://youtu.be/YPYghdZw8gM",
-  //           yt_title:
-  //             "Thiruppavai Pasuram 21 🤩 திருப்பாவை - ஏற்ற கலங்கள் | Tamil | 31st Vanamamalai Jeeyar Upanyasam",
-  //         },
-  //         {
-  //           yt_link: "https://youtu.be/YPYghdZw8gM",
-  //           yt_title:
-  //             "Thiruppavai Pasuram 21 🤩 திருப்பாவை - ஏற்ற கலங்கள் | Tamil | 31st Vanamamalai Jeeyar Upanyasam",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       id: 3,
-  //       layout: "banner",
-  //       banner_data: [
-  //         { id: 30, type: "image", image: square_image },
-  //         {
-  //           id: 31,
-  //           type: "text",
-  //           h1: "21st paasuram",
-  //           p: "Vanamamalai mutt is an ancient srivaishnava mutt which was established by ponnadikkal jiyar under the orders of manavala mamunigal. Ponnadikkal jiyar was the first and foremost disciple and this mutt is one of the most important mutts of srivaishnava sath sampradhayam.",
-  //         },
-  //         { id: 32, type: "image", image: square_image1 },
-  //         { id: 33, type: "image", image: square_image2 },
-  //       ],
-  //     },
-  //     {
-  //       id: 4,
-  //       layout: "facebook",
-  //       fb_page_link: "https://www.facebook.com/srivanamamalaimuttofficial/",
-  //     },
-  //     {
-  //       id: 5,
-  //       layout: "small_banner",
-  //       image: rect_img,
-  //       h1: "Welcome To Vanamamalai Mutt",
-  //       p: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer ",
-  //     },
-  //     {
-  //       id: 6,
-  //       layout: "cards",
-  //       card_data: [
-  //         {
-  //           h1: "SVNB Sabha AGM - 2011",
-  //           p: "The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President. The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President",
-  //         },
-  //         {
-  //           h1: "About Kshetram",
-  //           p: "The word kshetram itself is a wonderful sanskrit word. In his divine bhagavat geetha, geethacharyan says 'edam sareeram kowthEyA kshetram ethyabhidheeyathE'",
-  //         },
-  //         {
-  //           h1: "SVNB SabhaAGM - 2011",
-  //           p: "The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President.",
-  //         },
-  //         {
-  //           h1: "SVNB SabhaAGM - 2011",
-  //           p: "The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President.",
-  //         },
-
-  //         {
-  //           h1: "SVNB SabhaAGM - 2011",
-  //           p: "The Annual General body meeting of our sabha will be held on Sunday 12th June 2011 by 4.00 p.m. at our Sabha premises Triplicane, under the presidenship of Thiru A.G. Gopalan, President.",
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // };
-
   return (
     <div>
       <div
@@ -147,14 +54,6 @@ const Landing = () => {
         }}
         className="h-[23px] sticky top-0 z-[20000]"
       ></div>
-
-      {/* {landingPageData?.data?.map((sectionData, sectionIndex) => {
-        return (
-          <div key={sectionIndex} className="">
-            <Section apiData={sectionData} />
-          </div>
-        );
-      })} */}
 
       <div className="md:pl-[60px] 2xl:pl-[300px] lg:pr-[400px] ">
         <header className=" py-5 flex flex-col justify-center items-center px-5 text-center">

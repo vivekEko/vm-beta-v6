@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import cross from "../../assets/img/landingPage/cross.svg";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import axios from "axios";
 
 function NextBtn(props) {
   const { className, style, onClick } = props;
@@ -260,6 +261,81 @@ const Section_2 = (props) => {
 
   const [admissionOverlay, setAdmissionOverlay] = useState(false);
   const admissionForm = useRef();
+
+  //
+  const [subscribeValues, setSubscribeValues] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_no: "",
+    city: "",
+    state: "",
+    country: "",
+  });
+
+  const [cityList, setCityList] = useState([]);
+  const [stateList, setStateList] = useState([]);
+  const [countryList, setCountryList] = useState([]);
+
+  const [addressList, setAddressList] = useState({
+    country: false,
+    state: false,
+    city: false,
+  });
+
+  const [selectedCountryCode, setSelectedCountryCode] = useState();
+  const [selectedStateCode, setSelectedSateCode] = useState();
+  const [selectedCity, setSelectedCity] = useState();
+
+  // search items
+  const [countrySearch, setCountrySearch] = useState("");
+  const [stateSearch, setStateSearch] = useState("");
+  const [citySearch, setCitySearch] = useState("");
+  const [disableFields, setDisableFields] = useState({
+    country: false,
+    city: true,
+    state: true,
+  });
+
+  useEffect(() => {
+    axios?.post(VITE_BASE_LINK + "countriesAll")?.then((res) => {
+      setCountryList(res?.data?.country_list);
+    });
+  }, []);
+
+  useEffect(() => {
+    const formdata = new FormData();
+    formdata?.append("country", selectedCountryCode);
+    if (selectedCountryCode?.length > 0) {
+      axios?.post(VITE_BASE_LINK + "stateOfCountry", formdata)?.then((res) => {
+        // console.log("##### STATE LIST #####", res?.data);
+        setStateList(res?.data?.state_list);
+        setDisableFields({
+          ...disableFields,
+          state: false,
+          city: true,
+        });
+      });
+    }
+  }, [selectedCountryCode]);
+
+  useEffect(() => {
+    const formdata = new FormData();
+    formdata?.append("country", selectedCountryCode);
+    formdata?.append("state", selectedStateCode);
+    if (selectedCountryCode?.length > 0 && selectedStateCode?.length > 0) {
+      axios
+        ?.post(VITE_BASE_LINK + "cityOfCountryState", formdata)
+        ?.then((res) => {
+          // console.log("##### CITY LIST #####", res?.data);
+          setCityList(res?.data?.cities_list);
+          setDisableFields({
+            ...disableFields,
+            city: false,
+          });
+        });
+    }
+  }, [selectedStateCode]);
   return (
     <div>
       {/* {props?.apiData?.layout === "hero" && (
@@ -516,24 +592,25 @@ const Section_2 = (props) => {
                   className="fixed z-[21500] bg-white pb-5 min-h-[250px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[600px] rounded-2xl "
                   onSubmit={(e) => {
                     e.preventDefault();
-                    emailjs
-                      .sendForm(
-                        "service_a9xcxdb",
-                        "template_t6mwhui",
-                        admissionForm.current,
-                        "ikPfuo0YPLOJXtysc"
-                      )
-                      .then(
-                        (result) => {
-                          console.log("form send", result);
-                          alert("Details submitted successfully!");
-                          setAdmissionOverlay(false);
-                        },
-                        (error) => {
-                          console.log("form error", error);
-                          alert("Something went wrong, please submit again.");
-                        }
-                      );
+                    console.log(admissionForm?.current);
+                    // emailjs
+                    //   .sendForm(
+                    //     "service_a9xcxdb",
+                    //     "template_t6mwhui",
+                    //     admissionForm.current,
+                    //     "ikPfuo0YPLOJXtysc"
+                    //   )
+                    //   .then(
+                    //     (result) => {
+                    //       console.log("form send", result);
+                    //       alert("Details submitted successfully!");
+                    //       setAdmissionOverlay(false);
+                    //     },
+                    //     (error) => {
+                    //       console.log("form error", error);
+                    //       alert("Something went wrong, please submit again.");
+                    //     }
+                    //   );
                   }}
                 >
                   {/* header */}
@@ -618,6 +695,327 @@ const Section_2 = (props) => {
                       </label>
                     </div>
 
+                    {/* location */}
+                    <div className="flex justify-center gap-5 mt-5">
+                      {/* country */}
+                      <label
+                        id="country"
+                        className="block w-full relative pb-2 "
+                      >
+                        <h1 className="mb-1">Country</h1>
+                        <div
+                          onClick={() => {
+                            setAddressList({
+                              city: false,
+                              state: false,
+                              country: !addressList?.country,
+                            });
+                          }}
+                          className="w-full p-2 min-h-[40px] bg-white cursor-pointer border-gray-300 outline-none rounded-lg border peer"
+                        >
+                          {" "}
+                          {subscribeValues?.country?.length > 0 ? (
+                            subscribeValues?.country
+                          ) : (
+                            <h1 className="text-gray-500">Select Country</h1>
+                          )}{" "}
+                        </div>
+
+                        {addressList?.country === true && (
+                          <div
+                            onClick={() => {
+                              setAddressList({
+                                ...addressList,
+                                country: !addressList?.country,
+                              });
+                            }}
+                            className="fixed inset-0 bg-black bg-opacity-0 z-[50]"
+                          ></div>
+                        )}
+
+                        <div
+                          className={` ${
+                            addressList?.country ? "block" : "hidden"
+                          }  absolute top-[100%] left-0 w-full bg-white shadow-2xl border  z-[52] `}
+                        >
+                          <div className="w-full mb-2 ">
+                            <input
+                              type="search"
+                              name="country"
+                              value={countrySearch}
+                              onChange={(e) => {
+                                setCountrySearch(e?.target?.value);
+                              }}
+                              placeholder=" Search country"
+                              className=" w-full p-2 outline-none border-b border-b-gray-300 font-caladea "
+                            />
+                          </div>
+
+                          <div className="h-[150px] overflow-y-scroll ">
+                            {countryList
+                              ?.filter((filtered_data) => {
+                                if (countrySearch?.length > 0) {
+                                  if (
+                                    filtered_data
+                                      ?.toLowerCase()
+                                      ?.includes(countrySearch?.toLowerCase())
+                                  ) {
+                                    return filtered_data;
+                                  }
+                                } else {
+                                  return filtered_data;
+                                }
+                              })
+                              ?.map((data) => {
+                                return (
+                                  <div
+                                    className={` ${
+                                      data === selectedCountryCode
+                                        ? "bg-[#FF9D7D] bg-opacity-40"
+                                        : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                                    }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
+                                    onClick={() => {
+                                      setSelectedCountryCode(data);
+                                      setSubscribeValues({
+                                        ...subscribeValues,
+                                        country: data,
+                                        state: "",
+                                        city: "",
+                                      });
+                                      setAddressList({
+                                        city: false,
+                                        state: false,
+                                        country: !addressList?.country,
+                                      });
+                                    }}
+                                  >
+                                    {data}
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+                      </label>
+
+                      {/* state */}
+                      <label id="state" className="block w-full relative pb-2">
+                        <h1 className="mb-1">State</h1>
+                        <div
+                          onClick={() => {
+                            !disableFields?.state &&
+                              setAddressList({
+                                city: false,
+                                country: false,
+                                state: !addressList?.state,
+                              });
+                          }}
+                          className={` ${
+                            disableFields?.state
+                              ? "bg-opacity-30 cursor-not-allowed"
+                              : "bg-opacity-100"
+                          } w-full p-2 min-h-[40px] bg-white cursor-pointer border-gray-300 outline-none rounded-lg border peer`}
+                        >
+                          {subscribeValues?.state?.length > 0 ? (
+                            subscribeValues?.state
+                          ) : (
+                            <h1 className="text-gray-500">Select State</h1>
+                          )}{" "}
+                        </div>
+
+                        {addressList?.state === true && (
+                          <div
+                            onClick={() => {
+                              setAddressList({
+                                ...addressList,
+                                state: !addressList?.state,
+                              });
+                            }}
+                            className="fixed inset-0 bg-black bg-opacity-0 z-[50]"
+                          ></div>
+                        )}
+
+                        <div
+                          className={` ${
+                            addressList?.state ? "block" : "hidden"
+                          }  absolute top-[100%] left-0 w-full bg-white shadow-2xl border z-[52] `}
+                        >
+                          <div className="w-full mb-2 ">
+                            <input
+                              type="search"
+                              name="state"
+                              value={stateSearch}
+                              onChange={(e) => {
+                                setStateSearch(e?.target?.value);
+                              }}
+                              placeholder=" Search state"
+                              className=" w-full p-2 outline-none border-b border-b-gray-300 font-caladea "
+                            />
+                          </div>
+
+                          <div className="h-[150px] overflow-y-scroll ">
+                            {!stateList?.length > 0 ? (
+                              <div className="font-caladea text-base text-center h-full flex justify-center items-center   cursor-pointer text-gray-900 p-2">
+                                -NA-
+                              </div>
+                            ) : (
+                              <div>
+                                {stateList
+                                  ?.filter((filtered_data) => {
+                                    if (stateSearch?.length > 0) {
+                                      if (
+                                        filtered_data
+                                          ?.toLowerCase()
+                                          ?.includes(stateSearch?.toLowerCase())
+                                      ) {
+                                        return filtered_data;
+                                      }
+                                    } else {
+                                      return filtered_data;
+                                    }
+                                  })
+                                  ?.map((data) => {
+                                    return (
+                                      <div
+                                        className={` ${
+                                          data === selectedStateCode
+                                            ? "bg-[#FF9D7D] bg-opacity-40"
+                                            : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                                        }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
+                                        onClick={(e) => {
+                                          setSelectedSateCode(data);
+                                          setSubscribeValues({
+                                            ...subscribeValues,
+                                            state: data,
+                                            city: "",
+                                          });
+                                          setAddressList({
+                                            city: false,
+                                            country: false,
+                                            state: !addressList?.state,
+                                          });
+
+                                          setCitySearch(e?.target?.value);
+                                          setSelectedCity("");
+                                        }}
+                                      >
+                                        {data}
+                                      </div>
+                                    );
+                                  })}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </label>
+
+                      {/* city */}
+                      <label id="city" className="block w-full relative pb-2">
+                        <h1 className="mb-1">City</h1>
+                        <div
+                          onClick={() => {
+                            !disableFields?.city &&
+                              setAddressList({
+                                country: false,
+                                state: false,
+                                city: !addressList?.city,
+                              });
+                          }}
+                          className={` ${
+                            disableFields?.city
+                              ? "bg-opacity-30 cursor-not-allowed"
+                              : "bg-opacity-100"
+                          } w-full p-2 min-h-[40px] bg-white cursor-pointer border-gray-300 outline-none rounded-lg border peer`}
+                        >
+                          {" "}
+                          {subscribeValues?.city?.length > 0 ? (
+                            subscribeValues?.city
+                          ) : (
+                            <h1 className="text-gray-500">Select City</h1>
+                          )}{" "}
+                        </div>
+
+                        {addressList?.city === true && (
+                          <div
+                            onClick={() => {
+                              setAddressList({
+                                ...addressList,
+                                city: !addressList?.city,
+                              });
+                            }}
+                            className="fixed inset-0 bg-black bg-opacity-0 z-[50]"
+                          ></div>
+                        )}
+
+                        <div
+                          className={` ${
+                            addressList?.city ? "block" : "hidden"
+                          }  absolute top-[100%] left-0 w-full bg-white  border shadow-2xl   z-[52] `}
+                        >
+                          <div className="w-full mb-2 ">
+                            <input
+                              type="search"
+                              name="city"
+                              value={citySearch}
+                              onChange={(e) => {
+                                setCitySearch(e?.target?.value);
+                              }}
+                              placeholder=" Search city"
+                              className=" w-full p-2 outline-none border-b border-b-gray-300 font-caladea "
+                            />
+                          </div>
+                          <div className="h-[150px] overflow-y-scroll">
+                            {!cityList?.length > 0 ? (
+                              <div className="font-caladea text-base text-center h-full flex justify-center items-center   cursor-pointer text-gray-900 p-2">
+                                -NA-
+                              </div>
+                            ) : (
+                              <div>
+                                {cityList
+                                  ?.filter((filtered_data) => {
+                                    if (citySearch?.length > 0) {
+                                      if (
+                                        filtered_data
+                                          ?.toLowerCase()
+                                          ?.includes(citySearch?.toLowerCase())
+                                      ) {
+                                        return filtered_data;
+                                      }
+                                    } else {
+                                      return filtered_data;
+                                    }
+                                  })
+                                  ?.map((data) => {
+                                    return (
+                                      <div
+                                        className={` ${
+                                          data === selectedCity
+                                            ? "bg-[#FF9D7D] bg-opacity-40"
+                                            : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                                        }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
+                                        onClick={() => {
+                                          setSelectedCity(data);
+                                          setSubscribeValues({
+                                            ...subscribeValues,
+                                            city: data,
+                                          });
+                                          setAddressList({
+                                            country: false,
+                                            state: false,
+                                            city: !addressList?.city,
+                                          });
+                                        }}
+                                      >
+                                        {data}
+                                      </div>
+                                    );
+                                  })}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+
                     {/* message */}
                     <div className="flex justify-center mt-5">
                       <label htmlFor="phone" className="block w-full">
@@ -670,7 +1068,6 @@ const Section_2 = (props) => {
           <section className="hidden lg:block bg-[#FFF4F0] rounded-3xl mx-5 overflow-hidden ">
             <img src="../banner_25_feb.png" alt="25 feb" className="w-full" />
           </section>
-
           {/* Vidyapeetham */}
           <section className="hidden lg:block p-5 pt-0 mt-5">
             <div className=" border-[#FBBCA9] border rounded-3xl bg-[#FFF4F0] flex flex-col xl:flex-row items-center gap-5">
