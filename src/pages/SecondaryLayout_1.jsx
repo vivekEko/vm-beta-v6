@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header_2 from "../components/globalComponents/Header_2";
 // assets
 import frame from "../assets/img/secondaryLayoutPage/frame.png";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // recoil
 import { useRecoilState } from "recoil";
 import currentCallPathAtom from "../recoil/helpers/currentCallPathAtom";
@@ -15,6 +15,7 @@ const SecondaryLayout_1 = () => {
   // Local variables
   const [activeTab, setActiveTab] = useState(0);
   const [pageData, setPageData] = useState(null);
+  const navigate = useNavigate();
 
   const parameters = useParams();
 
@@ -28,6 +29,7 @@ const SecondaryLayout_1 = () => {
       })
       .catch(function (error) {
         console.log(error);
+        navigate("/home");
       });
   }, [parameters]);
 

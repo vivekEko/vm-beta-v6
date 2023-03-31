@@ -62,9 +62,9 @@ const Landing = () => {
           </div>
 
           <div className="flex  justify-center gap-2 md:gap-10 md:flex-row items-center mt-5 text-[8px] sm:text-xs md:text=sm xl:text-base ">
-            <h1 className="uppercase ">Srimathe Ramanujaya Nama:</h1>
-            <h1 className="uppercase ">Srimath Varavaramunaye Nama:</h1>
-            <h1 className="uppercase ">Sri vanachaLa Mahamunibyo Nama:</h1>
+            <h1 className="uppercase">Srimathe Ramanujaya Nama:</h1>
+            <h1 className="uppercase">Srimath Varavaramunaye Nama:</h1>
+            <h1 className="uppercase">Sri vanachaLa Mahamunibyo Nama:</h1>
           </div>
         </header>
 
@@ -99,7 +99,7 @@ const Landing = () => {
             </div>
             {landingPageData?.data?.map((sectionData, sectionIndex) => {
               return (
-                <div key={sectionIndex} className="w-full ">
+                <div key={sectionIndex} className="w-full">
                   <Sidebar_right apiData={sectionData} />
                 </div>
               );
