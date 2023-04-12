@@ -37,52 +37,96 @@ const SecondaryLayout_5 = () => {
         {/* {pageData?.call_link} */}
       </h1>
 
+      {/* link_status 3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333 */}
+
       {/* content */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-10 gap-y-20 w-[90%] mx-auto mt-32 pb-20">
         {pageData?.jeeyars?.map((data, index) => {
-          return (
-            <div
-              key={index}
-              // to={"/sub_page/" + pageData?.call_link + "/" + data?.id}
-              className="aspect-video object-contain"
-            >
-              <div className="bg-[#FC8D0B] p-5 text-white">
-                <div className="bg-[#FFE8B1] aspect-[1/1] object-fill  ">
-                  {data?.image && (
-                    <img
-                      src={VITE_BASE_LINK + data?.image}
-                      alt={data?.name}
-                      className="mx-auto h-full w-full "
-                    />
-                  )}
-                </div>
-                <div>
-                  <h1 className="text-lg uppercase py-2 min-h-[90px] ">
-                    {data?.name}
-                  </h1>
-                  <div className="flex justify-between items-end ">
-                    <h2 className="text-2xl">
-                      {data?.prefix + " " + data?.start_date}
-
-                      {data?.end_date?.length > 0
-                        ? " to " + data?.end_date
-                        : ""}
-                    </h2>
-                    {data?.jeeyar_no ? (
-                      <h1 className="text-2xl">
-                        {data?.jeeyar_no}
-                        <span className="text-sm uppercase ml-1">
-                          {data?.jeeyar_no_suffix}
-                        </span>
-                      </h1>
-                    ) : (
-                      ""
+          if (data?.link_status) {
+            return (
+              <Link
+                key={index}
+                to={"/sub_page/" + pageData?.call_link + "/" + data?.id}
+                className="aspect-video object-contain"
+              >
+                <div className="bg-[#FC8D0B] p-5 text-white">
+                  <div className="bg-[#FFE8B1] aspect-[1/1] object-fill  ">
+                    {data?.image && (
+                      <img
+                        src={VITE_BASE_LINK + data?.image}
+                        alt={data?.name}
+                        className="mx-auto h-full w-full "
+                      />
                     )}
+                  </div>
+                  <div>
+                    <h1 className="text-lg uppercase py-2 min-h-[90px] ">
+                      {data?.name}
+                    </h1>
+                    <div className="flex justify-between items-end ">
+                      <h2 className="text-2xl">
+                        {data?.prefix + " " + data?.start_date}
+
+                        {data?.end_date?.length > 0
+                          ? " to " + data?.end_date
+                          : ""}
+                      </h2>
+                      {data?.jeeyar_no ? (
+                        <h1 className="text-2xl">
+                          {data?.jeeyar_no}
+                          <span className="text-sm uppercase ml-1">
+                            {data?.jeeyar_no_suffix}
+                          </span>
+                        </h1>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            );
+          } else {
+            return (
+              <div key={index} className="aspect-video object-contain">
+                <div className="bg-[#FC8D0B] p-5 text-white">
+                  <div className="bg-[#FFE8B1] aspect-[1/1] object-fill  ">
+                    {data?.image && (
+                      <img
+                        src={VITE_BASE_LINK + data?.image}
+                        alt={data?.name}
+                        className="mx-auto h-full w-full "
+                      />
+                    )}
+                  </div>
+                  <div>
+                    <h1 className="text-lg uppercase py-2 min-h-[90px] ">
+                      {data?.name}
+                    </h1>
+                    <div className="flex justify-between items-end ">
+                      <h2 className="text-2xl">
+                        {data?.prefix + " " + data?.start_date}
+
+                        {data?.end_date?.length > 0
+                          ? " to " + data?.end_date
+                          : ""}
+                      </h2>
+                      {data?.jeeyar_no ? (
+                        <h1 className="text-2xl">
+                          {data?.jeeyar_no}
+                          <span className="text-sm uppercase ml-1">
+                            {data?.jeeyar_no_suffix}
+                          </span>
+                        </h1>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          );
+            );
+          }
         })}
       </div>
     </section>

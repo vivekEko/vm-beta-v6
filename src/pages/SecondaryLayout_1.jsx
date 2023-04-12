@@ -26,10 +26,12 @@ const SecondaryLayout_1 = () => {
       })
       .then(function (response) {
         setPageData(response?.data);
+        console.log("response:", response?.data);
       })
       .catch(function (error) {
         console.log(error);
         navigate("/home");
+        console.log("error:", error);
       });
   }, [parameters]);
 
