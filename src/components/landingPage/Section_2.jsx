@@ -447,7 +447,8 @@ const Section_2 = (props) => {
               <h1>Calendar</h1>
             </a>
             <a
-              href={VITE_BASE_LINK + "media/img/newsletter.pdf"}
+              href={"./2023-Chithrai-Month-Special-Newletter.docx.pdf"}
+              download
               target="_blank"
               rel="noreferer"
               className="bg-[#C97A15] rounded-lg  text-white p-4 text-lg flex justify-center gap-3 items-center flex-1 "
@@ -1243,7 +1244,8 @@ const Section_2 = (props) => {
               <h1>Calendar</h1>
             </a>
             <a
-              href={VITE_BASE_LINK + "media/img/newsletter.pdf"}
+              href={"./2023-Chithrai-Month-Special-Newletter.docx.pdf"}
+              download
               target="_blank"
               rel="noreferer"
               className="bg-[#C97A15] rounded-lg  text-white p-4 text-lg flex justify-center gap-3 items-center flex-1 "
