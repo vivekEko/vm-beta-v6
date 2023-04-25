@@ -447,7 +447,7 @@ const Section_2 = (props) => {
               <h1>Calendar</h1>
             </a>
             <a
-              href={"./2023-Chithrai-Month-Special-Newletter.docx.pdf"}
+              href={"./2023-Chithrai-Month-Special-Newletter.pdf"}
               download
               target="_blank"
               rel="noreferer"
@@ -1244,7 +1244,7 @@ const Section_2 = (props) => {
               <h1>Calendar</h1>
             </a>
             <a
-              href={"./2023-Chithrai-Month-Special-Newletter.docx.pdf"}
+              href={"./2023-Chithrai-Month-Special-Newletter.pdf"}
               download
               target="_blank"
               rel="noreferer"
