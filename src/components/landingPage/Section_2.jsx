@@ -192,8 +192,42 @@ const Section_2 = (props) => {
   ];
 
   const opts = {
-    height: "200",
+    height: "665",
     width: "100%",
+    playerVars: {
+      autoplay: 1,
+      controls: 1,
+      rel: 0,
+      showinfo: 0,
+      mute: 1,
+      loop: 1,
+    },
+  };
+
+  const mobile_opts = {
+    height: "300",
+    width: "100%",
+    playerVars: {
+      autoplay: 1,
+      controls: 1,
+      rel: 0,
+      showinfo: 0,
+      mute: 1,
+      loop: 1,
+    },
+  };
+
+  const mobile_opts_2 = {
+    height: "300",
+    width: "100%",
+    playerVars: {
+      autoplay: 0,
+      controls: 1,
+      rel: 0,
+      showinfo: 0,
+      mute: 0,
+      loop: 1,
+    },
   };
 
   const newHeroData = {
@@ -336,6 +370,7 @@ const Section_2 = (props) => {
         });
     }
   }, [selectedStateCode]);
+
   return (
     <div>
       {/* {props?.apiData?.layout === "hero" && (
@@ -375,43 +410,31 @@ const Section_2 = (props) => {
       {props?.apiData?.layout === "banner" && (
         <>
           {/* newsletter hero */}
-          <section className="p-5 hidden lg:block">
+          {/* <section className="p-5 hidden lg:block">
             <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row gap-5 items-center">
-              {/* image */}
               <div className="bg-gray-100 w-full 2xl:flex-[0.6] rounded-lg ">
                 <img src="../india.svg" className="w-full" alt="" />
               </div>
               <div className="w-full 2xl:flex-[0.4]">
-                {/* text */}
                 <div className="font-inter space-y-5  ">
                   {newHeroData?.hero_banner?.content?.map((data, index) => {
                     return <div key={index}>{data}</div>;
                   })}
                 </div>
-
-                {/* <div className="mt-5">
-                  <button className="bg-[#FF440D] bg-opacity-80 text-white p-3 rounded-lg font-inter px-10 mx-auto md:mx-0 active:scale-95 transition-all md:ml-auto block">
-                    Read More
-                  </button>
-                </div> */}
               </div>
             </div>
-          </section>
+          </section> */}
           {/* newsletter slider */}
-          <section className="hidden lg:block mb-5">
+          {/* <section className="hidden lg:block mb-5">
             <div className=" w-full  pt-5 ">
               <Slider
-                // dots={true}
                 slidesToShow={4}
                 infinite
                 arrows={true}
-                // autoplay={true}
-                // autoplaySpeed={1500}
                 pauseOnHover={true}
                 prevArrow={<PreviousBtn />}
                 nextArrow={<NextBtn />}
                 className="w-full  md:w-[100%] mx-auto "
-                // dotsClass="slick-dots custom-dots"
                 responsive={hero_responsive}
               >
                 {newHeroData?.hero_carousel?.map((data, index) => {
@@ -433,6 +456,15 @@ const Section_2 = (props) => {
                 })}
               </Slider>
             </div>
+          </section> */}
+
+          <section className="p-5 hidden lg:block">
+            <YouTube
+              // videoId={data?.video_id}
+              videoId={"3RtOH-g5bIM"}
+              opts={opts}
+              className="w-full"
+            />
           </section>
 
           {/* Download buttons pc */}
@@ -1172,43 +1204,34 @@ const Section_2 = (props) => {
       {props?.apiData?.layout === "youtube_events" && (
         <>
           {/* newsletter hero */}
-          <section className="p-5 lg:hidden">
+          {/* <section className="p-5 lg:hidden">
             <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row gap-5 items-center">
-              {/* image */}
               <div className="bg-gray-100 w-full 2xl:flex-[0.6] rounded-lg ">
                 <img src="../india.svg" className="w-full" alt="" />
               </div>
               <div className="w-full 2xl:flex-[0.4]">
-                {/* text */}
                 <div className="font-inter space-y-5  ">
                   {newHeroData?.hero_banner?.content?.map((data, index) => {
                     return <div key={index}>{data}</div>;
                   })}
                 </div>
 
-                {/* <div className="mt-5">
-                  <button className="bg-[#FF440D] bg-opacity-80 text-white p-3 rounded-lg font-inter px-10 mx-auto md:mx-0 active:scale-95 transition-all md:ml-auto block">
-                    Read More
-                  </button>
-                </div> */}
+             
               </div>
             </div>
-          </section>
+          </section> */}
           {/* newsletter slider */}
-          <section className="block lg:hidden">
+          {/* <section className="block lg:hidden">
             <div className="   pt-5  w-[90%] mx-auto">
               <Slider
-                // dots={true}
                 slidesToShow={4}
                 infinite
                 arrows={true}
-                // autoplay={true}
-                // autoplaySpeed={1500}
+         
                 pauseOnHover={true}
                 prevArrow={<PreviousBtn />}
                 nextArrow={<NextBtn />}
                 className="w-full  md:w-[100%] mx-auto "
-                // dotsClass="slick-dots custom-dots"
                 responsive={hero_responsive}
               >
                 {newHeroData?.hero_carousel?.map((data, index) => {
@@ -1230,6 +1253,15 @@ const Section_2 = (props) => {
                 })}
               </Slider>
             </div>
+          </section> */}
+
+          <section className="p-5 lg:hidden">
+            <YouTube
+              // videoId={data?.video_id}
+              videoId={"3RtOH-g5bIM"}
+              opts={mobile_opts}
+              className="w-full"
+            />
           </section>
 
           {/* Download buttons mobile */}
@@ -1632,7 +1664,7 @@ const Section_2 = (props) => {
                             ? data?.yt_link.split("watch?v=").reverse()[0]
                             : data?.yt_link.split("/").reverse()[0]
                         }
-                        opts={opts}
+                        opts={mobile_opts_2}
                         className="w-full"
                       />
 
