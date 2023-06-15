@@ -28,6 +28,7 @@ import rect_img from "../assets/img/landingPage/rect_image.png";
 import avatar from "../assets/img/landingPage/avatar.svg";
 import cross from "../assets/img/landingPage/cross.svg";
 import subScribeAtom from "../recoil/sidebar/subScribeAtom";
+import { Carousel } from "../components/landingPage/Carousel";
 
 const Landing = () => {
   // Global variables

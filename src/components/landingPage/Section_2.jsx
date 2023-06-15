@@ -6,6 +6,10 @@ import square_image from "../../assets/img/landingPage/26_EN.jpg";
 import square_image1 from "../../assets/img/landingPage/27_EN.jpg";
 import square_image2 from "../../assets/img/landingPage/28_EN.jpg";
 import download_icon from "../../assets/img/landingPage/download.svg";
+import b_1 from "../../assets/img/landingPage/b_1.png";
+import b_2 from "../../assets/img/landingPage/b_2.png";
+import b_3 from "../../assets/img/landingPage/b_3.png";
+import b_4 from "../../assets/img/landingPage/b_4.png";
 // import arrow_right from "../../assets/img/landingPage/arrow-right-eduation-section.svg";
 import Slider from "react-slick";
 import YouTube from "react-youtube";
@@ -15,6 +19,7 @@ import cross from "../../assets/img/landingPage/cross.svg";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
+import { Carousel } from "./Carousel";
 
 function NextBtn(props) {
   const { className, style, onClick } = props;
@@ -504,8 +509,8 @@ const Section_2 = (props) => {
           {/* admission */}
           <div className="hidden lg:block">
             {/* admission  */}
-            <section className=" w-[97%] mx-auto bg-gray-300 rounded-3xl overflow-hidden mb-5">
-              <Slider className="w-full" {...settings}>
+            {/* <section className=" w-[97%] mx-auto bg-gray-300 rounded-3xl overflow-hidden mb-5"> */}
+            {/* <Slider className="w-full" {...settings}>
                 <img
                   src="../admission_banner_1.png"
                   className="w-full  cursor-pointer aspect-video"
@@ -519,8 +524,9 @@ const Section_2 = (props) => {
                   alt="admission banner"
                   onClick={() => setAdmissionOverlay(true)}
                 />
-              </Slider>
-            </section>
+              </Slider> */}
+            <Carousel />
+            {/* </section> */}
 
             {admissionOverlay && (
               <>
@@ -1301,8 +1307,10 @@ const Section_2 = (props) => {
           {/* admission */}
           <section className="lg:hidden mt-5">
             {/* admission  */}
-            <section className=" w-[97%] mx-auto bg-gray-300 rounded-3xl overflow-hidden mb-5">
-              <div>
+            <section className=" w-[97%] mx-auto  mb-5">
+              <Carousel />
+
+              {/* <div>
                 {" "}
                 <Slider className="w-full" {...settings}>
                   <img
@@ -1319,7 +1327,7 @@ const Section_2 = (props) => {
                     onClick={() => setAdmissionOverlay(true)}
                   />
                 </Slider>
-              </div>
+              </div> */}
             </section>
 
             {admissionOverlay && (
