@@ -29,12 +29,15 @@ import avatar from "../assets/img/landingPage/avatar.svg";
 import cross from "../assets/img/landingPage/cross.svg";
 import subScribeAtom from "../recoil/sidebar/subScribeAtom";
 import { Carousel } from "../components/landingPage/Carousel";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import donateAtom from "../recoil/pages/global/donateAtom";
 
 const Landing = () => {
   // Global variables
   const [landingPageData, setLandingPageData] =
     useRecoilState(LandingPageDataAtom);
   const [subscribe, setSubscribe] = useRecoilState(subScribeAtom);
+  const [donate, setDonate] = useRecoilState(donateAtom);
 
   // local variables
 
@@ -84,7 +87,18 @@ const Landing = () => {
             className="hidden lg:block w-full max-w-[400px] h-[100vh] scrollbar-hide overflow-y-scroll fixed bottom-0 top-0 right-0
           bg-[#F1400B] bg-opacity-20 pt-5"
           >
-            <div className="w-full p-5 bg-[#fcd9ce] flex gap-3 items-center  ">
+            <div className="w-full p-5 bg-[#fcd9ce] flex  gap-3 items-center  ">
+              {/* donate button */}
+              <button
+                className="rounded-lg  w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest text-base bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
+              "
+                onClick={() => setDonate(true)}
+              >
+                <div>
+                  <AccountBalanceIcon />
+                </div>
+                <h1>Donate</h1>
+              </button>
               {/* subscribe btn */}
               <Link
                 to="/shishyas_enroll_form"
@@ -95,7 +109,7 @@ const Landing = () => {
                 <div>
                   <img src={avatar} alt="avatar" className="w-[25px]" />
                 </div>
-                <h1>Sishyas Enrollment</h1>
+                <h1>Sishyas</h1>
               </Link>
             </div>
             {landingPageData?.data?.map((sectionData, sectionIndex) => {
@@ -108,6 +122,55 @@ const Landing = () => {
           </div>
         </div>
       </div>
+
+      {donate && (
+        <>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-25 z-[100000] "
+            onClick={() => setDonate(false)}
+          ></div>
+
+          <div className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-white rounded-lg z-[100001] p-5 space-y-5 max-w-[500px]">
+            <h1 className="text-xl">Donation Details</h1>
+            <p>
+              Those who are interested to donate to this noble cause, may
+              contact us. Our Bank a/c details are listed below. Kindly keep us
+              informed after sending your cheque or transferring funds, to let
+              us send you the donation receipts. Your donations are tax-exempted
+              under section 80G.
+            </p>
+
+            <p>
+              Our postal address to send your cheques is - Sri. Sridhar Sowmyan,
+              143, North Uthira Street, Srirangam, Tiruchirapali District - 620
+              006, Tamil Nadu
+              <br />
+              Bank Name: City Union Bank <br />
+              Branch Name: Srirangam
+              <br />
+              A/C No. 500101010472070 <br />
+              A/C Name: Sri Vanamahachala Vidhya Peetam
+              <br />
+              A/c Type: Current a/c <br />
+              IFSC Code: CIUBOO00115 <br />
+              MICRCode: 620054003
+            </p>
+
+            <p>
+              Facebook :{" "}
+              <a
+                rel="noreferrer"
+                target="_blank"
+                href="https://www.facebook.com/srirangamvidyapeetam"
+                className="text-blue-500 hover:underline"
+              >
+                https://www.facebook.com/srirangamvidyapeetam
+              </a>{" "}
+              <br /> Email: <span>vanamamalai.mutt@gmail.com</span>
+            </p>
+          </div>
+        </>
+      )}
 
       {/* <Footer /> */}
     </div>

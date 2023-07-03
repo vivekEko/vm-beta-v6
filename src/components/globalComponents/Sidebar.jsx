@@ -16,6 +16,8 @@ import axios from "axios";
 import { VITE_BASE_LINK } from "../../base_link/BaseLink";
 import subScribeAtom from "../../recoil/sidebar/subScribeAtom";
 import avatar from "../../assets/img/landingPage/avatar.svg";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import donateAtom from "../../recoil/pages/global/donateAtom";
 
 const Sidebar = () => {
   // Global variables
@@ -26,6 +28,8 @@ const Sidebar = () => {
   // local variables
   const [openedLink, setOpenedLink] = useState(null);
   const [sidebarData, setSidebarData] = useState(null);
+  const [donate, setDonate] = useRecoilState(donateAtom);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -245,8 +249,19 @@ const Sidebar = () => {
               : sidebarStatus
               ? "block"
               : "hidden"
-          }  w-full p-2 `}
+          }  w-full p-2 space-y-5 `}
         >
+          <button
+            onClick={() => setDonate(true)}
+            className="rounded-lg w-full active:scale-95 transition-all font-caladea font-semibold tracking-widest  bg-[#F1400B] text-white  p-3 bg-opacity-70 hover:bg-opacity-100   duration-500 flex justify-center items-center gap-5
+              "
+            // onClick={() => setSubscribe(true)}
+          >
+            <div>
+              <AccountBalanceIcon fontSize="large" />
+            </div>
+            <h1>Donate</h1>
+          </button>
           <Link
             onClick={() => setSidebarStatus(false)}
             to="/shishyas_enroll_form"
