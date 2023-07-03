@@ -140,20 +140,35 @@ const Landing = () => {
               under section 80G.
             </p>
 
-            <p>
-              Our postal address to send your cheques is - Sri. Sridhar Sowmyan,
-              143, North Uthira Street, Srirangam, Tiruchirapali District - 620
-              006, Tamil Nadu
-              <br />
-              Bank Name: City Union Bank <br />
-              Branch Name: Srirangam
-              <br />
-              A/C No. 500101010472070 <br />
-              A/C Name: Sri Vanamahachala Vidhya Peetam
-              <br />
-              A/c Type: Current a/c <br />
-              IFSC Code: CIUBOO00115 <br />
-              MICRCode: 620054003
+            <p className="flex gap-1">
+              <span> A&#41;</span>
+              <span className="flex-1">
+                TO VANAMAMALAI MUTT <br />
+                Sri VANAMAMALAI Ramanuja Jeeyar Swamigal IOB Nanguneri 627108{" "}
+                <br />
+                A/C number: 138701000002220 <br />
+                IFSC:IOBA001387
+              </span>
+            </p>
+
+            <p className="flex gap-1">
+              <span>B&#41;</span>
+              <span className="flex-1">
+                TO VANAMAHACHALA VIDHYAPEETAM <br />
+                Our postal address to send your cheques is: <br />
+                Sri. Sridhar Sowmyan, 143, North Uthira Street, Srirangam,
+                Tiruchirapali District - 620 006, Tamil Nadu
+                <br />
+                Bank Name: City Union Bank <br />
+                Branch Name: Srirangam
+                <br />
+                A/C No. 500101010472070 <br />
+                A/C Name: Sri Vanamahachala Vidhya Peetam
+                <br />
+                A/c Type: Current a/c <br />
+                IFSC Code: CIUBOO00115 <br />
+                MICRCode: 620054003
+              </span>
             </p>
 
             <p>
