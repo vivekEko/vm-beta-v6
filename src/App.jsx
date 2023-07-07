@@ -40,6 +40,7 @@ import { useDetectClickOutside } from "react-detect-click-outside";
 import ShishyaEnrollForm from "./pages/ShishyaEnrollForm";
 
 import ReactGA from "react-ga4";
+import donateAtom from "./recoil/pages/global/donateAtom";
 
 // import { Country, State, City } from "country-state-city";
 
@@ -53,6 +54,7 @@ function App() {
   const [currentPath, setCurrentPath] = useRecoilState(currentPathAtom);
   const [sidebarStatus, setSidebarStatus] = useRecoilState(sidebarStatusAtom);
   const [subscribe, setSubscribe] = useRecoilState(subScribeAtom);
+  const [donate, setDonate] = useRecoilState(donateAtom);
   const location = useLocation();
 
   // local variables
@@ -136,6 +138,69 @@ function App() {
 
   return (
     <div className="font-oswald cursor-default">
+      {donate && (
+        <>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-25 z-[100000] "
+            onClick={() => setDonate(false)}
+          ></div>
+
+          <div className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-white rounded-lg z-[100001] p-5 space-y-5 max-w-[500px]">
+            <h1 className="text-xl">Donation Details</h1>
+            <p>
+              Those who are interested to donate to this noble cause, may
+              contact us. Our Bank a/c details are listed below. Kindly keep us
+              informed after sending your cheque or transferring funds, to let
+              us send you the donation receipts. Your donations are tax-exempted
+              under section 80G.
+            </p>
+
+            <p className="flex gap-1">
+              <span> A&#41;</span>
+              <span className="flex-1">
+                TO VANAMAMALAI MUTT <br />
+                Sri VANAMAMALAI Ramanuja Jeeyar Swamigal IOB Nanguneri 627108{" "}
+                <br />
+                A/C number: 138701000002220 <br />
+                IFSC:IOBA001387
+              </span>
+            </p>
+
+            <p className="flex gap-1">
+              <span>B&#41;</span>
+              <span className="flex-1">
+                TO VANAMAHACHALA VIDHYAPEETAM <br />
+                Our postal address to send your cheques is: <br />
+                Sri. Sridhar Sowmyan, 143, North Uthira Street, Srirangam,
+                Tiruchirapali District - 620 006, Tamil Nadu
+                <br />
+                Bank Name: City Union Bank <br />
+                Branch Name: Srirangam
+                <br />
+                A/C No. 500101010472070 <br />
+                A/C Name: Sri Vanamahachala Vidhya Peetam
+                <br />
+                A/c Type: Current a/c <br />
+                IFSC Code: CIUBOO00115 <br />
+                MICRCode: 620054003
+              </span>
+            </p>
+
+            <p>
+              Facebook :{" "}
+              <a
+                rel="noreferrer"
+                target="_blank"
+                href="https://www.facebook.com/srirangamvidyapeetam"
+                className="text-blue-500 hover:underline"
+              >
+                https://www.facebook.com/srirangamvidyapeetam
+              </a>{" "}
+              <br /> Email: <span>vanamamalai.mutt@gmail.com</span>
+            </p>
+          </div>
+        </>
+      )}
       <div
         className={` ${
           currentPath?.pathname?.includes("home")
