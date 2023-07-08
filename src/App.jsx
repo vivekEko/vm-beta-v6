@@ -517,7 +517,7 @@ function App() {
                               className={` ${
                                 data === selectedStateCode
                                   ? "bg-[#FF9D7D] bg-opacity-40"
-                                  : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                                  : "hover:bg-[#FF9D7D] hover:bg-opacity-20"
                               }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
                               onClick={(e) => {
                                 setSelectedSateCode(data);
@@ -531,7 +531,6 @@ function App() {
                                   country: false,
                                   state: !addressList?.state,
                                 });
-
                                 setCitySearch(e?.target?.value);
                                 setSelectedCity("");
                               }}
@@ -575,9 +574,9 @@ function App() {
               <div
                 className={` ${
                   addressList?.city ? "block" : "hidden"
-                }  absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll   `}
+                }  absolute top-[100%] left-0 w-full bg-white h-[200px] overflow-y-scroll`}
               >
-                <div className="w-full mb-2 ">
+                <div className="w-full mb-2">
                   <input
                     type="search"
                     name="city"
@@ -586,7 +585,7 @@ function App() {
                       setCitySearch(e?.target?.value);
                     }}
                     placeholder=" Search city"
-                    className=" w-full p-2 outline-none border-b border-b-gray-300 font-caladea "
+                    className=" w-full p-2 outline-none border-b border-b-gray-300 font-caladea"
                   />
                 </div>
                 <div>
@@ -616,7 +615,7 @@ function App() {
                               className={` ${
                                 data === selectedCity
                                   ? "bg-[#FF9D7D] bg-opacity-40"
-                                  : "hover:bg-[#FF9D7D] hover:bg-opacity-20 "
+                                  : "hover:bg-[#FF9D7D] hover:bg-opacity-20"
                               }  font-caladea text-base  transition-all cursor-pointer text-gray-900 p-2`}
                               onClick={() => {
                                 setSelectedCity(data);

@@ -20,6 +20,7 @@ import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
 import { Carousel } from "./Carousel";
+import { Carousel2 } from "./Carousel2";
 
 function NextBtn(props) {
   const { className, style, onClick } = props;
@@ -1098,12 +1099,32 @@ const Section_2 = (props) => {
             </a>
           </section>
 
+          {/* ################################################################################ */}
+          <section className="hidden lg:block py-10 px-5 bg-amber-50 mb-5">
+            <div>
+              <h1 className="text-3xl font-semibold">
+                HH Madurakavi Vanamamalai Jeer Swamy blessed His VanaMahachala
+                Vidyapeetam vidyarthi's
+              </h1>
+              <p className="my-5 text-xl font-normal">
+                Patasalai vidyarthi's gave a momento of Jeeyar Swamy portrait
+                during His visit and Swamy gave a anugraha bashana stressing the
+                importance of Vedic studies and vyakarana Mahatmiyam during His
+                discourse.
+              </p>
+            </div>
+
+            <Carousel2 />
+          </section>
+          {/* ################################################################################ */}
+
           {/* banner-2 */}
           <section className="hidden lg:block">
             <img src="../vm6march.png" alt="" className="w-full" />
           </section>
 
           {/* event baner */}
+
           <section className="hidden lg:block bg-[#FFF4F0] rounded-3xl mx-5 overflow-hidden ">
             <img src="../banner_25_feb.png" alt="25 feb" className="w-full" />
           </section>
@@ -1574,6 +1595,25 @@ const Section_2 = (props) => {
               <h1 className="text-base">Vanamahachala Vidhya Peetam</h1>
             </a>
           </section>
+
+          {/* ################################################################################ */}
+          <section className=" lg:hidden py-10 px-5 bg-amber-50 my-5">
+            <div>
+              <h1 className="text-3xl font-semibold">
+                HH Madurakavi Vanamamalai Jeer Swamy blessed His VanaMahachala
+                Vidyapeetam vidyarthi's
+              </h1>
+              <p className="my-5 text-xl font-normal">
+                Patasalai vidyarthi's gave a momento of Jeeyar Swamy portrait
+                during His visit and Swamy gave a anugraha bashana stressing the
+                importance of Vedic studies and vyakarana Mahatmiyam during His
+                discourse.
+              </p>
+            </div>
+
+            <Carousel2 />
+          </section>
+          {/* ################################################################################ */}
 
           {/* banner-2 */}
           <section className=" lg:hidden">
