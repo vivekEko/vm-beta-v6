@@ -3,6 +3,10 @@ import b_1 from "../../assets/img/landingPage/b_1.png";
 import b_2 from "../../assets/img/landingPage/b_2.png";
 import b_3 from "../../assets/img/landingPage/b_3.png";
 import b_4 from "../../assets/img/landingPage/b_4.png";
+import c_1 from "../../assets/img/landingPage/c_1.jpeg";
+import c_2 from "../../assets/img/landingPage/c_2.jpeg";
+import c_3 from "../../assets/img/landingPage/c_3.jpeg";
+import c_4 from "../../assets/img/landingPage/c_4.jpeg";
 import Slider from "react-slick";
 
 function NextBtn(props) {
@@ -47,7 +51,7 @@ function PreviousBtn(props) {
 
 export const Carousel = () => {
   const [activeImg, setAtiveImage] = useState(0);
-  const items = [b_1, b_2, b_3, b_4, b_2];
+  const items = [c_1, c_2, c_3, c_4, b_1, b_2, b_3, b_4, b_2];
 
   //   const responsive = [
   //     {
