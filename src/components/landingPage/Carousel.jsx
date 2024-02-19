@@ -7,6 +7,10 @@ import c_1 from "../../assets/img/landingPage/c_1.jpeg";
 import c_2 from "../../assets/img/landingPage/c_2.jpeg";
 import c_3 from "../../assets/img/landingPage/c_3.jpeg";
 import c_4 from "../../assets/img/landingPage/c_4.jpeg";
+import d_1 from "../../assets/img/landingPage/19Feb24/19feb241.jpeg";
+import d_2 from "../../assets/img/landingPage/19Feb24/19feb242.jpeg";
+import d_3 from "../../assets/img/landingPage/19Feb24/19feb243.jpeg";
+import d_4 from "../../assets/img/landingPage/19Feb24/19feb244.jpeg";
 import Slider from "react-slick";
 
 function NextBtn(props) {
@@ -51,7 +55,7 @@ function PreviousBtn(props) {
 
 export const Carousel = () => {
   const [activeImg, setAtiveImage] = useState(0);
-  const items = [c_1, c_2, c_3, c_4, b_1, b_2, b_3, b_4, b_2];
+  const items = [d_1,d_2,d_3,d_4,c_1, c_2, c_3, c_4, b_1, b_2, b_3, b_4, b_2];
 
   //   const responsive = [
   //     {
@@ -93,7 +97,7 @@ export const Carousel = () => {
                   onClick={() => setAtiveImage(i)}
                   src={img}
                   alt="img"
-                  className=" rounded-xl cursor-pointer"
+                  className=" rounded-xl cursor-pointer aspect-video"
                 />
               </div>
             );

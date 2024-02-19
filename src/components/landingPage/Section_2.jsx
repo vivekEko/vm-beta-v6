@@ -10,6 +10,7 @@ import b_1 from "../../assets/img/landingPage/b_1.png";
 import b_2 from "../../assets/img/landingPage/b_2.png";
 import b_3 from "../../assets/img/landingPage/b_3.png";
 import b_4 from "../../assets/img/landingPage/b_4.png";
+import poster1 from "../../assets/img/landingPage/19Feb24/19feb245.webp";
 // import arrow_right from "../../assets/img/landingPage/arrow-right-eduation-section.svg";
 import Slider from "react-slick";
 import YouTube from "react-youtube";
@@ -302,7 +303,6 @@ const Section_2 = (props) => {
   const [admissionOverlay, setAdmissionOverlay] = useState(false);
   const admissionForm = useRef();
 
-  //
   const [subscribeValues, setSubscribeValues] = useState({
     first_name: "",
     last_name: "",
@@ -465,9 +465,13 @@ const Section_2 = (props) => {
           </section> */}
 
           <section className="p-5 hidden lg:block">
+            <div className="py-5">
+            <img src={poster1} alt="poster1" className="w-full rounded-xl overflow-hidden" />
+            </div>
+
             <YouTube
               // videoId={data?.video_id}
-              videoId={"3RtOH-g5bIM"}
+              videoId={"-hGKvubzveE"}
               opts={opts}
               className="w-full"
             />
@@ -509,6 +513,7 @@ const Section_2 = (props) => {
 
           {/* admission */}
           <div className="hidden lg:block">
+           
             {/* admission  */}
             {/* <section className=" w-[97%] mx-auto bg-gray-300 rounded-3xl overflow-hidden mb-5"> */}
             {/* <Slider className="w-full" {...settings}>
@@ -1283,12 +1288,17 @@ const Section_2 = (props) => {
           </section> */}
 
           <section className="p-5 lg:hidden">
+            <div className="py-5">
+            <img src={poster1} alt="poster1" className="w-full rounded-xl overflow-hidden" />
+            </div>
             <YouTube
               // videoId={data?.video_id}
-              videoId={"3RtOH-g5bIM"}
+              videoId={"-hGKvubzveE"}
               opts={mobile_opts}
               className="w-full"
             />
+        
+
           </section>
 
           {/* Download buttons mobile */}
@@ -1808,7 +1818,7 @@ const Section_2 = (props) => {
       )}
 
       {props?.apiData?.layout === "jeeyars" && (
-        <section className="py-5 pb-10 rounded-lg my-5 bg-[#FDE9E3]">
+        <section className="py-5 pb-10 rounded-lg my-5 bg-[#FDE9E3] hidden">
           <div className=" w-full">
             <Slider
               dots={true}
